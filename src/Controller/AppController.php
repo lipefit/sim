@@ -82,7 +82,7 @@ class AppController extends Controller {
                 'action' => 'login',
                 'prefix' => false
             ],
-            'authError' => 'You are not authorized to access that location.',
+            'authError' => 'Você não está autorizado a acessar esse local.',
             'flash' => [
                 'element' => 'error'
             ]
@@ -90,6 +90,7 @@ class AppController extends Controller {
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Cookie');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -106,12 +107,42 @@ class AppController extends Controller {
      * @return \Cake\Network\Response|null|void
      */
     public function beforeRender(Event $event) {
-        $this->set('authUser', $this->Auth->user());
-        if (!array_key_exists('_serialize', $this->viewVars) &&
-                in_array($this->response->type(), ['application/json', 'application/xml'])
-        ) {
-            $this->set('_serialize', true);
+        $this->loadComponent('Cookie');
+        $this->loadComponent('Auth');
+        $this->loadModel('Cliente');
+        $user = $this->Auth->User();
+        $this->set('authUser', $user);
+        if (@$user) {
+            $_clientes = $this->Cliente->find('all', [
+                'conditions' => [
+                    'Cliente.status' => 1,
+                    'Cliente.cliente_id' => $user['cliente_id']
+                ]
+            ]);
+
+            $this->set(compact('_clientes'));
+        }
+
+//        if (!array_key_exists('_serialize', $this->viewVars) &&
+//                in_array($this->response->type(), ['application/json', 'application/xml'])
+//        ) {
+//            $this->set('_serialize', true);
+//        }
+
+        if ($user['group_id'] == 1 || $user['group_id'] == 3 || $user['group_id'] == 6 || $user['group_id'] == 4 || $user['group_id'] == 7) {
+            if (@$this->Cookie->read('cliente_id')) {
+                $this->set('cliente_id_cookie', $this->Cookie->read('cliente_id'));
+            } else {
+                /*
+                 * Se não existe sessao antiga entao cria uma nova
+                 */
+                $this->Cookie->write('cliente_id', $user['cliente_id']);
+                $this->set('cliente_id_cookie', $user['cliente_id']);
+            }
+        } else {
+            $this->Cookie->write('cliente_id', $user['cliente_id']);
+            $this->set('cliente_id_cookie', $user['cliente_id']);
         }
     }
-   
+
 }

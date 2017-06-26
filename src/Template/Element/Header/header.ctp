@@ -1,3 +1,9 @@
+<?php
+$clientList;
+foreach ($_clientes as $cliente) {
+    $clientList[$cliente['id']] = $cliente['nomeFantasia'];
+}
+?>
 <header class="navbar-fixed">
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded">
         <div class="sidebar-left"> 
@@ -7,6 +13,20 @@
         <div class="d-flex mr-auto"> &nbsp;</div>
         <ul class="navbar-nav content-right">
             <li class="v-devider"></li>
+            <li class="nav-item active">
+                <button class="btn-link btn userprofile"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="text"><?php echo $clientList[$cliente_id_cookie]; ?></span>
+                </button>
+                <div class="dropdown-menu message-container">
+                    <div class="list-unstyled">
+                        <?php foreach ($clientList as $k => $cliente): ?>
+                            <?php
+                            echo $this->Html->link($this->Html->tag('h6', $cliente, array('class' => 'mt-0 mb-1')), '/cliente/altera_sessao/' . $k, ['class' => 'media', 'escape' => false]);
+                            ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item active">
                 <button class="btn btn-link icon-header "  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-envelope-o"></span> <span class="badge-number bg-success"></span></button>
                 <div class="dropdown-menu message-container">
@@ -66,7 +86,6 @@
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item">
                     <button class="btn-link btn userprofile"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="userpic"><img src="../img/user-header.png" alt="user pic"></span> 
                         <span class="text">Aquiles Casabona</span>
                     </button>
                 </li>

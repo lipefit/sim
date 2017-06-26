@@ -58,11 +58,11 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('O usuário foi salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tente novamente.'));
         }
         $groups = $this->Users->Groups->find('list', ['limit' => 200]);
         $this->set(compact('user', 'groups'));
@@ -83,11 +83,11 @@ class UsersController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('The usuário foi salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tente novamente.'));
         }
         $groups = $this->Users->Groups->find('list', ['limit' => 200]);
         $this->set(compact('user', 'groups'));
@@ -105,9 +105,9 @@ class UsersController extends AppController {
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('O usuário foi excluído com sucesso.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('O usuário não pode ser excluído. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -121,12 +121,12 @@ class UsersController extends AppController {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Your username or password was incorrect.'));
+            $this->Flash->error(__('Seu e-mail e/ou senha estão incorretos.'));
         }
     }
 
     public function logout() {
-        $this->Flash->success(__('Good-Bye'));
+        $this->Flash->success(__('Até logo!'));
         $this->redirect($this->Auth->logout());
     }
 

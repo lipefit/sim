@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/ClienteController.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Cliente/add.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Element/Sidebar/left.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/UsersController.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Table/ClienteTable.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Cliente/index.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/GroupsController.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Element/Header/header.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Entity/User.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Dashboard/index.ctp</file>
             <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/AppController.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Entity/Group.php</file>
             <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Entity/Cliente.php</file>
         </group>
     </open-files>

@@ -107,4 +107,18 @@ class ClienteController extends AppController {
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function alteraSessao($id = null) {
+        $cliente = $this->Cliente->get($id, [
+            'contain' => []
+        ]);
+        if ($cliente) {
+            $this->Cookie->write('cliente_id', $id);
+            $this->redirect('/');
+        } else {
+            $this->Flash->error(__('Cliente inexistente.'));
+            $this->redirect('/');
+        }
+    }
+
 }

@@ -4,7 +4,7 @@
         <div class="col-11 col-sm-12 page-title">
             <h3>Dashboard</h3>
         </div>
-    </div>
+    </div>  
     <!--        <div class="row">
                 <div class="col-md-8 col-lg-8 col-xl-4">
                     <div class="activity-block success">

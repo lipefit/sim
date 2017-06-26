@@ -125,3 +125,88 @@ Stack Trace:
 #10 {main}
 
 
+2017-06-26 01:30:43 Warning: Warning (512): DbAcl::allow() - Invalid node in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Acl\Model\Table\PermissionsTable::allow() - ROOT/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173
+Acl\Adapter\DbAcl::allow() - ROOT/vendor/cakephp/acl/src/Adapter/DbAcl.php, line 95
+Acl\Controller\Component\AclComponent::allow() - ROOT/vendor/cakephp/acl/src/Controller/Component/AclComponent.php, line 134
+Acl\Shell\AclShell::grant() - ROOT/vendor/cakephp/acl/src/Shell/AclShell.php, line 276
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 458
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 230
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 182
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 128
+[main] - ROOT/bin/cake.php, line 34
+
+
+
+2017-06-26 01:31:19 Warning: Warning (512): DbAcl::allow() - Invalid node in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Acl\Model\Table\PermissionsTable::allow() - ROOT/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173
+Acl\Adapter\DbAcl::allow() - ROOT/vendor/cakephp/acl/src/Adapter/DbAcl.php, line 95
+Acl\Controller\Component\AclComponent::allow() - ROOT/vendor/cakephp/acl/src/Controller/Component/AclComponent.php, line 134
+Acl\Shell\AclShell::grant() - ROOT/vendor/cakephp/acl/src/Shell/AclShell.php, line 276
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 458
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 230
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 182
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 128
+[main] - ROOT/bin/cake.php, line 34
+
+
+
+2017-06-26 01:31:39 Error: [Cake\Core\Exception\Exception] AclNode::node() - Couldn't find Aros node identified by "Array
+(
+    [Aros0.model] => Groups
+    [Aros0.foreign_key] => all
+)
+" in /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/AclNodesTable.php on line 183
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php(225): Acl\Model\Table\AclNodesTable->node(Array)
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php(167): Acl\Model\Table\PermissionsTable->getAclLink(Array, 'controllers/Cli...')
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Adapter/DbAcl.php(95): Acl\Model\Table\PermissionsTable->allow(Array, 'controllers/Cli...', '*', 1)
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Controller/Component/AclComponent.php(134): Acl\Adapter\DbAcl->allow(Array, 'controllers/Cli...', '*')
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Shell/AclShell.php(276): Acl\Controller\Component\AclComponent->allow(Array, 'controllers/Cli...', '*')
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/Shell.php(458): Acl\Shell\AclShell->grant('Groups.all', 'controllers/Cli...')
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#9 /home/felipe/Documentos/Projetos/sim/bin/cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#10 {main}
+
+
+2017-06-26 01:31:52 Warning: Warning (512): DbAcl::allow() - Invalid node in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Acl\Model\Table\PermissionsTable::allow() - ROOT/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173
+Acl\Adapter\DbAcl::allow() - ROOT/vendor/cakephp/acl/src/Adapter/DbAcl.php, line 95
+Acl\Controller\Component\AclComponent::allow() - ROOT/vendor/cakephp/acl/src/Controller/Component/AclComponent.php, line 134
+Acl\Shell\AclShell::grant() - ROOT/vendor/cakephp/acl/src/Shell/AclShell.php, line 276
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 458
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 230
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 182
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 128
+[main] - ROOT/bin/cake.php, line 34
+
+
+
+2017-06-26 01:32:31 Error: [Cake\Core\Exception\Exception] AclNode::node() - Couldn't find Aros node identified by "Array
+(
+    [Aros0.model] => Groups
+    [Aros0.foreign_key] => 2
+)
+" in /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/AclNodesTable.php on line 183
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php(225): Acl\Model\Table\AclNodesTable->node(Array)
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php(167): Acl\Model\Table\PermissionsTable->getAclLink(Array, 'controllers/Cli...')
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Adapter/DbAcl.php(95): Acl\Model\Table\PermissionsTable->allow(Array, 'controllers/Cli...', '*', 1)
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Controller/Component/AclComponent.php(134): Acl\Adapter\DbAcl->allow(Array, 'controllers/Cli...', '*')
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Shell/AclShell.php(276): Acl\Controller\Component\AclComponent->allow(Array, 'controllers/Cli...', '*')
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/Shell.php(458): Acl\Shell\AclShell->grant('Groups.2', 'controllers/Cli...')
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#9 /home/felipe/Documentos/Projetos/sim/bin/cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#10 {main}
+
+
