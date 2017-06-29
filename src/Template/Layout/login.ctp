@@ -39,7 +39,6 @@
 
         <div class="wrapper-content-sign-in ">
             <div class="container text-center">
-                <?= $this->Flash->render(); ?>
                 <?= $this->fetch('content'); ?>
             </div>
             <?= $this->element('Footer/login'); ?>

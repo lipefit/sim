@@ -86,7 +86,7 @@ foreach ($_clientes as $cliente) {
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item">
                     <button class="btn-link btn userprofile"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text">Aquiles Casabona</span>
+                        <span class="text"><?=$profile['name']." ".$profile['surname'];?></span>
                     </button>
                 </li>
                 <li>

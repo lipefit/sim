@@ -80,6 +80,9 @@ $cakeDescription = 'Simarketing';
         <?= $this->Html->script('/js/datatables/js/jquery.dataTables.min.js') ?>
         <?= $this->Html->script('/js/datatables/js/dataTables.bootstrap4.js') ?>
         <?= $this->Html->script('/js/datatables/js/dataTables.responsive.min.js') ?>
+        
+        <!-- Masked Input -->
+        <?= $this->Html->script('masked.js') ?>
 
         <!-- custome template js -->
         <?= $this->Html->script('adminux.js') ?>
@@ -94,7 +97,7 @@ $cakeDescription = 'Simarketing';
         <?= $this->element('Sidebar/left'); ?>
 
         <div class="wrapper-content">
-            <?php //$this->Flash->render(); ?>
+            <?php $this->Flash->render(); ?>
             <?= $this->fetch('content'); ?> 
             <?= $this->element('Footer/footer'); ?>
         </div>

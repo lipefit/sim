@@ -56,15 +56,22 @@ class UsersController extends AppController {
     public function add() {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+//            $this->request->data['User']['cliente_id'] = $this->Cookie->read('cliente_id');
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
+//                $this->Profiles->save(array(
+//                    'name' => $this->request->data['User']['name'],
+//                    'surname' => $this->request->data['User']['surname'],
+//                    'telefone' => $this->request->data['User']['telefone'],
+//                    'user_id' => $this->User->id
+//                ));
                 $this->Flash->success(__('O usuário foi salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tente novamente.'));
         }
-        $groups = $this->Users->Groups->find('list', ['limit' => 200]);
+        $groups = $this->Users->Groups->find('list');
         $this->set(compact('user', 'groups'));
         $this->set('_serialize', ['user']);
     }
@@ -89,7 +96,7 @@ class UsersController extends AppController {
             }
             $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tente novamente.'));
         }
-        $groups = $this->Users->Groups->find('list', ['limit' => 200]);
+        $groups = $this->Users->Groups->find('list');
         $this->set(compact('user', 'groups'));
         $this->set('_serialize', ['user']);
     }

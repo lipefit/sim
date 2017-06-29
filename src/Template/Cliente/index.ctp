@@ -37,7 +37,7 @@
                         </thead>
                         <tbody>
                             <?php foreach ($clientes as $cliente): ?>
-                                <tr class="odd">
+                                <tr>
                                     <td><?= $this->Number->format($cliente->id) ?></td>	
                                     <td><?= h($cliente->nomeFantasia) ?></td>
                                     <td><?= h($cliente->site) ?></td>

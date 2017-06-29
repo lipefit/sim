@@ -23,7 +23,12 @@ class ClienteController extends AppController {
      * @return \Cake\Http\Response|null
      */
     public function index() {
-        $clientes = $this->paginate($this->Cliente);
+        $id = $this->Cookie->read('cliente_id');
+        $clientes = $this->Cliente->find('all', [
+            'conditions' => [
+                'Cliente.cliente_id' => $id
+            ]
+        ]);
 
         $this->set(compact('clientes'));
         $this->set('_serialize', ['clientes']);
@@ -79,11 +84,11 @@ class ClienteController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $cliente = $this->Cliente->patchEntity($cliente, $this->request->getData());
             if ($this->Cliente->save($cliente)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('O cliente foi salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('O cliente não foi salvo. Por favor, tente novamente.'));
         }
         $this->set(compact('cliente'));
         $this->set('_serialize', ['cliente']);
@@ -100,9 +105,9 @@ class ClienteController extends AppController {
         $this->request->allowMethod(['post', 'delete']);
         $cliente = $this->Cliente->get($id);
         if ($this->Cliente->delete($cliente)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('O cliente foi deletado.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('O cliente não foi deletado. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

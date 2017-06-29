@@ -110,6 +110,7 @@ class AppController extends Controller {
         $this->loadComponent('Cookie');
         $this->loadComponent('Auth');
         $this->loadModel('Cliente');
+        $this->loadModel('Profiles');
         $user = $this->Auth->User();
         $this->set('authUser', $user);
         if (@$user) {
@@ -121,6 +122,15 @@ class AppController extends Controller {
             ]);
 
             $this->set(compact('_clientes'));
+
+            $profiles = $this->Profiles->find('all', [
+                'conditions' => [
+                    'Profiles.user_id' => $user['id']
+                ]
+            ]);
+            $profile = $profiles->first();
+
+            $this->set('profile', $profile);
         }
 
 //        if (!array_key_exists('_serialize', $this->viewVars) &&

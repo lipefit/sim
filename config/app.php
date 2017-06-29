@@ -222,6 +222,8 @@ return [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
+//            'host' => 'bd_simarketing.mysql.dbaas.com.br',
+            
             'host' => 'localhost',
             /**
              * CakePHP will use the default DB port based on the driver selected
@@ -229,9 +231,14 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
+//            'username' => 'bd_simarketing',
+//            'password' => 'capifitsos9856',
+//            'database' => 'bd_simarketing',
+            
             'username' => 'root',
             'password' => 'capifitsos9856',
             'database' => 'simarketing',
+            
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
