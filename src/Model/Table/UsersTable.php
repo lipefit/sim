@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -23,8 +24,7 @@ use Cake\Auth\DefaultPasswordHasher;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class UsersTable extends Table
-{
+class UsersTable extends Table {
 
     /**
      * Initialize method
@@ -32,8 +32,7 @@ class UsersTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
+    public function initialize(array $config) {
         parent::initialize($config);
 
         $this->setTable('users');
@@ -41,7 +40,7 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-		$this->addBehavior('Acl.Acl', ['type' => 'requester']);
+        $this->addBehavior('Acl.Acl', ['type' => 'requester']);
 
         $this->belongsTo('Clientes', [
             'foreignKey' => 'cliente_id'
@@ -49,47 +48,8 @@ class UsersTable extends Table
         $this->belongsTo('Groups', [
             'foreignKey' => 'group_id'
         ]);
-    }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
-            ->requirePresence('username', 'create')
-            ->notEmpty('username');
-
-        $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
-        $validator
-            ->dateTime('last_login')
-            ->allowEmpty('last_login');
-
-        $validator
-            ->boolean('active')
-            ->requirePresence('active', 'create')
-            ->notEmpty('active');
-
-        $validator
-            ->integer('first_active')
-            ->requirePresence('first_active', 'create')
-            ->notEmpty('first_active');
-
-        $validator
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
-
-        return $validator;
+        $this->hasOne("Profiles");
     }
 
     /**
@@ -99,19 +59,20 @@ class UsersTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
-    {
+    public function buildRules(RulesChecker $rules) {
         $rules->add($rules->isUnique(['username']));
         $rules->add($rules->existsIn(['cliente_id'], 'Clientes'));
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
 
         return $rules;
     }
-	
-	public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, \ArrayObject $options)
-	{
-		$hasher = new DefaultPasswordHasher;
-		$entity->password = $hasher->hash($entity->password);
-		return true;
-	}
+
+    public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, \ArrayObject $options) {
+        if (isset($entity->password)) {
+            $hasher = new DefaultPasswordHasher;
+            $entity->password = $hasher->hash($entity->password);
+        }
+        return true;
+    }
+
 }

@@ -1,39 +1,66 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ * @author Felipe Almeida
+ */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Groups'), ['controller' => 'Groups', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Aro'), ['controller' => 'Aros', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Aro'), ['controller' => 'Aros', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
-        <?php
-            echo $this->Form->control('username');
-            echo $this->Form->control('password');
-            echo $this->Form->control('last_login', ['empty' => true]);
-            echo $this->Form->control('active');
-            echo $this->Form->control('cliente_id');
-            echo $this->Form->control('first_active');
-            echo $this->Form->control('status');
-            echo $this->Form->control('group_id', ['options' => $groups, 'empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<div class="container">
+    <div class="row  align-items-center justify-content-between">
+        <div class="col-11 col-sm-12 page-title">
+            <h3><?= __('Usuário') ?></h3>
+        </div>
+        <div class="col text-right ">
+            <div class="btn-group pull-right">
+                <a href='javascript:history.back()' class="btn btn-warning btn-round"><span class="text"><?= __('Voltar') ?></span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-16 col-md-16">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="card-title"><?= __('Novo usuário') ?></h6>
+                </div>
+                <div class="card-block">
+                    <?= $this->Form->create($user) ?>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="nome">Nome </label>
+                                <?= $this->Form->control('Profiles.id', ['type' => 'hidden','value'=>$user['profile']['id']]); ?>
+                                <?= $this->Form->control('Profiles.name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nome','value'=>$user['profile']['name']]); ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="sobrenome">Sobrenome</label>
+                                <?= $this->Form->control('Profiles.surname', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Sobrenome','value'=>$user['profile']['surname']]); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <?= $this->Form->control('Profiles.telefone', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Telefone','value'=>$user['profile']['telefone']]); ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <?= $this->Form->control('username', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Email']); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="grupo">Grupo</label>
+                        <?= $this->Form->control('group_id', ['options' => $groups, 'empty' => true, 'label' => false, 'class' => 'form-control', 'placeholder' => 'Group']); ?>
+                    </div>
+                    <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?>
+                    <?= $this->Form->end() ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

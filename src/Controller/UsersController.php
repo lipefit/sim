@@ -54,21 +54,23 @@ class UsersController extends AppController {
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $this->loadModel('Profiles');
         $user = $this->Users->newEntity();
+        $profile = $this->Profiles->newEntity();
         if ($this->request->is('post')) {
-//            $this->request->data['User']['cliente_id'] = $this->Cookie->read('cliente_id');
+            $this->request->data['Users']['cliente_id'] = $this->Cookie->read('cliente_id');
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-//                $this->Profiles->save(array(
-//                    'name' => $this->request->data['User']['name'],
-//                    'surname' => $this->request->data['User']['surname'],
-//                    'telefone' => $this->request->data['User']['telefone'],
-//                    'user_id' => $this->User->id
-//                ));
+            if ($query = $this->Users->save($user)) {
+                $this->request->data['Profiles']['user_id'] = $query->id;
+                $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
+                $this->Profiles->save($profile);
                 $this->Flash->success(__('O usuário foi salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('O usuário não foi salvo. Por favor, tente novamente.'));
             }
+
             $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tente novamente.'));
         }
         $groups = $this->Users->Groups->find('list');
@@ -84,13 +86,21 @@ class UsersController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null) {
+        $this->loadModel('Profiles');
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => ['Profiles']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The usuário foi salvo com sucesso.'));
+            if ($query = $this->Users->save($user)) {
+
+                $profile = $this->Profiles->get($this->request->data['Profiles']['id'], [
+                    'contain' => []
+                ]);
+                $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
+                $this->Profiles->save($profile);
+
+                $this->Flash->success(__('O usuário foi salvo com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }

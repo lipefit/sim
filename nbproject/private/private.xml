@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/PremissasController.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Element/Sidebar/left.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Table/PremissasTable.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Premissas/add.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Premissas/index.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Entity/Premissa.php</file>
+        </group>
     </open-files>
 </project-private>
