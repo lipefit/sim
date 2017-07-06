@@ -178,13 +178,13 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => 'Mail',
+            'className' => 'Smtp',
             // The following keys are used in SMTP transports
-            'host' => 'localhost',
+            'host' => 'smtp.simarketing.com.br',
             'port' => 25,
-            'timeout' => 30,
-            'username' => 'user',
-            'password' => 'secret',
+            'timeout' => 150,
+            'username' => 'noreply@simarketing.com.br',
+            'password' => '@Conquest71',
             'client' => null,
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
@@ -203,7 +203,7 @@ return [
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => 'you@localhost',
+            'from' => 'noreply@simarketing.com.br',
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],
