@@ -223,3 +223,4 @@ if (Configure::read('debug')) {
 
 
 Plugin::load('Acl', ['bootstrap' => true]);
+ini_set('intl.default_locale', 'pt_BR');

@@ -18,6 +18,17 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Database\Type;
+
+Type::build('date')
+        ->useLocaleParser()
+        ->setLocaleFormat('dd/MM/yyyy');
+Type::build('datetime')
+        ->useLocaleParser()
+        ->setLocaleFormat('dd/MM/yyyy HH:mm:ss');
+Type::build('timestamp')
+        ->useLocaleParser()
+        ->setLocaleFormat('dd/MM/yyyy HH:mm:ss');
 
 /**
  * Application Controller
