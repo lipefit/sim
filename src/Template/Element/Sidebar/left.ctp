@@ -42,13 +42,12 @@
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'checklists'; ?>"><i class="fa fa-check-square-o"></i> Check list</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'projetos'; ?>"><i class="fa fa-folder"></i> Projeto</a></li>
                 <!--<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-file"></i> Campanhas</a></li>-->
-                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'palavras'; ?>"><i class="fa fa-key"></i> Palavras-chaves</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'identidades'; ?>"><i class="fa fa-photo"></i> Identidade Visual</a></li>
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Planejamento<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
-                
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'palavras'; ?>"><i class="fa fa-key"></i> Palavras-chaves</a></li>
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Estratégia<i class="fa fa-angle-down "></i></a>
