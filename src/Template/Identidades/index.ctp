@@ -62,8 +62,16 @@
                         <div class="col-lg-8 col-md-8">
                             <div class="form-group">
                                 <label for="arquivo">Arquivo </label>
-                                <?= $this->Form->control('arquivo', ['label' => false, 'class' => 'form-control', 'type' => 'file']); ?>
+                                <?= $this->Form->control('file', ['label' => false, 'class' => 'form-control', 'type' => 'file']); ?>
                             </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8"></div>
+                        <div class="col-lg-8 col-md-8" style="text-align: right;">
+                            <?php
+                                if($identidade['arquivo'] != ""){
+                                    echo "<a class='btn btn-info' href='".WWW_ROOT."files". DS .$identidade['arquivo']."' target='_blank'>Baixar Arquivo!</a>";
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="row">

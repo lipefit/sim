@@ -37,6 +37,13 @@ class IdentidadesController extends AppController {
         }
         if ($this->request->is('post')) {
             $this->request->data['Identidades']['cliente_id'] = $this->Cookie->read('cliente_id');
+            
+            $file = $this->request->data['file'];
+            $arquivo =  str_replace(' ', '_', $file['name']);
+            if (move_uploaded_file($file['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                $this->request->data['Identidades']['arquivo'] = $arquivo;
+            }  
+            
             $identidade = $this->Identidades->patchEntity($identidade, $this->request->getData());
             if ($this->Identidades->save($identidade)) {
                 $this->Flash->success(__('Identidade visual atualizada com sucesso.'));
