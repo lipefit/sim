@@ -54,21 +54,3 @@
         </div>
     </div>
 </div>
-<script>
-    "use strict";
-    $(document).ready(function () {
-        $('#dataTable').DataTable({
-            responsive: true,
-            pageLength: 10,
-            sPaginationType: "full_numbers",
-            oLanguage: {
-                oPaginate: {
-                    sFirst: "<<",
-                    sPrevious: "<",
-                    sNext: ">",
-                    sLast: ">>"
-                }
-            }
-        });
-    });
-</script>
