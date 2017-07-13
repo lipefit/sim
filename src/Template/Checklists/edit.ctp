@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row  align-items-center justify-content-between">
         <div class="col-11 col-sm-12 page-title">
-            <h3><?= __('Check list') ?></h3>
+            <h3><i class="fa fa-check-square-o"></i> <?= __('Check list') ?></h3>
         </div>
         <div class="col text-right ">
             <div class="btn-group pull-right">

@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Entity/Identidade.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Identidades/index.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Table/IdentidadesTable.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/IdentidadesController.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/ProjetosController.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Projetos/index.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Table/PerguntasTable.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Checklists/add.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/ChecklistsController.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Checklists/index.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/config/app.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Checklists/edit.ctp</file>
         </group>
     </open-files>
 </project-private>
