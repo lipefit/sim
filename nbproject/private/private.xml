@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Table/CanvasTable.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Canvas/ver.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Canvas/add.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/CanvasController.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Canvas/edit.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/config/app.php</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Canvas/index.ctp</file>
-            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Entity/Canvas.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Entity/Identidade.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Template/Identidades/index.ctp</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Model/Table/IdentidadesTable.php</file>
+            <file>file:/home/felipe/Documentos/Projetos/sim/src/Controller/IdentidadesController.php</file>
         </group>
     </open-files>
 </project-private>
