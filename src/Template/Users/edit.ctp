@@ -57,7 +57,7 @@
                         <label for="grupo">Grupo</label>
                         <?= $this->Form->control('group_id', ['options' => $groups, 'empty' => true, 'label' => false, 'class' => 'form-control', 'placeholder' => 'Group']); ?>
                     </div>
-                    <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?>
+                    <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
             </div>

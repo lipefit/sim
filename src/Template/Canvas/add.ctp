@@ -28,7 +28,7 @@
                         <label for="titulo">Título do canvas</label>
                         <?= $this->Form->control('titulo',['label'=>false, 'class'=>'form-control','placeholder'=>'Título do canvas']); ?>
                     </div>
-                    <?= $this->Form->button(__('Salvar'),['class' => 'btn btn-primary']) ?>
+                    <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
             </div>

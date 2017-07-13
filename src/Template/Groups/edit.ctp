@@ -29,8 +29,7 @@
                         <!--<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
                         <?= $this->Form->control('name',['label'=>false, 'class'=>'form-control','placeholder'=>'Nome do grupo']); ?>
                     </div>
-                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
-                    <?= $this->Form->button(__('Salvar'),['class' => 'btn btn-primary']) ?>
+                    <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
             </div>

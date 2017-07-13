@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     
-                    <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?>
+                    <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
             </div>

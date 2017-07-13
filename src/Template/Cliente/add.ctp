@@ -44,7 +44,7 @@
                         <label for="site">Site</label>
                         <?= $this->Form->control('site',['label'=>false, 'class'=>'form-control','placeholder'=>'Site']); ?>
                     </div>
-                    <?= $this->Form->button(__('Salvar'),['class' => 'btn btn-primary']) ?>
+                    <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
             </div>
