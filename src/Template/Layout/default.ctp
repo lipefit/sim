@@ -98,9 +98,27 @@ $cakeDescription = 'Simarketing';
 
         <div class="wrapper-content">
             <?= $this->Flash->render() ?>
-            
+
             <?= $this->fetch('content'); ?> 
             <?= $this->element('Footer/footer'); ?>
         </div>
     </body>
+    <script>
+        "use strict";
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                responsive: true,
+                pageLength: 10,
+                sPaginationType: "full_numbers",
+                oLanguage: {
+                    oPaginate: {
+                        sFirst: "<<",
+                        sPrevious: "<",
+                        sNext: ">",
+                        sLast: ">>"
+                    }
+                }
+            });
+        });
+    </script>
 </html>
