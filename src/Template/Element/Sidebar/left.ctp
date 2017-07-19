@@ -40,9 +40,12 @@
             <ul class="nav flex-column nav-second-level ">
                 <li class="nav-item"><a href="<?= $this->request->webroot . 'canvas'; ?>" class="nav-link"><i class="fa fa-th-large"></i> Canvas</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'checklists'; ?>"><i class="fa fa-check-square-o"></i> Check list</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'projetos'; ?>"><i class="fa fa-folder"></i> Projeto</a></li>
-                <!--<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-file"></i> Campanhas</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'identidades'; ?>"><i class="fa fa-photo"></i> Identidade Visual</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'personas'; ?>"><i class="fa fa-group"></i> Persona da Marca</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'concorrentes'; ?>"><i class="fa fa-eye"></i> Concorrentes</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'referencias'; ?>"><i class="fa fa-copy"></i> Referências</a></li>
+                <!--<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-file"></i> Campanhas</a></li>-->
+                
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Planejamento<i class="fa fa-angle-down "></i></a>
