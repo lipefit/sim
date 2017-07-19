@@ -245,3 +245,18 @@ Stack Trace:
 #10 {main}
 
 
+2017-07-19 01:29:56 Error: [ReflectionException] Class App\Controller\PreferenciasController does not exist in /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/AclExtras.php on line 314
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/AclExtras.php(314): ReflectionClass->__construct('App\\Controller\\...')
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/AclExtras.php(199): Acl\AclExtras->_updateControllers(Object(Acl\Model\Entity\Aco), Array)
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/AclExtras.php(165): Acl\AclExtras->_processControllers(Object(Acl\Model\Entity\Aco))
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/AclExtras.php(151): Acl\AclExtras->acoUpdate(Array)
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Shell/AclExtrasShell.php(83): Acl\AclExtras->acoSync(Array)
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/Shell.php(458): Acl\Shell\AclExtrasShell->acoSync()
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#9 /home/felipe/Documentos/Projetos/sim/bin/cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#10 {main}
+
+

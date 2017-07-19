@@ -143,7 +143,7 @@ class ChecklistsController extends AppController {
 
         return $this->redirect(['action' => 'index']);
     }
-    
+
     public function deletePerguntas($id = null) {
         $this->loadModel('Perguntas');
         $this->request->allowMethod(['post', 'delete']);
@@ -155,6 +155,22 @@ class ChecklistsController extends AppController {
         }
 
         return $this->redirect($this->referer());
+    }
+
+    public function responder($id = null) {
+        $this->loadModel('Perguntas');
+        $checklist = $this->Checklists->get($id, [
+            'contain' => []
+        ]);
+
+        $perguntas = $this->Perguntas->find('all', [
+            'conditions' => [
+                'Perguntas.checklist_id' => $id
+            ]
+        ]);
+
+        $this->set(compact('perguntas'));
+        $this->set('_serialize', ['perguntas']);
     }
 
 }
