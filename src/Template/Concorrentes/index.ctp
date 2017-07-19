@@ -28,6 +28,9 @@
                             <tr>
                                 <th>Id </th>
                                 <th>Concorrente</th>
+                                <th>URL</th>
+                                <th>Produto/Serviço</th>
+                                <th>Tipo</th>
                                 <th>Criado</th>
                                 <th>Modificado</th>
                                 <th>Ações</th>
@@ -38,6 +41,9 @@
                                 <tr class="odd">
                                     <td><?= $this->Number->format($concorrente->id) ?></td>	
                                     <td><?= h($concorrente->name) ?></td>
+                                    <td><?= h($concorrente->url) ?></td>
+                                    <td><?= h($concorrente->produto) ?></td>
+                                    <td><?= h($concorrente->tipo) ?></td>
                                     <td><?= h($concorrente->created) ?></td>
                                     <td><?= h($concorrente->modified) ?></td>
                                     <td class="center">

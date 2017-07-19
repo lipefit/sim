@@ -28,6 +28,7 @@
                             <tr>
                                 <th>Id </th>
                                 <th>Referência</th>
+                                <th>Url</th>
                                 <th>Criado</th>
                                 <th>Modificado</th>
                                 <th>Ações</th>
@@ -38,6 +39,7 @@
                                 <tr class="odd">
                                     <td><?= $this->Number->format($referencia->id) ?></td>	
                                     <td><?= h($referencia->name) ?></td>
+                                    <td><?= h($referencia->url) ?></td>
                                     <td><?= h($referencia->created) ?></td>
                                     <td><?= h($referencia->modified) ?></td>
                                     <td class="center">

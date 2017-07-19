@@ -51,6 +51,8 @@ class ConcorrentesController extends AppController {
             }
             $this->Flash->error(__('O concorrente não pode ser salvo. Por favor, tente novamente'));
         }
+        $tipos = $this->getTipos();
+        $this->set(compact('tipos'));
         $this->set(compact('concorrente'));
         $this->set('_serialize', ['concorrente']);
     }
@@ -75,6 +77,8 @@ class ConcorrentesController extends AppController {
             }
             $this->Flash->error(__('O concorrente não foi salvo. Por favor, tente novamente.'));
         }
+        $tipos = $this->getTipos();
+        $this->set(compact('tipos'));
         $this->set(compact('concorrente'));
         $this->set('_serialize', ['concorrente']);
     }
@@ -96,6 +100,13 @@ class ConcorrentesController extends AppController {
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    
+    public function getTipos() {
+        return array(
+            'Direto' => 'Direto',
+            'Indireto' => 'Indireto'
+        );
     }
     
 }

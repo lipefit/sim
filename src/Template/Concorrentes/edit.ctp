@@ -24,9 +24,33 @@
                 </div>
                 <div class="card-block">
                     <?= $this->Form->create($concorrente) ?>
-                    <div class="form-group">
-                        <label for="concorrente">Concorrente</label>
-                        <?= $this->Form->control('name',['label'=>false, 'class'=>'form-control','placeholder'=>'Concorrente']); ?>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="concorrente">Concorrente</label>
+                                <?= $this->Form->control('name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Concorrente']); ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="url">Url</label>
+                                <?= $this->Form->control('url', ['label' => false, 'class' => 'form-control', 'type' => 'text', 'placeholder' => 'URL']); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="produtoServico">Produto / Serviço</label>
+                                <?= $this->Form->control('produto', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Produto / Serviço']); ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="tipo">Tipo</label>
+                                <?= $this->Form->control('tipo', ['label' => false, 'class' => 'form-control', 'options' => $tipos, 'placeholder' => 'Tipo']); ?>
+                            </div>
+                        </div>
                     </div>
                     <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>

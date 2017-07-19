@@ -24,9 +24,19 @@
                 </div>
                 <div class="card-block">
                     <?= $this->Form->create($referencia) ?>
-                    <div class="form-group">
-                        <label for="referencia">Referência</label>
-                        <?= $this->Form->control('name',['label'=>false, 'class'=>'form-control','placeholder'=>'Referência']); ?>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="referencia">Referência</label>
+                                <?= $this->Form->control('name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Referência']); ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="form-group">
+                                <label for="url">Url</label>
+                                <?= $this->Form->control('url', ['label' => false, 'class' => 'form-control', 'type'=>'text', 'placeholder' => 'URL']); ?>
+                            </div>
+                        </div>
                     </div>
                     <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
