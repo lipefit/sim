@@ -40,19 +40,30 @@ class PersonasController extends AppController {
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $this->loadModel('Profissoes');
         $persona = $this->Personas->newEntity();
         if ($this->request->is('post')) {
             $this->request->data['Personas']['cliente_id'] = $this->Cookie->read('cliente_id');
             $persona = $this->Personas->patchEntity($persona, $this->request->getData());
-            if ($this->Personas->save($concorrente)) {
+            $palavras = $this->request->data['palavras'];
+            if ($this->Personas->save($persona)) {
+                $this->atualizarPalavras($palavras);
                 $this->Flash->success(__('A persona da marca foi salva com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('A persona da marca não pode ser salva. Por favor, tente novamente'));
         }
-        $sexos = $this->getSexos();
+        $sexos = $this->Personas->getSexos();
+        $graduacoes = $this->Personas->getGraduacoes();
+        $segmentos = $this->Personas->getSegmentos();
+        $arqueotipos = $this->Personas->getArqueotipos();
+        $cargos = $this->Profissoes->find("list");
         $this->set(compact('sexos'));
+        $this->set(compact('graduacoes'));
+        $this->set(compact('segmentos'));
+        $this->set(compact('cargos'));
+        $this->set(compact('arqueotipos'));
         $this->set(compact('persona'));
         $this->set('_serialize', ['persona']);
     }
@@ -65,20 +76,31 @@ class PersonasController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null) {
+        $this->loadModel('Profissoes');
         $persona = $this->Personas->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $persona = $this->Personas->patchEntity($persona, $this->request->getData());
+            $palavras = $this->request->data['palavras'];
             if ($this->Personas->save($persona)) {
+                $this->atualizarPalavras($palavras);
                 $this->Flash->success(__('A persona da marca foi salva com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('A persona da marca não foi salva. Por favor, tente novamente.'));
         }
-        $sexos = $this->getSexos();
+        $sexos = $this->Personas->getSexos();
+        $graduacoes = $this->Personas->getGraduacoes();
+        $segmentos = $this->Personas->getSegmentos();
+        $arqueotipos = $this->Personas->getArqueotipos();
+        $cargos = $this->Profissoes->find("list");
         $this->set(compact('sexos'));
+        $this->set(compact('graduacoes'));
+        $this->set(compact('segmentos'));
+        $this->set(compact('cargos'));
+        $this->set(compact('arqueotipos'));
         $this->set(compact('persona'));
         $this->set('_serialize', ['persona']);
     }
@@ -101,12 +123,29 @@ class PersonasController extends AppController {
 
         return $this->redirect(['action' => 'index']);
     }
-    
-    public function getSexos() {
-        return array(
-            'Masculino' => 'Masculino',
-            'Feminino' => 'Feminino'
-        );
+
+    public function atualizarPalavras($palavras = null) {
+        $this->loadModel('Palavras');
+        if ($palavras != null) {
+            $palavra = explode(",", $palavras);
+            $count = count($palavra);
+            for ($x = 0; $x < $count; $x++) {
+                $consulta = $this->Palavras->find('all', [
+                    'conditions' => [
+                        'Palavras.palavra' => trim($palavra[$x])
+                    ]
+                ]);
+                $totalConsulta = $consulta->count();
+                if ($totalConsulta == 0) {
+                    $novaPalavra = $this->Palavras->newEntity();
+                    $this->request->data['Palavras']['palavra'] = trim($palavra[$x]);
+                    $this->request->data['Palavras']['cliente_id'] = $this->Cookie->read('cliente_id');
+                    $novaPalavra = $this->Palavras->patchEntity($novaPalavra, $this->request->getData());
+                    $this->Palavras->save($novaPalavra);
+                }
+            }
+        }
+        return true;
     }
-    
+
 }
