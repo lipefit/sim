@@ -20,6 +20,10 @@ class PalavrasTable extends Table {
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        
+        $this->belongsTo('Clientes', [
+            'foreignKey' => 'cliente_id'
+        ]);
     }
 
 }

@@ -69,7 +69,7 @@ use Cake\Routing\Router
                         <div class="col-sm-8 col-md-8">
                             <div class="form-group">
                                 <label for="cargo">Cargo</label>
-                                <?= $this->Form->control('cargo', ['label' => false, 'class' => 'form-control', 'options' => $cargos]); ?>
+                                <?= $this->Form->control('cargo', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Cargo']); ?>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ use Cake\Routing\Router
                         <div class="col-sm-8 col-md-8">
                             <div class="form-group">
                                 <label for="segmento">Segmento</label>
-                                <?= $this->Form->control('segmento', ['label' => false, 'class' => 'form-control', 'options' => $segmentos]); ?>
+                                <?= $this->Form->control('segmento', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Segmento']); ?>
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-8">
@@ -96,8 +96,8 @@ use Cake\Routing\Router
                         </div>
                         <div class="col-sm-8 col-md-8">
                             <div class="form-group">
-                                <label for="slogam">Slogam</label>
-                                <?= $this->Form->control('slogam', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Slogam', 'type' => 'text']); ?>
+                                <label for="slogam">Slogan</label>
+                                <?= $this->Form->control('slogam', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Slogan', 'type' => 'text']); ?>
                             </div>
                         </div>
                     </div>
@@ -151,6 +151,36 @@ use Cake\Routing\Router
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title"><?= __('Desafios') ?></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="base">
+                        <div class="row clone">
+                            <div class="col-sm-16 col-md-16">
+                                <div class="form-group">
+                                    <?= $this->Form->control('desafios[]', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Desafio']); ?>
+                                </div>
+                            </div>                     
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-16 col-md-16">
+                                <div class="form-group">
+                                    <?= $this->Form->control('desafios[]', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Desafio']); ?>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-16 col-md-16">
+                            <a href="javascript:void(0);" class="btn btn-info" id="copiarDesafio"><i class="fa fa-plus"></i> Adicionar desafio</a>
+                        </div>
+                    </div>
                     <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
@@ -181,5 +211,12 @@ use Cake\Routing\Router
             }
             $('.image-picker').val(atual_avatar).change();
         });
+
+        $("#copiarDesafio").click(function () {
+            var _html = $(".clone").clone().removeClass("clone").appendTo(".base");
+        });
     });
 </script>
+<style>
+    .clone{display:none;}
+</style>

@@ -76,7 +76,7 @@ use Cake\Routing\Router
                         <div class="col-sm-8 col-md-8">
                             <div class="form-group">
                                 <label for="cargo">Cargo</label>
-                                <?= $this->Form->control('cargo', ['label' => false, 'class' => 'form-control', 'options' => $cargos]); ?>
+                                <?= $this->Form->control('cargo', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Cargo']); ?>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ use Cake\Routing\Router
                         <div class="col-sm-8 col-md-8">
                             <div class="form-group">
                                 <label for="segmento">Segmento</label>
-                                <?= $this->Form->control('segmento', ['label' => false, 'class' => 'form-control', 'options' => $segmentos]); ?>
+                                <?= $this->Form->control('segmento', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Segmento']); ?>
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-8">
@@ -103,8 +103,8 @@ use Cake\Routing\Router
                         </div>
                         <div class="col-sm-8 col-md-8">
                             <div class="form-group">
-                                <label for="slogam">Slogam</label>
-                                <?= $this->Form->control('slogam', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Slogam', 'type' => 'text']); ?>
+                                <label for="slogam">Slogan</label>
+                                <?= $this->Form->control('slogam', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Slogan', 'type' => 'text']); ?>
                             </div>
                         </div>
                     </div>
