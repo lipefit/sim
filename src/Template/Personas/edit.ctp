@@ -158,6 +158,57 @@ use Cake\Routing\Router
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title"><?= __('Adicionar desafios') ?></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="base">
+                        <div class="row clone">
+                            <div class="col-sm-16 col-md-16">
+                                <div class="form-group">
+                                    <?= $this->Form->control('desafios[]', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Desafio']); ?>
+                                </div>
+                            </div>                        
+                        </div>
+                        <?php
+                        if (count($desafios) > 0) {
+                            foreach ($desafios as $desafio) {
+                                ?>
+                                <div class = "row">
+                                    <div class = "col-sm-14 col-md-14">
+                                        <div class = "form-group">
+                                            <?= $this->Form->control('desafios[]', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Desafio', 'value' => $desafio->desafio]); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <a href="javascript:void(0);" class="btn btn-danger deletarDesafio">Deletar</a> 
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class = "row">
+                                <div class = "col-sm-16 col-md-16">
+                                    <div class = "form-group">
+                                        <?= $this->Form->control('desafios[]', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Desafio']);?>                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                        <?php } ?>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-16 col-md-16">
+                            <a href="javascript:void(0);" class="btn btn-info" id="copiarDesafio"><i class="fa fa-plus"></i> Adicionar desafio</a>
+                        </div>
+                    </div>
                     <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
@@ -188,5 +239,16 @@ use Cake\Routing\Router
             }
             $('.image-picker').val(atual_avatar).change();
         });
+
+        $("#copiarDesafio").click(function () {
+            var _html = $(".clone").clone().removeClass("clone").appendTo(".base");
+        });
+        
+        $(".deletarDesafio").click(function(){
+            $(this).parent().parent().remove();
+        });
     });
 </script>
+<style>
+    .clone{display:none;}
+</style>

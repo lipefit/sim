@@ -155,24 +155,26 @@ use Cake\Routing\Router
                     <div class="row">
                         <div class="card">
                             <div class="card-header">
-                                <h6 class="card-title"><?= __('Desafios') ?></h6>
+                                <h6 class="card-title"><?= __('Adicionar desafios') ?></h6>
                             </div>
                         </div>
                     </div>
+
                     <div class="base">
                         <div class="row clone">
                             <div class="col-sm-16 col-md-16">
                                 <div class="form-group">
                                     <?= $this->Form->control('desafios[]', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Desafio']); ?>
                                 </div>
-                            </div>                     
+                            </div>                        
                         </div>
                         <div class="row">
                             <div class="col-sm-16 col-md-16">
                                 <div class="form-group">
                                     <?= $this->Form->control('desafios[]', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Desafio']); ?>
                                 </div>
-                            </div> 
+                            </div>
+
                         </div>
                     </div>
 
