@@ -260,3 +260,18 @@ Stack Trace:
 #10 {main}
 
 
+2017-07-25 00:38:58 Warning: Warning (512): DbAcl::allow() - Invalid node in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Acl\Model\Table\PermissionsTable::allow() - ROOT/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 173
+Acl\Adapter\DbAcl::allow() - ROOT/vendor/cakephp/acl/src/Adapter/DbAcl.php, line 95
+Acl\Controller\Component\AclComponent::allow() - ROOT/vendor/cakephp/acl/src/Controller/Component/AclComponent.php, line 134
+Acl\Shell\AclShell::grant() - ROOT/vendor/cakephp/acl/src/Shell/AclShell.php, line 276
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 458
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 230
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 182
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 128
+[main] - ROOT/bin/cake.php, line 34
+
+
+

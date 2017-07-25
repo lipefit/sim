@@ -51,6 +51,7 @@
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Planejamento<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'objetivos'; ?>"><i class="fa fa-sun-o"></i> Objetivos</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'personapublicos'; ?>"><i class="fa fa-group"></i> Persona do Públ. Alvo</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'palavras'; ?>"><i class="fa fa-key"></i> Palavras-chaves</a></li>
             </ul>
         </li>
