@@ -44,7 +44,7 @@
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'personas'; ?>"><i class="fa fa-group"></i> Persona da Marca</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'concorrentes'; ?>"><i class="fa fa-eye"></i> Concorrentes</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'referencias'; ?>"><i class="fa fa-copy"></i> Referências</a></li>
-                <!--<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-file"></i> Campanhas</a></li>-->
+                
                 
             </ul>
         </li>
@@ -53,6 +53,7 @@
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'objetivos'; ?>"><i class="fa fa-sun-o"></i> Objetivos</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'personapublicos'; ?>"><i class="fa fa-group"></i> Persona do Públ. Alvo</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'palavras'; ?>"><i class="fa fa-key"></i> Palavras-chaves</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'taticas'; ?>"><i class="fa fa-external-link"></i> Tática de Conteúdo</a></li>
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Estratégia<i class="fa fa-angle-down "></i></a>
@@ -67,7 +68,7 @@
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Gestão<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
-                
+                    
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Solicitações<i class="fa fa-angle-down "></i></a>
