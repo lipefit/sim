@@ -63,7 +63,7 @@
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Execução<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
-                
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'pautas'; ?>"><i class="fa fa-file-text"></i> Pautas de conteúdo</a></li>
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Gestão<i class="fa fa-angle-down "></i></a>

@@ -32,5 +32,22 @@ class TaticasTable extends Table {
             'foreignKey' => 'tom_id'
         ]);
     }
+    
+    public function getStorytellings() {
+        return array(
+            'Inspirar' => 'Inspirar',
+            'Entreter' => 'Entreter',
+            'Educar' => 'Educar'
+        );
+    }
+    
+    public function getTipos() {
+        return array(
+            'E-book' => 'E-book',
+            'E-mail Mkt' => 'E-mail Mkt',
+            'Infográfico' => 'Infográfico'
+        );
+    }
+    
 
 }

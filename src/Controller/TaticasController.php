@@ -40,6 +40,9 @@ class TaticasController extends AppController {
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $this->loadModel('Personas');
+        $this->loadModel('Curadorias');
+        $this->loadModel('Toms');
         $tatica = $this->Taticas->newEntity();
         if ($this->request->is('post')) {
             $this->request->data['Taticas']['cliente_id'] = $this->Cookie->read('cliente_id');
@@ -51,7 +54,35 @@ class TaticasController extends AppController {
             }
             $this->Flash->error(__('A tática de conteúdo não pode ser salva. Por favor, tente novamente'));
         }
+        
+        $curadorias = $this->Curadorias->find('all', [
+            'conditions' => [
+                'OR' => [
+                    'Curadorias.cliente_id' => $this->Cookie->read('cliente_id'),
+                    'Curadorias.cliente_id' => NULL
+                ]
+            ]
+        ]);
+        
+        $tons = $this->Toms->find('all', [
+            'conditions' => [
+                'OR' => [
+                    'Toms.cliente_id' => $this->Cookie->read('cliente_id'),
+                    'Toms.cliente_id' => NULL
+                ]
+            ]
+        ]);
+        
+        $storytellings = $this->Taticas->getStorytellings();
+        $tipos = $this->Taticas->getTipos();
+        $arquetipos = $this->Personas->getArqueotipos();
+        
         $this->set(compact('tatica'));
+        $this->set(compact('storytellings'));
+        $this->set(compact('tipos'));
+        $this->set(compact('arquetipos'));
+        $this->set(compact('curadorias'));
+        $this->set(compact('tons'));
         $this->set('_serialize', ['tatica']);
     }
 
@@ -63,6 +94,7 @@ class TaticasController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null) {
+        $this->loadModel('Personas');
         $tatica = $this->Taticas->get($id, [
             'contain' => []
         ]);
@@ -75,7 +107,34 @@ class TaticasController extends AppController {
             }
             $this->Flash->error(__('A tática de conteúdo não foi salva. Por favor, tente novamente.'));
         }
+        $curadorias = $this->Curadorias->find('all', [
+            'conditions' => [
+                'OR' => [
+                    'Curadorias.cliente_id' => $this->Cookie->read('cliente_id'),
+                    'Curadorias.cliente_id' => NULL
+                ]
+            ]
+        ]);
+        
+        $tons = $this->Toms->find('all', [
+            'conditions' => [
+                'OR' => [
+                    'Toms.cliente_id' => $this->Cookie->read('cliente_id'),
+                    'Toms.cliente_id' => NULL
+                ]
+            ]
+        ]);
+        
+        $storytellings = $this->Taticas->getStorytellings();
+        $tipos = $this->Taticas->getTipos();
+        $arquetipos = $this->Personas->getArqueotipos();
+        
         $this->set(compact('tatica'));
+        $this->set(compact('storytellings'));
+        $this->set(compact('tipos'));
+        $this->set(compact('arquetipos'));
+        $this->set(compact('curadorias'));
+        $this->set(compact('tons'));
         $this->set('_serialize', ['tatica']);
     }
 
