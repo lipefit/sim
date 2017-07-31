@@ -24,7 +24,7 @@ class PautasController extends AppController {
      */
     public function index() {
         $id = $this->Cookie->read('cliente_id');
-        $taticas = $this->Taticas->find('all', [
+        $pautas = $this->Pautas->find('all', [
             'conditions' => [
                 'Pautas.cliente_id' => $id
             ]

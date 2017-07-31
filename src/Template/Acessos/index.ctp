@@ -32,7 +32,7 @@
                                 <th>Usuário</th> 
                                 <th>Senha</th>
                                 <th>Outros</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,10 +44,16 @@
                                     <td><?= h($acesso->usuario) ?></td>
                                     <td>******</td>
                                     <td><?= h($acesso->outros) ?></td>
+
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $acesso->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Html->link(__('Ver senha'), ['action' => 'enviar-senha', $acesso->id], ['class' => 'btn btn-warning']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $acesso->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar o acesso # {0}?', $acesso->nome)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $acesso->id],['class' => 'dropdown-item']) ?>
+                                                <?= $this->Html->link(__('Ver senha'), ['action' => 'enviar-senha', $acesso->id],['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $acesso->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o acesso # {0}?', $acesso->nome)]) ?>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

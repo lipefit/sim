@@ -121,4 +121,9 @@ $cakeDescription = 'Simarketing';
             });
         });
     </script>
+    <style>
+        .dropdown-item{
+            width: auto !important;
+        }
+    </style>
 </html>

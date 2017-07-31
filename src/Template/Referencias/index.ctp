@@ -31,7 +31,7 @@
                                 <th>Url</th>
                                 <th>Criado</th>
                                 <th>Modificado</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,8 +43,13 @@
                                     <td><?= h($referencia->created) ?></td>
                                     <td><?= h($referencia->modified) ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $referencia->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $referencia->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar a referência # {0}?', $referencia->name)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $referencia->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $referencia->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a referência # {0}?', $referencia->name)]) ?>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

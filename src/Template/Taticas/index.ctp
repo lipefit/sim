@@ -31,7 +31,7 @@
                                 <th>Storytelling</th>
                                 <th>Arquétipo</th> 
                                 <th>Tipo de conteúdo</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,8 +43,13 @@
                                     <td><?= h($tatica->arquetipo) ?></td>
                                     <td><?= h($tatica->tipo) ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $tatica->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $tatica->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar a tática de conteúdo # {0}?', $tatica->voz)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $tatica->id], ['class' => 'dropdown-item']) ?>
+                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $tatica->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a tática de conteúdo # {0}?', $tatica->voz)]) ?>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -29,7 +29,7 @@
                                 <th>Id </th>
                                 <th>Título </th>
                                 <th>Data de criação</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,9 +39,14 @@
                                     <td><?= $cv->titulo ?></td>
                                     <td><?= $cv->data ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $cv->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Html->link(__('Ver'), ['action' => 'ver', $cv->id], ['class' => 'btn btn-warning']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cv->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar o canvas # {0}?', $cv->titulo)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $cv->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Html->link(__('Ver'), ['action' => 'ver', $cv->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cv->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o canvas # {0}?', $cv->titulo)]) ?>  	
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -30,7 +30,7 @@
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Data de Criação</th> 
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,11 +41,16 @@
                                     <td><?= h($checklist->descricao) ?></td>
                                     <td><?= h($checklist->created) ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Responder'), ['action' => 'responder', $checklist->id], ['class' => 'btn btn-info']) ?>
-                                        <?php if($checklist->id != 8){ ?>                                        
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $checklist->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $checklist->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar o check list # {0}?', $checklist->nome)]) ?>
-                                        <?php } ?>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Responder'), ['action' => 'responder', $checklist->id], ['class' => 'dropdown-item']) ?>
+                                                <?php if ($checklist->id != 8) { ?>                                        
+                                                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $checklist->id], ['class' => 'dropdown-item']) ?>
+                                                    <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $checklist->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o check list # {0}?', $checklist->nome)]) ?>
+                                                <?php } ?>  	
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -47,8 +47,13 @@
                                     <td><?= h($concorrente->created) ?></td>
                                     <td><?= h($concorrente->modified) ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $concorrente->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $concorrente->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar o concorrente # {0}?', $concorrente->name)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $concorrente->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $concorrente->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o concorrente # {0}?', $concorrente->name)]) ?>  	
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

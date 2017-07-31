@@ -31,7 +31,7 @@
                                 <th>Criado em</th>
                                 <th>Modificado em</th> 
                                 <th>Status</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,8 +54,13 @@
                                     ?>
                                     <td><?= h($status) ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $user->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar o usuário # {0}?', $user->username)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $user->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o usuário # {0}?', $user->username)]) ?>  	
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

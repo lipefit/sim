@@ -32,7 +32,7 @@
                                 <th>CPF / CNPJ</th> 
                                 <th>Criado</th>
                                 <th>Modificado</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,8 +45,13 @@
                                     <td><?= h($cliente->created) ?></td>
                                     <td><?= h($cliente->updated) ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $cliente->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cliente->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar o cliente # {0}?', $cliente->nomeFantasia)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $cliente->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cliente->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o cliente # {0}?', $cliente->nomeFantasia)]) ?>  	 	
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -28916,3 +28916,499 @@ Stack Trace:
 2017-07-28 01:03:41 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2017-07-28 01:03:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2017-07-28 01:19:12 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 00:23:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 00:23:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 00:23:49 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 00:23:50 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 00:23:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 00:24:00 Warning: Warning (512): DbAcl::check() - Failed ACO node lookup in permissions check. Node references:
+Aro: Array
+(
+    [Users] => Array
+        (
+            [id] => 487
+            [username] => admin@appstudiobrasil.com.br
+            [last_login] => Cake\I18n\FrozenTime Object
+                (
+                    [time] => 2017-06-20T17:20:00+00:00
+                    [timezone] => UTC
+                    [fixedNowTime] => 
+                )
+
+            [active] => 1
+            [created] => Cake\I18n\FrozenTime Object
+                (
+                    [time] => 2017-06-20T20:23:31+00:00
+                    [timezone] => UTC
+                    [fixedNowTime] => 
+                )
+
+            [modified] => Cake\I18n\FrozenTime Object
+                (
+                    [time] => 2017-07-03T23:28:48+00:00
+                    [timezone] => UTC
+                    [fixedNowTime] => 
+                )
+
+            [cliente_id] => 20
+            [first_active] => 0
+            [status] => 1
+            [group_id] => 1
+        )
+
+)
+
+Aco: controllers/Pautas/index in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 91]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Acl\Model\Table\PermissionsTable::check() - ROOT/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 91
+Acl\Adapter\DbAcl::check() - ROOT/vendor/cakephp/acl/src/Adapter/DbAcl.php, line 80
+Acl\Controller\Component\AclComponent::check() - ROOT/vendor/cakephp/acl/src/Controller/Component/AclComponent.php, line 120
+Acl\Auth\ActionsAuthorize::authorize() - ROOT/vendor/cakephp/acl/src/Auth/ActionsAuthorize.php, line 41
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 536
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 317
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 268
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 414
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 391
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 78
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 506
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 114
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE/src/Http/BaseApplication.php, line 78
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE/src/Routing/Middleware/RoutingMiddleware.php, line 59
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE/src/Routing/Middleware/AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE/src/Error/Middleware/ErrorHandlerMiddleware.php, line 92
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Http\Runner::run() - CORE/src/Http/Runner.php, line 51
+Cake\Http\Server::run() - CORE/src/Http/Server.php, line 80
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-29 00:24:00 Warning: Warning (512): Unable to emit headers. Headers sent in file=/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php line=822 in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 48]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 48
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-29 00:24:00 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php:822) in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 148]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitStatusLine() - CORE/src/Http/ResponseEmitter.php, line 148
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 54
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-29 00:24:00 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php:822) in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 181]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE/src/Http/ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 55
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-29 00:24:00 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php:822) in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 181]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE/src/Http/ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 55
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-29 00:24:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 01:00:30 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 01:05:34 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 01:05:40 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 01:05:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-29 01:05:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:14:01 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:14:02 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:17:38 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:17:39 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:24:02 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:24:02 Warning: Warning (512): DbAcl::check() - Failed ACO node lookup in permissions check. Node references:
+Aro: Array
+(
+    [Users] => Array
+        (
+            [id] => 487
+            [username] => admin@appstudiobrasil.com.br
+            [last_login] => Cake\I18n\FrozenTime Object
+                (
+                    [time] => 2017-06-20T17:20:00+00:00
+                    [timezone] => UTC
+                    [fixedNowTime] => 
+                )
+
+            [active] => 1
+            [created] => Cake\I18n\FrozenTime Object
+                (
+                    [time] => 2017-06-20T20:23:31+00:00
+                    [timezone] => UTC
+                    [fixedNowTime] => 
+                )
+
+            [modified] => Cake\I18n\FrozenTime Object
+                (
+                    [time] => 2017-07-03T23:28:48+00:00
+                    [timezone] => UTC
+                    [fixedNowTime] => 
+                )
+
+            [cliente_id] => 20
+            [first_active] => 0
+            [status] => 1
+            [group_id] => 1
+        )
+
+)
+
+Aco: controllers/Pautas/index in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 91]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Acl\Model\Table\PermissionsTable::check() - ROOT/vendor/cakephp/acl/src/Model/Table/PermissionsTable.php, line 91
+Acl\Adapter\DbAcl::check() - ROOT/vendor/cakephp/acl/src/Adapter/DbAcl.php, line 80
+Acl\Controller\Component\AclComponent::check() - ROOT/vendor/cakephp/acl/src/Controller/Component/AclComponent.php, line 120
+Acl\Auth\ActionsAuthorize::authorize() - ROOT/vendor/cakephp/acl/src/Auth/ActionsAuthorize.php, line 41
+Cake\Controller\Component\AuthComponent::isAuthorized() - CORE/src/Controller/Component/AuthComponent.php, line 536
+Cake\Controller\Component\AuthComponent::authCheck() - CORE/src/Controller/Component/AuthComponent.php, line 317
+Cake\Controller\Component\AuthComponent::startup() - CORE/src/Controller/Component/AuthComponent.php, line 268
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 414
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 391
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 78
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 506
+Cake\Http\ActionDispatcher::_invoke() - CORE/src/Http/ActionDispatcher.php, line 114
+Cake\Http\ActionDispatcher::dispatch() - CORE/src/Http/ActionDispatcher.php, line 93
+Cake\Http\BaseApplication::__invoke() - CORE/src/Http/BaseApplication.php, line 78
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Routing\Middleware\RoutingMiddleware::__invoke() - CORE/src/Routing/Middleware/RoutingMiddleware.php, line 59
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Routing\Middleware\AssetMiddleware::__invoke() - CORE/src/Routing/Middleware/AssetMiddleware.php, line 88
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Error\Middleware\ErrorHandlerMiddleware::__invoke() - CORE/src/Error/Middleware/ErrorHandlerMiddleware.php, line 92
+Cake\Http\Runner::__invoke() - CORE/src/Http/Runner.php, line 65
+Cake\Http\Runner::run() - CORE/src/Http/Runner.php, line 51
+Cake\Http\Server::run() - CORE/src/Http/Server.php, line 80
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-31 22:24:02 Warning: Warning (512): Unable to emit headers. Headers sent in file=/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php line=822 in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 48]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 48
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-31 22:24:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php:822) in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 148]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitStatusLine() - CORE/src/Http/ResponseEmitter.php, line 148
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 54
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-31 22:24:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php:822) in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 181]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE/src/Http/ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 55
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-31 22:24:02 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Debugger.php:822) in [/home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ResponseEmitter.php, line 181]
+Request URL: /pautas
+Referer URL: http://localhost:8765/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 153
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE/src/Http/ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE/src/Http/ResponseEmitter.php, line 55
+Cake\Http\Server::emit() - CORE/src/Http/Server.php, line 105
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2017-07-31 22:35:07 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:35:07 Error: [Error] Call to a member function find() on boolean in /home/felipe/Documentos/Projetos/sim/src/Controller/PautasController.php on line 27
+Request URL: /pautas
+Client IP: 127.0.0.1
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Controller/Controller.php(440): App\Controller\PautasController->index()
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(119): Cake\Controller\Controller->invokeAction()
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\PautasController))
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#14 {main}
+
+
+2017-07-31 22:35:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:35:37 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'simarketing.pautas' doesn't exist
+Request URL: /pautas
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'pautas', Array, Object(Cake\Database\Schema\TableSchema))
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(63): Cake\Database\Schema\Collection->describe('pautas', Array)
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/ORM/Table.php(531): Cake\Database\Schema\CachedCollection->describe('pautas')
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/ORM/Query.php(210): Cake\ORM\Table->getSchema()
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/ORM/Query.php(167): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/ORM/Table.php(1569): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/ORM/Table.php(1171): Cake\ORM\Table->query()
+#7 /home/felipe/Documentos/Projetos/sim/src/Controller/PautasController.php(29): Cake\ORM\Table->find('all', Array)
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Controller/Controller.php(440): App\Controller\PautasController->index()
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(119): Cake\Controller\Controller->invokeAction()
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\PautasController))
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#22 {main}
+
+
+2017-07-31 22:49:02 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:49:02 Error: [Cake\View\Exception\MissingTemplateException] Template file "Pautas/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Pautas/index.ctp',
+)
+Request URL: /pautas
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/View/View.php(592): Cake\View\View->_getViewFileName('Pautas/index')
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Controller/Controller.php(623): Cake\View\View->render(NULL, NULL)
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(125): Cake\Controller\Controller->render()
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\PautasController))
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#12 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#15 {main}
+
+
+2017-07-31 22:52:48 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:52:48 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Pautas.cliente_id' in 'where clause'
+Request URL: /pautas
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Database/Connection.php(313): Cake\Database\Statement\MysqlStatement->execute()
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Database/Query.php(213): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/ORM/Query.php(1011): Cake\Database\Query->execute()
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(276): Cake\ORM\Query->_execute()
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/ORM/Query.php(960): Cake\ORM\Query->_all()
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(132): Cake\ORM\Query->all()
+#7 /home/felipe/Documentos/Projetos/sim/src/Template/Pautas/index.ctp(39): Cake\ORM\Query->getIterator()
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/View/View.php(1011): include('/home/felipe/Do...')
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/View/View.php(972): Cake\View\View->_evaluate('/home/felipe/Do...', Array)
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/View/View.php(596): Cake\View\View->_render('/home/felipe/Do...')
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Controller/Controller.php(623): Cake\View\View->render(NULL, NULL)
+#12 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(125): Cake\Controller\Controller->render()
+#13 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\PautasController))
+#14 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#18 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#19 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#20 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#22 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#23 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#25 {main}
+
+
+2017-07-31 22:53:55 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 22:54:00 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:00:50 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:01:11 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:03:55 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:04:34 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:08:29 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:10:24 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:17 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:22 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:23 Error: [Cake\Controller\Exception\MissingActionException] Action AcessosController::img() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AcessosController',
+  'action' => 'img',
+  'prefix' => '',
+  'plugin' => false,
+)
+Request URL: /acessos/img/user-header.png
+Referer URL: http://localhost:8765/acessos/edit/1
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(119): Cake\Controller\Controller->invokeAction()
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\AcessosController))
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-07-31 23:12:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:23 Error: [Cake\Controller\Exception\MissingActionException] Action AcessosController::img() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AcessosController',
+  'action' => 'img',
+  'prefix' => '',
+  'plugin' => false,
+)
+Request URL: /acessos/img/logo.png
+Referer URL: http://localhost:8765/acessos/edit/1
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(119): Cake\Controller\Controller->invokeAction()
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\AcessosController))
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-07-31 23:12:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:23 Error: [Cake\Controller\Exception\MissingActionException] Action AcessosController::img() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AcessosController',
+  'action' => 'img',
+  'prefix' => '',
+  'plugin' => false,
+)
+Request URL: /acessos/img/logo.png
+Referer URL: http://localhost:8765/acessos/edit/1
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(119): Cake\Controller\Controller->invokeAction()
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\AcessosController))
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-07-31 23:12:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:23 Error: [Cake\Controller\Exception\MissingActionException] Action AcessosController::img() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AcessosController',
+  'action' => 'img',
+  'prefix' => '',
+  'plugin' => false,
+)
+Request URL: /acessos/img/user-header.png
+Referer URL: http://localhost:8765/acessos/edit/1
+Stack Trace:
+#0 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(119): Cake\Controller\Controller->invokeAction()
+#1 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/ActionDispatcher.php(93): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\AcessosController))
+#2 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/BaseApplication.php(78): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#3 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#4 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php(59): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#5 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#6 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#7 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#8 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(92): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 /home/felipe/Documentos/Projetos/sim/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 /home/felipe/Documentos/Projetos/sim/webroot/index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-07-31 23:12:24 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:12:49 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:14:15 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:14:35 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:16:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2017-07-31 23:18:31 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.

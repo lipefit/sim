@@ -31,7 +31,7 @@
                                 <th>Idade</th>
                                 <th>Sexo</th>
                                 <th>Graduação</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,8 +43,13 @@
                                     <td><?= h($persona->sexo) ?></td>
                                     <td><?= h($persona->graduacao) ?></td>
                                     <td class="center">
-                                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $persona->id], ['class' => 'btn btn-primary']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $persona->id], ['class' => 'btn btn-danger'], ['confirm' => __('Você tem certeza que deseja apagar a persona # {0}?', $persona->nome)]) ?>  	
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <div class="dropdown-menu"> 
+                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $persona->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $persona->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a persona # {0}?', $persona->nome)]) ?>  	
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
