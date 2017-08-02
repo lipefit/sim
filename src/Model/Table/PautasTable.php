@@ -45,5 +45,24 @@ class PautasTable extends Table {
             'foreignKey' => 'aprovador'
         ]);
     }
+    
+    public function getJornadas() {
+        return array(
+            'Aprendizado e descoberta' => 'Aprendizado e descoberta',
+            'Reconhecimento do problema' => 'Reconhecimento do problema',
+            'Consideração da solução' => 'Consideração da solução',
+            'Decisão de compra' => 'Decisão de compra'
+        );
+    }
+    
+    public function getTipos() {
+        return array(
+            'Blog' => 'Blog',
+            'E-mail marketing' => 'E-mail marketing',
+            'Redes sociais' => 'Redes sociais',
+            'Ebook' => 'Ebook',
+            'Landing pages' => 'Landing pages'
+        );
+    }
 
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Group[]|\Cake\Collection\CollectionInterface $groups
+ * @var \App\Model\Entity\Pauta[]|\Cake\Collection\CollectionInterface $pautas
  * @author Felipe Almeida
  */
 ?>
@@ -43,12 +43,13 @@
                                     <td><?= h($pauta->tipo) ?></td>
                                     <td><?= h($pauta->recebido) ?></td>
                                     <td><?= h($pauta->aprovado) ?></td>
+                                    <td><?= h($pauta->status) ?></td>
                                     <td class="center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $pauta->id], ['class' => 'dropdown-item']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $pauta->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a pauta # {0}?', $pauta->titulo)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $pauta->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a pauta # {0}?', $pauta->titulo)]) ?>
                                             </div>
                                         </div>
                                     </td>

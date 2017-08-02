@@ -47,7 +47,7 @@
 
                                     <td class="center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $acesso->id],['class' => 'dropdown-item']) ?>
                                                 <?= $this->Html->link(__('Ver senha'), ['action' => 'enviar-senha', $acesso->id],['class' => 'dropdown-item']) ?>

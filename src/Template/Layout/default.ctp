@@ -27,6 +27,8 @@ $cakeDescription = 'Simarketing';
             <?= $this->fetch('title') ?>
         </title>
 
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
         <!-- Fontawesome icon CSS -->
         <?= $this->Html->css('/js/font-awesome-4.7.0/css/font-awesome.min.css') ?>
 
@@ -87,6 +89,8 @@ $cakeDescription = 'Simarketing';
         <!-- custome template js -->
         <?= $this->Html->script('adminux.js') ?>
         <?= $this->Html->script('dashboard1.js') ?>
+
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <body class="menuclose menuclose-right">
 
@@ -119,6 +123,9 @@ $cakeDescription = 'Simarketing';
                     }
                 }
             });
+
+            $(".datepicker").datepicker();
+            $(".hora").mask("99:99");
         });
     </script>
     <style>

@@ -44,7 +44,7 @@
                                     <td><?= h($referencia->modified) ?></td>
                                     <td class="center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $referencia->id], ['class' => 'dropdown-item']) ?>
                                                 <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $referencia->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a referência # {0}?', $referencia->name)]) ?>

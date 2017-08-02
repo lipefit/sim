@@ -16,7 +16,7 @@ class PalavrasTable extends Table {
         parent::initialize($config);
 
         $this->setTable('palavras');
-        $this->setDisplayField('nome');
+        $this->setDisplayField('palavra');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

@@ -55,7 +55,7 @@
                                     <td><?= h($status) ?></td>
                                     <td class="center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id], ['class' => 'dropdown-item']) ?>
                                                 <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $user->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o usuário # {0}?', $user->username)]) ?>  	
