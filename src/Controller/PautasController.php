@@ -83,6 +83,23 @@ class PautasController extends AppController {
         $this->set('_serialize', ['pauta']);
     }
 
+    public function detalhes($id = null, $cliente_id = null) {
+        $this->loadModel('Personas');
+        $this->loadModel('Palavras');
+        $pauta = $this->Pautas->get($id, [
+            'contain' => ['Personas','Desafios']
+        ]);
+
+        if ($cliente_id == null) {
+            $cliente_id = $this->Cookie->read('cliente_id');
+        } else {
+            $this->Cookie->write('cliente_id', $cliente_id);
+        }
+        
+        $this->set(compact('pauta'));
+        $this->set('_serialize', ['pauta']);
+    }
+
     /**
      * Edit method
      *

@@ -48,7 +48,8 @@
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
-                                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $pauta->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Html->link(__('Detalhes'), ['action' => 'detalhes', $pauta->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Html->link(__('Duplicar'), ['action' => 'duplicar', $pauta->id], ['class' => 'dropdown-item']) ?>
                                                 <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $pauta->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a pauta # {0}?', $pauta->titulo)]) ?>
                                             </div>
                                         </div>
