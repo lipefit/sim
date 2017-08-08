@@ -236,7 +236,7 @@ return [
 //            'database' => 'bd_simarketing',
             
             'username' => 'root',
-            'password' => 'capifitsos9856',
+            'password' => '',
             'database' => 'simarketing',
             
             'encoding' => 'utf8',

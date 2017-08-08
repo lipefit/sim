@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @author Felipe Almeida
@@ -25,37 +26,137 @@
                 <div class="card-block">
                     <?= $this->Form->create($objetivo) ?>
                     <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="checklist1">Quais são seus dois maiores objetivos de negócio hoje?</label>
-                                <?= $this->Form->control('checklist1', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Quais são seus dois maiores objetivos de negócio hoje?']); ?>
-                            </div>
+                        <div class="col-sm-14 col-md-14">
+                            <label for="principalObjetivo"><h3>Insira quais são os seus principais objetivos de négocio hoje</h3></label>
                         </div>
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="checklist2">Quais o seu maior objetivo com o marketing digital hoje?</label>
-                                <?= $this->Form->control('checklist2', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Quais o seu maior objetivo com o marketing digital hoje?']); ?>
-                            </div>
+                        <div class="col-sm-2 col-md-2">
+                            <a href="javascript:void(0);" class="btn btn-info" id="copiarPrincipalObjetivo"><i class="fa fa-plus"></i> Add</a>
                         </div>
                     </div>
+                    <div class="basePrincipalObjetivo">
+                        <div class="row clonePrincipalObjetivo">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('principalObjetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('principalObjetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
                     <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="objetivo">Objetivo do contrato </label>
-                                <?= $this->Form->control('objetivo', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Objetivo do contrato']); ?>
-                            </div>
+                        <div class="col-sm-14 col-md-14">
+                            <label for="maiorObjetivo"><h3>Quais os seus maiores objetivos com o marketing digital hoje?</h3></label>
                         </div>
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="consideracoes">Considerações</label>
-                                <?= $this->Form->control('consideracoes', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Considerações']); ?>
-                            </div>
+                        <div class="col-sm-2 col-md-2">
+                            <a href="javascript:void(0);" class="btn btn-info" id="copiarMaiorObjetivo"><i class="fa fa-plus"></i> Add</a>
                         </div>
                     </div>
-                    <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
-                    <?= $this->Form->end() ?>
+                    <div class="baseMaiorObjetivo">
+                        <div class="row cloneMaiorObjetivo">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('maiorObjetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('maiorObjetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-14 col-md-14">
+                            <label for="objetivo"><h3>Objetivo do contrato</h3></label>
+                        </div>
+                        <div class="col-sm-2 col-md-2">
+                            <a href="javascript:void(0);" class="btn btn-info" id="copiarObjetivo"><i class="fa fa-plus"></i> Add</a>
+                        </div>
+                    </div>
+                    <div class="baseObjetivo">
+                        <div class="row cloneObjetivo">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('objetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('objetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-14 col-md-14">
+                            <label for="consideracoes"><h3>Considerações</h3></label>
+                        </div>
+                        <div class="col-sm-2 col-md-2">
+                            <a href="javascript:void(0);" class="btn btn-info" id="copiarConsideracoes"><i class="fa fa-plus"></i> Add</a>
+                        </div>
+                    </div>
+                    <div class="baseConsideracoes">
+                        <div class="row cloneConsideracoes">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('consideracoes[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-14 col-md-14">
+                                <div class="form-group">
+                                    <?= $this->Form->control('consideracoes[]', ['label' => false, 'class' => 'form-control']); ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
+                <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
+                    <?= $this->Form->end() ?>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#copiarPrincipalObjetivo").click(function () {
+            var _html = $(".clonePrincipalObjetivo").clone().removeClass("clonePrincipalObjetivo").appendTo(".basePrincipalObjetivo");
+        });
+        
+        $("#copiarMaiorObjetivo").click(function () {
+            var _html = $(".cloneMaiorObjetivo").clone().removeClass("cloneMaiorObjetivo").appendTo(".baseMaiorObjetivo");
+        });
+        
+        $("#copiarObjetivo").click(function () {
+            var _html = $(".cloneObjetivo").clone().removeClass("cloneObjetivo").appendTo(".baseObjetivo");
+        });
+        
+        $("#copiarConsideracoes").click(function () {
+            var _html = $(".cloneConsideracoes").clone().removeClass("cloneConsideracoes").appendTo(".baseConsideracoes");
+        });
+    });
+</script>
+<style>
+    .clonePrincipalObjetivo{display:none;}
+    .cloneMaiorObjetivo{display:none;}
+    .cloneObjetivo{display:none;}
+    .cloneConsideracoes{display:none;}
+</style>
