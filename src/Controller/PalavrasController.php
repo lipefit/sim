@@ -40,6 +40,8 @@ class PalavrasController extends AppController {
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add() {
+        $this->loadModel('Pautas');
+        $this->loadModel('Personas');
         $palavra = $this->Palavras->newEntity();
         if ($this->request->is('post')) {
             $this->request->data['Palavras']['cliente_id'] = $this->Cookie->read('cliente_id');
@@ -51,7 +53,16 @@ class PalavrasController extends AppController {
             }
             $this->Flash->error(__('A palavra não pode ser salva. Por favor, tente novamente'));
         }
+        $personas = $this->Personas->find('list', [
+            'conditions' => [
+                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+            ]
+        ]);
+        
+        $jornadas = $this->Pautas->getJornadas();
+        $this->set(compact('personas'));
         $this->set(compact('palavra'));
+        $this->set(compact('jornadas'));
         $this->set('_serialize', ['palavra']);
     }
 
@@ -63,6 +74,8 @@ class PalavrasController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null) {
+        $this->loadModel('Pautas');
+        $this->loadModel('Personas');
         $palavra = $this->Palavras->get($id, [
             'contain' => []
         ]);
@@ -75,7 +88,16 @@ class PalavrasController extends AppController {
             }
             $this->Flash->error(__('A palavra não foi salva. Por favor, tente novamente.'));
         }
+        
+        $personas = $this->Personas->find('list', [
+            'conditions' => [
+                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+            ]
+        ]);
+        $jornadas = $this->Pautas->getJornadas();
         $this->set(compact('palavra'));
+        $this->set(compact('jornadas'));
+        $this->set(compact('personas'));
         $this->set('_serialize', ['palavra']);
     }
 
