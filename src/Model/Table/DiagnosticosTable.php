@@ -23,4 +23,11 @@ class DiagnosticosTable extends Table {
             'foreignKey' => 'cliente_id'
         ]);
     }
+    
+    public function getRespostas() {
+        return array(
+            'Sim' => 'Sim',
+            'Não' => 'Não'
+        );
+    }
 }
