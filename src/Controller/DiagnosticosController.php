@@ -27,7 +27,7 @@ class DiagnosticosController extends AppController {
         
         $diagnosticos = $this->Diagnosticos->find('all', [
             'conditions' => [
-                'Identidades.cliente_id' => $idCliente
+                'Diagnosticos.cliente_id' => $idCliente
             ]
         ]);
         $diagnostico = $diagnosticos->first();
@@ -45,8 +45,9 @@ class DiagnosticosController extends AppController {
             }
             $this->Flash->error(__('Diagnóstico não foi atualizado. Por favor, tente novamente'));
         }
-        
+        $respostas = $this->Diagnosticos->getRespostas();
         $this->set(compact('diagnostico'));
+        $this->set(compact('respostas'));
         $this->set('_serialize', ['diagnostico']);
     }
 }
