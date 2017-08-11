@@ -41,14 +41,33 @@
                                 </div>
                             </div>                        
                         </div>
-                        <div class="row">
-                            <div class="col-sm-14 col-md-14">
-                                <div class="form-group">
-                                    <?= $this->Form->control('principalObjetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                        <?php
+                        if (count($pos) > 0) {
+                            foreach ($pos as $po) {
+                                ?>
+                                <div class = "row">
+                                    <div class = "col-sm-14 col-md-14">
+                                        <div class = "form-group">
+                                            <?= $this->Form->control('principalObjetivo[]', ['label' => false, 'class' => 'form-control', 'value' => $po->conteudo]); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <a href="javascript:void(0);" class="btn btn-danger deletarPrincipalObjetivo">Deletar</a> 
+                                    </div>
                                 </div>
-                            </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class = "row">
+                                <div class = "col-sm-14 col-md-14">
+                                    <div class = "form-group">
+                                        <?= $this->Form->control('principalObjetivo[]', ['label' => false, 'class' => 'form-control']);?>                                        
+                                    </div>
+                                </div>
 
-                        </div>
+                            </div>
+                        <?php } ?>
                     </div>
                     
                     <div class="row">
@@ -67,14 +86,33 @@
                                 </div>
                             </div>                        
                         </div>
-                        <div class="row">
-                            <div class="col-sm-14 col-md-14">
-                                <div class="form-group">
-                                    <?= $this->Form->control('maiorObjetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                        <?php
+                        if (count($mos) > 0) {
+                            foreach ($mos as $mo) {
+                                ?>
+                                <div class = "row">
+                                    <div class = "col-sm-14 col-md-14">
+                                        <div class = "form-group">
+                                            <?= $this->Form->control('maiorObjetivo[]', ['label' => false, 'class' => 'form-control', 'value' => $mo->conteudo]); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <a href="javascript:void(0);" class="btn btn-danger deletarMaiorObjetivo">Deletar</a> 
+                                    </div>
                                 </div>
-                            </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class = "row">
+                                <div class = "col-sm-14 col-md-14">
+                                    <div class = "form-group">
+                                        <?= $this->Form->control('maiorObjetivo[]', ['label' => false, 'class' => 'form-control']);?>                                        
+                                    </div>
+                                </div>
 
-                        </div>
+                            </div>
+                        <?php } ?>
                     </div>
                     
                     <div class="row">
@@ -93,14 +131,33 @@
                                 </div>
                             </div>                        
                         </div>
-                        <div class="row">
-                            <div class="col-sm-14 col-md-14">
-                                <div class="form-group">
-                                    <?= $this->Form->control('objetivo[]', ['label' => false, 'class' => 'form-control']); ?>
+                        <?php
+                        if (count($ocs) > 0) {
+                            foreach ($ocs as $oc) {
+                                ?>
+                                <div class = "row">
+                                    <div class = "col-sm-14 col-md-14">
+                                        <div class = "form-group">
+                                            <?= $this->Form->control('objetivo[]', ['label' => false, 'class' => 'form-control', 'value' => $oc->conteudo]); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <a href="javascript:void(0);" class="btn btn-danger deletarObjetivo">Deletar</a> 
+                                    </div>
                                 </div>
-                            </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class = "row">
+                                <div class = "col-sm-14 col-md-14">
+                                    <div class = "form-group">
+                                        <?= $this->Form->control('objetivo[]', ['label' => false, 'class' => 'form-control']);?>                                        
+                                    </div>
+                                </div>
 
-                        </div>
+                            </div>
+                        <?php } ?>
                     </div>
                     
                     <div class="row">
@@ -119,14 +176,33 @@
                                 </div>
                             </div>                        
                         </div>
-                        <div class="row">
-                            <div class="col-sm-14 col-md-14">
-                                <div class="form-group">
-                                    <?= $this->Form->control('consideracoes[]', ['label' => false, 'class' => 'form-control']); ?>
+                        <?php
+                        if (count($cs) > 0) {
+                            foreach ($cs as $c) {
+                                ?>
+                                <div class = "row">
+                                    <div class = "col-sm-14 col-md-14">
+                                        <div class = "form-group">
+                                            <?= $this->Form->control('consideracoes[]', ['label' => false, 'class' => 'form-control', 'value' => $c->conteudo]); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <a href="javascript:void(0);" class="btn btn-danger deletarConsideracao">Deletar</a> 
+                                    </div>
                                 </div>
-                            </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class = "row">
+                                <div class = "col-sm-14 col-md-14">
+                                    <div class = "form-group">
+                                        <?= $this->Form->control('consideracoes[]', ['label' => false, 'class' => 'form-control']);?>                                        
+                                    </div>
+                                </div>
 
-                        </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
                 <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
@@ -151,6 +227,22 @@
         
         $("#copiarConsideracoes").click(function () {
             var _html = $(".cloneConsideracoes").clone().removeClass("cloneConsideracoes").appendTo(".baseConsideracoes");
+        });
+        
+        $(".deletarPrincipalObjetivo").click(function(){
+            $(this).parent().parent().remove();
+        });
+        
+        $(".deletarMaiorObjetivo").click(function(){
+            $(this).parent().parent().remove();
+        });
+        
+        $(".deletarObjetivo").click(function(){
+            $(this).parent().parent().remove();
+        });
+        
+        $(".deletarConsideracao").click(function(){
+            $(this).parent().parent().remove();
         });
     });
 </script>
