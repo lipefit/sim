@@ -5,11 +5,11 @@ namespace App\Controller;
 use App\Controller\AppController;
 
 /**
- * Identidades Controller
+ * Objetivos Controller
  *
- * @property \App\Model\Table\IdentidadesTable $Identidades
+ * @property \App\Model\Table\ObjetivosTable $Objetivos
  *
- * @method \App\Model\Entity\Identidades[] paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\Objetivos[] paginate($object = null, array $settings = [])
  */
 class ObjetivosController extends AppController {
 
@@ -23,6 +23,11 @@ class ObjetivosController extends AppController {
      * @return \Cake\Http\Response|null
      */
     public function index() {
+        $this->loadModel('Principaisobjetivos');
+        $this->loadModel('Objetivoscontratos');
+        $this->loadModel('Maioresobjetivos');
+        $this->loadModel('Consideracoes');
+        
         $idCliente = $this->Cookie->read('cliente_id');
         
         $objetivos = $this->Objetivos->find('all', [
@@ -31,23 +36,140 @@ class ObjetivosController extends AppController {
             ]
         ]);
         $objetivo = $objetivos->first();
+        
+        $pos = $this->Principaisobjetivos->find('all', [
+            'conditions' => [
+                'Principaisobjetivos.objetivo_id' => @$objetivo->id
+            ]
+        ]);
+        
+        $ocs = $this->Objetivoscontratos->find('all', [
+            'conditions' => [
+                'Objetivoscontratos.objetivo_id' => @$objetivo->id
+            ]
+        ]);
+        
+        $mos = $this->Maioresobjetivos->find('all', [
+            'conditions' => [
+                'Maioresobjetivos.objetivo_id' => @$objetivo->id
+            ]
+        ]);
+        
+        $cs = $this->Consideracoes->find('all', [
+            'conditions' => [
+                'Consideracoes.objetivo_id' => @$objetivo->id
+            ]
+        ]);
 
         if($objetivo == null){
             $objetivo = $this->Objetivos->newEntity();
         }
-        if ($this->request->is('post')) {
+               
+        if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['Objetivos']['cliente_id'] = $this->Cookie->read('cliente_id');
             
             $objetivo = $this->Objetivos->patchEntity($objetivo, $this->request->getData());
-            if ($this->Objetivos->save($objetivo)) {
+            if ($query = $this->Objetivos->save($objetivo)) {
+                $idObjetivo = $query->id;
+                
+                $principaisobjetivosParaDeletar = $this->Principaisobjetivos->find('all', [
+                    'conditions' => [
+                        'Principaisobjetivos.objetivo_id' => $idObjetivo
+                    ]
+                ]);
+                
+                foreach ($principaisobjetivosParaDeletar as $popd){
+                    $this->Principaisobjetivos->delete($popd);
+                }
+                
+                $contPo = count($this->request->data['principalObjetivo']);
+                for ($x = 0; $x < $contPo; $x++) {
+                    if ($this->request->data['principalObjetivo'][$x] != "") {
+                        $po = $this->Principaisobjetivos->newEntity();
+                        $this->request->data['Principaisobjetivos']['conteudo'] = $this->request->data['principalObjetivo'][$x];
+                        $this->request->data['Principaisobjetivos']['objetivo_id'] = $idObjetivo;
+                        $po = $this->Principaisobjetivos->patchEntity($po, $this->request->getData());
+                        $this->Principaisobjetivos->save($po);
+                    }
+                }
+                
+                $objetivoscontratosParaDeletar = $this->Objetivoscontratos->find('all', [
+                    'conditions' => [
+                        'Objetivoscontratos.objetivo_id' => $idObjetivo
+                    ]
+                ]);
+                
+                foreach ($objetivoscontratosParaDeletar as $ocpd){
+                    $this->Objetivoscontratos->delete($ocpd);
+                }
+                
+                $contOc = count($this->request->data['objetivo']);
+                for ($y = 0; $y < $contOc; $y++) {
+                    if ($this->request->data['objetivo'][$y] != "") {
+                        $oc = $this->Objetivoscontratos->newEntity();
+                        $this->request->data['Objetivoscontratos']['conteudo'] = $this->request->data['objetivo'][$y];
+                        $this->request->data['Objetivoscontratos']['objetivo_id'] = $idObjetivo;
+                        $oc = $this->Objetivoscontratos->patchEntity($oc, $this->request->getData());
+                        $this->Objetivoscontratos->save($oc);
+                    }
+                }
+                
+                $maioresbjetivosParaDeletar = $this->Maioresobjetivos->find('all', [
+                    'conditions' => [
+                        'Maioresobjetivos.objetivo_id' => $idObjetivo
+                    ]
+                ]);
+                
+                foreach ($maioresbjetivosParaDeletar as $mopd){
+                    $this->Maioresobjetivos->delete($ocpd);
+                }
+                
+                $contMo = count($this->request->data['maiorObjetivo']);
+                for ($w = 0; $w < $contMo; $w++) {
+                    if ($this->request->data['maiorObjetivo'][$w] != "") {
+                        $mo = $this->Maioresobjetivos->newEntity();
+                        $this->request->data['Maioresobjetivos']['conteudo'] = $this->request->data['maiorObjetivo'][$w];
+                        $this->request->data['Maioresobjetivos']['objetivo_id'] = $idObjetivo;
+                        $mo = $this->Maioresobjetivos->patchEntity($mo, $this->request->getData());
+                        $this->Maioresobjetivos->save($mo);
+                    }
+                }
+                
+                $consideracoesParaDeletar = $this->Consideracoes->find('all', [
+                    'conditions' => [
+                        'Consideracoes.objetivo_id' => $idObjetivo
+                    ]
+                ]);
+                
+                foreach ($consideracoesParaDeletar as $cpd){
+                    $this->Consideracoes->delete($ocpd);
+                }
+                
+                $contC = count($this->request->data['consideracoes']);
+                for ($z = 0; $z < $contC; $z++) {
+                    if ($this->request->data['consideracoes'][$z] != "") {
+                        $c = $this->Consideracoes->newEntity();
+                        $this->request->data['Consideracoes']['conteudo'] = $this->request->data['consideracoes'][$z];
+                        $this->request->data['Consideracoes']['objetivo_id'] = $idObjetivo;
+                        $c = $this->Consideracoes->patchEntity($c, $this->request->getData());
+                        $this->Consideracoes->save($c);
+                    }
+                }
+                
                 $this->Flash->success(__('Objetivo atualizado com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
+            }else{
+                $this->Flash->error(__('O objetivo não foi atualizado. Por favor, tente novamente'));
             }
-            $this->Flash->error(__('O objetivo não foi atualizado. Por favor, tente novamente'));
+            
         }
-        
+         
         $this->set(compact('objetivo'));
+        $this->set(compact('pos'));
+        $this->set(compact('ocs'));
+        $this->set(compact('mos'));
+        $this->set(compact('cs'));
         $this->set('_serialize', ['objetivo']);
     }
 }
