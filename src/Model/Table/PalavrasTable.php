@@ -24,6 +24,10 @@ class PalavrasTable extends Table {
         $this->belongsTo('Clientes', [
             'foreignKey' => 'cliente_id'
         ]);
+        
+        $this->belongsTo('Personas', [
+            'foreignKey' => 'persona_id'
+        ]);
     }
 
 }
