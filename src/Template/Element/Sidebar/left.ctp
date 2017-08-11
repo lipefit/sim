@@ -54,6 +54,7 @@
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'personapublicos'; ?>"><i class="fa fa-group"></i> Persona do Públ. Alvo</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'palavras'; ?>"><i class="fa fa-key"></i> Palavras-chaves</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'taticas'; ?>"><i class="fa fa-external-link"></i> Tática de Conteúdo</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'diagnosticos'; ?>"><i class="fa fa-tasks"></i> Diagnóstico</a></li>
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Estratégia<i class="fa fa-angle-down "></i></a>
