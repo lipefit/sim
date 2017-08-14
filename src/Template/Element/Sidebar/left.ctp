@@ -2,7 +2,7 @@
     <div class="user-menu-items">
         <div class="list-unstyled btn-group">
             <button class="media btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="Generic user image"></span> 
+                <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="<?= $profile['name'] . " " . $profile['surname']; ?>"></span> 
                 <span class="media-body"> <span class="mt-0 mb-1"><?= $profile['name'] . " " . $profile['surname']; ?></span> <small><?= $authUser['username']; ?> </small> </span> 
             </button>
             <div class="dropdown-menu"> 
