@@ -106,6 +106,8 @@ $cakeDescription = 'Simarketing';
             <?= $this->fetch('content'); ?> 
             <?= $this->element('Footer/footer'); ?>
         </div>
+        
+        <?= $this->element('Modal/pauta'); ?>
     </body>
     <script>
         "use strict";
