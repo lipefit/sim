@@ -24,7 +24,7 @@
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-check"></i> Aprovações</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-unlock"></i> Permissões de Acesso</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-chain"></i> Conectar Midias</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-wordpress"></i> Sincronizar Wordpress</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'wordpress'; ?>"><i class="fa fa-wordpress"></i> Sincronizar Wordpress</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-google-plus"></i> Google Analytics</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-bell"></i> Lembretes</a></li>
             </ul>
