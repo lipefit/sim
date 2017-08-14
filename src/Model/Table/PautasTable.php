@@ -33,16 +33,19 @@ class PautasTable extends Table {
             'foreignKey' => 'desafio_id'
         ]);
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'autor'
+        $this->belongsTo('aliasAutor', [
+            'foreignKey' => 'autor',
+            'className' => 'Profiles'
         ]);
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'revisor'
+        $this->belongsTo('aliasRevisor', [
+            'foreignKey' => 'revisor',
+            'className' => 'Profiles'
         ]);
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'aprovador'
+        $this->belongsTo('aliasAprovador', [
+            'foreignKey' => 'aprovador',
+            'className' => 'Profiles'
         ]);
     }
     
