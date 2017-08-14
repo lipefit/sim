@@ -16,7 +16,7 @@ class DesafiosTable extends Table {
         parent::initialize($config);
 
         $this->setTable('desafios');
-        $this->setDisplayField('nome');
+        $this->setDisplayField('desafio');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
