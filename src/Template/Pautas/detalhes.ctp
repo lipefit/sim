@@ -123,7 +123,7 @@
                         echo "<br><br>";
                         echo $this->Html->link(__('Reprovar'), ['action' => 'reprovar', $pauta->id], ['class' => 'btn btn-lg btn-danger col-sm-16 col-lg-16']);
                     }else{
-                        echo $this->Html->link(__('Criar conteúdo'), ['action' => 'conteudos/add', $pauta->id], ['class' => 'btn btn-lg btn-primary col-sm-16 col-lg-16']);
+                        echo $this->Html->link(__('Criar conteúdo'), ['controller'=>'conteudos', 'action' => 'add', $pauta->id], ['class' => 'btn btn-lg btn-primary col-sm-16 col-lg-16']);
                     }
                 ?>
             </div>
