@@ -4,7 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class Mensagempautas extends Table {
+class MensagempautasTable extends Table {
 
     /**
      * Initialize method
