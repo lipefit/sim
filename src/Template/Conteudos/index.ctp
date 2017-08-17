@@ -29,8 +29,6 @@
                                 <th>Id </th>
                                 <th>Título</th>
                                 <th>Tipo</th>
-                                <th>Recebido em</th>
-                                <th>Aprovado em</th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
@@ -41,8 +39,6 @@
                                     <td><?= $this->Number->format($conteudo->id) ?></td>	
                                     <td><?= h($conteudo->pauta->titulo) ?></td>
                                     <td><?= h($conteudo->pauta->tipo) ?></td>
-                                    <td><?= h($conteudo->recebido) ?></td>
-                                    <td><?= h($conteudo->aprovado) ?></td>
                                     <td><?= h($conteudo->status) ?></td>
                                     <td class="center">
                                         <div class="btn-group">
