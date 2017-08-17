@@ -15,7 +15,7 @@ class RevisaosTable extends Table {
     public function initialize(array $config) {
         parent::initialize($config);
 
-        $this->setTable('conteudo');
+        $this->setTable('revisao');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
@@ -23,6 +23,21 @@ class RevisaosTable extends Table {
 
         $this->belongsTo('Conteudos', [
             'foreignKey' => 'conteudo_id'
+        ]);
+        
+        $this->belongsTo('aliasAutor', [
+            'foreignKey' => 'autor',
+            'className' => 'Profiles'
+        ]);
+
+        $this->belongsTo('aliasRevisor', [
+            'foreignKey' => 'revisor',
+            'className' => 'Profiles'
+        ]);
+
+        $this->belongsTo('aliasAprovador', [
+            'foreignKey' => 'aprovador',
+            'className' => 'Profiles'
         ]);
     }
     
