@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since     3.0.0
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\View;
 
 use Cake\View\View;
@@ -22,8 +24,7 @@ use Cake\View\View;
  *
  * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
  */
-class AppView extends View
-{
+class AppView extends View {
 
     /**
      * Initialization hook method.
@@ -34,7 +35,7 @@ class AppView extends View
      *
      * @return void
      */
-    public function initialize()
-    {
+    public function initialize() {    
     }
+
 }
