@@ -1,15 +1,15 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  * @since         3.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace Cake\TestSuite;
 
@@ -452,7 +452,7 @@ abstract class IntegrationTestCase extends TestCase
             $request = $this->_buildRequest($url, $method, $data);
             $response = $dispatcher->execute($request);
             $this->_requestSession = $request['session'];
-            if ($this->_retainFlashMessages) {
+            if ($this->_retainFlashMessages && $this->_flashMessages) {
                 $this->_requestSession->write('Flash', $this->_flashMessages);
             }
             $this->_response = $response;
@@ -547,8 +547,10 @@ abstract class IntegrationTestCase extends TestCase
         list ($url, $query) = $this->_url($url);
         $tokenUrl = $url;
 
+        parse_str($query, $queryData);
+
         if ($query) {
-            $tokenUrl .= '?' . http_build_query($query);
+            $tokenUrl .= '?' . http_build_query($queryData);
         }
 
         $props = [
@@ -556,12 +558,16 @@ abstract class IntegrationTestCase extends TestCase
             'post' => $this->_addTokens($tokenUrl, $data),
             'cookies' => $this->_cookie,
             'session' => $session,
-            'query' => $query
+            'query' => $queryData
         ];
         if (is_string($data)) {
             $props['input'] = $data;
         }
-        $env = [];
+        $env = [
+            'REQUEST_METHOD' => $method,
+            'QUERY_STRING' => $query,
+            'REQUEST_URI' => $url,
+        ];
         if (isset($this->_request['headers'])) {
             foreach ($this->_request['headers'] as $k => $v) {
                 $name = strtoupper(str_replace('-', '_', $k));
@@ -572,7 +578,6 @@ abstract class IntegrationTestCase extends TestCase
             }
             unset($this->_request['headers']);
         }
-        $env['REQUEST_METHOD'] = $method;
         $props['environment'] = $env;
         $props = Hash::merge($props, $this->_request);
 
@@ -618,11 +623,10 @@ abstract class IntegrationTestCase extends TestCase
     protected function _url($url)
     {
         $url = Router::url($url);
-        $query = [];
+        $query = '';
 
         if (strpos($url, '?') !== false) {
-            list($url, $parameters) = explode('?', $url, 2);
-            parse_str($parameters, $query);
+            list($url, $query) = explode('?', $url, 2);
         }
 
         return [$url, $query];

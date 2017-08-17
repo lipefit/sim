@@ -1,16 +1,16 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @since         3.4.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace Cake\ORM\Association\Loader;
 
@@ -163,7 +163,13 @@ class SelectLoader
             $options['fields'] = [];
         }
 
-        $fetchQuery = $finder()
+        $query = $finder();
+        if (isset($options['finder'])) {
+            list($finderName, $opts) = $this->_extractFinder($options['finder']);
+            $query = $query->find($finderName, $opts);
+        }
+
+        $fetchQuery = $query
             ->select($options['fields'])
             ->where($options['conditions'])
             ->eagerLoaded(true)
@@ -191,6 +197,33 @@ class SelectLoader
         $this->_assertFieldsPresent($fetchQuery, (array)$key);
 
         return $fetchQuery;
+    }
+
+    /**
+     * Helper method to infer the requested finder and its options.
+     *
+     * Returns the inferred options from the finder $type.
+     *
+     * ### Examples:
+     *
+     * The following will call the finder 'translations' with the value of the finder as its options:
+     * $query->contain(['Comments' => ['finder' => ['translations']]]);
+     * $query->contain(['Comments' => ['finder' => ['translations' => []]]]);
+     * $query->contain(['Comments' => ['finder' => ['translations' => ['locales' => ['en_US']]]]]);
+     *
+     * @param string|array $finderData The finder name or an array having the name as key
+     * and options as value.
+     * @return array
+     */
+    protected function _extractFinder($finderData)
+    {
+        $finderData = (array)$finderData;
+
+        if (is_numeric(key($finderData))) {
+            return [current($finderData), []];
+        }
+
+        return [key($finderData), current($finderData)];
     }
 
     /**

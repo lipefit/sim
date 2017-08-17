@@ -1,21 +1,22 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @since         3.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace Cake\Http\Client\Adapter;
 
 use Cake\Core\Exception\Exception;
 use Cake\Http\Client\Request;
 use Cake\Http\Client\Response;
+use Cake\Network\Exception\HttpException;
 
 /**
  * Implements sending Cake\Http\Client\Request
@@ -198,9 +199,9 @@ class Stream
         if (isset($options['timeout'])) {
             $this->_contextOptions['timeout'] = $options['timeout'];
         }
-        if (isset($options['redirect'])) {
-            $this->_contextOptions['max_redirects'] = (int)$options['redirect'];
-        }
+        // Redirects are handled in the client layer because of cookie handling issues.
+        $this->_contextOptions['max_redirects'] = 0;
+
         if (isset($options['proxy']['proxy'])) {
             $this->_contextOptions['request_fulluri'] = true;
             $this->_contextOptions['proxy'] = $options['proxy']['proxy'];
@@ -246,7 +247,7 @@ class Stream
      *
      * @param \Cake\Http\Client\Request $request The request object.
      * @return array Array of populated Response objects
-     * @throws \Cake\Core\Exception\Exception
+     * @throws \Cake\Network\Exception\HttpException
      */
     protected function _send(Request $request)
     {
@@ -277,7 +278,7 @@ class Stream
         fclose($this->_stream);
 
         if ($timedOut) {
-            throw new Exception('Connection timed out ' . $url);
+            throw new HttpException('Connection timed out ' . $url, 504);
         }
 
         $headers = $meta['wrapper_data'];

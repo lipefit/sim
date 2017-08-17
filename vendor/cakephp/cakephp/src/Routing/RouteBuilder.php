@@ -1,16 +1,16 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @since         3.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace Cake\Routing;
 
@@ -551,7 +551,7 @@ class RouteBuilder
      * ```
      *
      * Redirects /home/* to /posts/view and passes the parameters to /posts/view. Using an array as the
-     * redirect destination allows you to use other routes to define where an URL string should be redirected to.
+     * redirect destination allows you to use other routes to define where a URL string should be redirected to.
      *
      * ```
      * $routes->redirect('/posts/*', 'http://google.com', ['status' => 302]);
@@ -566,7 +566,7 @@ class RouteBuilder
      *   routes that end in `*` are greedy. As you can remap URLs and not loose any passed args.
      *
      * @param string $route A string describing the template of the route
-     * @param array|string $url An URL to redirect to. Can be a string or a Cake array-based URL
+     * @param array|string $url A URL to redirect to. Can be a string or a Cake array-based URL
      * @param array $options An array matching the named elements in the route to regular expressions which that
      *   element should match. Also contains additional parameters such as which routed parameters should be
      *   shifted into the passed arguments. As well as supplying patterns for routing parameters.
@@ -587,13 +587,24 @@ class RouteBuilder
      * This method creates a scoped route collection that includes
      * relevant prefix information.
      *
-     * The path parameter is used to generate the routing parameter name.
+     * The $name parameter is used to generate the routing parameter name.
      * For example a path of `admin` would result in `'prefix' => 'admin'` being
      * applied to all connected routes.
      *
      * You can re-open a prefix as many times as necessary, as well as nest prefixes.
      * Nested prefixes will result in prefix values like `admin/api` which translates
      * to the `Controller\Admin\Api\` namespace.
+     *
+     * If you need to have prefix with dots, eg: '/api/v1.0', use 'path' key
+     * for $params argument:
+     *
+     * ```
+     * $route->prefix('api', function($route) {
+     *     $route->prefix('v10', ['path' => '/v1.0'], function($route) {
+     *         // Translates to `Controller\Api\V10\` namespace
+     *     });
+     * });
+     * ```
      *
      * @param string $name The prefix name to use.
      * @param array|callable $params An array of routing defaults to add to each connected route.
@@ -613,6 +624,10 @@ class RouteBuilder
         }
         $name = Inflector::underscore($name);
         $path = '/' . $name;
+        if (isset($params['path'])) {
+            $path = $params['path'];
+            unset($params['path']);
+        }
         if (isset($this->_params['prefix'])) {
             $name = $this->_params['prefix'] . '/' . $name;
         }

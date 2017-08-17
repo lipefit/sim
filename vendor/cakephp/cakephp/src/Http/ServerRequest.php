@@ -1,16 +1,16 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace Cake\Http;
 
@@ -626,7 +626,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      * @param string $name The property being accessed.
      * @return bool Existence
      * @deprecated 3.4.0 Accessing routing parameters through __isset will removed in 4.0.0.
-     *   Use param() instead.
+     *   Use getParam() instead.
      */
     public function __isset($name)
     {
@@ -883,7 +883,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
 
     /**
      * Add parameters to the request's parsed parameter set. This will overwrite any existing parameters.
-     * This modifies the parameters available through `$request->params`.
+     * This modifies the parameters available through `$request->getParam()`.
      *
      * @param array $params Array of parameters to merge in
      * @return $this The current object, you can chain this method.
@@ -958,7 +958,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      *
      * @param string $name Name of the header you want.
      * @return string|null Either null on no header being set or the value of the header.
-     * @deprecated 4.0.0 The automatic fallback to env() will be removed in 4.0.0
+     * @deprecated 4.0.0 The automatic fallback to env() will be removed in 4.0.0, see getHeader()
      */
     public function header($name)
     {
@@ -1498,7 +1498,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      * $request->getData('Post.title');
      *
      * // With a default value.
-     * $request->getData('Post.not there', 'default value);
+     * $request->getData('Post.not there', 'default value');
      * ```
      *
      * When reading values you will get `null` for keys/values that do not exist.
@@ -2055,7 +2055,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      * inferred from the request's Uri. This also lets you change the request
      * target's form to an absolute-form, authority-form or asterisk-form
      *
-     * @link http://tools.ietf.org/html/rfc7230#section-2.7 (for the various
+     * @link https://tools.ietf.org/html/rfc7230#section-2.7 (for the various
      *   request-target forms allowed in request messages)
      * @param string $target The request target.
      * @return static
@@ -2124,7 +2124,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      * @param string $name Name of the key being written
      * @param mixed $value The value being written.
      * @return void
-     * @deprecated 3.4.0 The ArrayAccess methods will be removed in 4.0.0. Use withParam() or param() instead.
+     * @deprecated 3.4.0 The ArrayAccess methods will be removed in 4.0.0. Use withParam() instead.
      */
     public function offsetSet($name, $value)
     {
@@ -2136,7 +2136,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      *
      * @param string $name thing to check.
      * @return bool
-     * @deprecated 3.4.0 The ArrayAccess methods will be removed in 4.0.0. Use getParam() or param() instead.
+     * @deprecated 3.4.0 The ArrayAccess methods will be removed in 4.0.0. Use getParam() instead.
      */
     public function offsetExists($name)
     {
@@ -2152,7 +2152,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      *
      * @param string $name Name to unset.
      * @return void
-     * @deprecated 3.4.0 The ArrayAccess methods will be removed in 4.0.0. Use withParam() or param() instead.
+     * @deprecated 3.4.0 The ArrayAccess methods will be removed in 4.0.0. Use withParam() instead.
      */
     public function offsetUnset($name)
     {

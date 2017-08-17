@@ -1,16 +1,16 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @since         0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace Cake\Routing;
 
@@ -215,7 +215,7 @@ class Router
      * Compatibility proxy to \Cake\Routing\RouteBuilder::redirect() in the `/` scope.
      *
      * @param string $route A string describing the template of the route
-     * @param array $url An URL to redirect to. Can be a string or a Cake array-based URL
+     * @param array $url A URL to redirect to. Can be a string or a Cake array-based URL
      * @param array $options An array matching the named elements in the route to regular expressions which that
      *   element should match. Also contains additional parameters such as which routed parameters should be
      *   shifted into the passed arguments. As well as supplying patterns for routing parameters.
@@ -559,7 +559,7 @@ class Router
     /**
      * Finds URL for specified action.
      *
-     * Returns an URL pointing to a combination of controller and action.
+     * Returns a URL pointing to a combination of controller and action.
      *
      * ### Usage
      *
@@ -772,7 +772,7 @@ class Router
     }
 
     /**
-     * Normalizes an URL for purposes of comparison.
+     * Normalizes a URL for purposes of comparison.
      *
      * Will strip the base path off and replace any double /'s.
      * It will not unify the casing and underscoring of the input value.

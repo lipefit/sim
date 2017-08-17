@@ -295,3 +295,15 @@ Stack Trace:
 #10 {main}
 
 
+2017-08-16 12:44:52 Error: [Error] Class 'Router' not found in C:\Users\Felipe\Documents\Projetos\sim\config\bootstrap.php on line 252
+Stack Trace:
+#0 C:\Users\Felipe\Documents\Projetos\sim\bin\cake.php(32): include()
+#1 {main}
+
+
+2017-08-16 12:44:56 Error: [Error] Class 'Router' not found in C:\Users\Felipe\Documents\Projetos\sim\config\bootstrap.php on line 252
+Stack Trace:
+#0 C:\Users\Felipe\Documents\Projetos\sim\bin\cake.php(32): include()
+#1 {main}
+
+

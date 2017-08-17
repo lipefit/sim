@@ -1,16 +1,16 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @since         2.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace Cake\Mailer;
 
@@ -39,7 +39,7 @@ use SimpleXmlElement;
  * CakePHP Email class.
  *
  * This class is used for sending Internet Message Format based
- * on the standard outlined in http://www.rfc-editor.org/rfc/rfc2822.txt
+ * on the standard outlined in https://www.rfc-editor.org/rfc/rfc2822.txt
  *
  * ### Configuration
  *
@@ -882,7 +882,7 @@ class Email implements JsonSerializable, Serializable
     protected function _setEmail($varName, $email, $name)
     {
         if (!is_array($email)) {
-            $this->_validateEmail($email);
+            $this->_validateEmail($email, $varName);
             if ($name === null) {
                 $name = $email;
             }
@@ -895,7 +895,7 @@ class Email implements JsonSerializable, Serializable
             if (is_int($key)) {
                 $key = $value;
             }
-            $this->_validateEmail($key);
+            $this->_validateEmail($key, $varName);
             $list[$key] = $value;
         }
         $this->{$varName} = $list;
@@ -907,10 +907,11 @@ class Email implements JsonSerializable, Serializable
      * Validate email address
      *
      * @param string $email Email address to validate
+     * @param string $context Which property was set
      * @return void
      * @throws \InvalidArgumentException If email address does not validate
      */
-    protected function _validateEmail($email)
+    protected function _validateEmail($email, $context)
     {
         if ($this->_emailPattern === null) {
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -919,7 +920,12 @@ class Email implements JsonSerializable, Serializable
         } elseif (preg_match($this->_emailPattern, $email)) {
             return;
         }
-        throw new InvalidArgumentException(sprintf('Invalid email: "%s"', $email));
+
+        $context = ltrim($context, '_');
+        if ($email == '') {
+            throw new InvalidArgumentException(sprintf('The email set for "%s" is empty.', $context));
+        }
+        throw new InvalidArgumentException(sprintf('Invalid email set for "%s". You passed "%s".', $context, $email));
     }
 
     /**
@@ -958,7 +964,7 @@ class Email implements JsonSerializable, Serializable
     protected function _addEmail($varName, $email, $name)
     {
         if (!is_array($email)) {
-            $this->_validateEmail($email);
+            $this->_validateEmail($email, $varName);
             if ($name === null) {
                 $name = $email;
             }
@@ -971,7 +977,7 @@ class Email implements JsonSerializable, Serializable
             if (is_int($key)) {
                 $key = $value;
             }
-            $this->_validateEmail($key);
+            $this->_validateEmail($key, $varName);
             $list[$key] = $value;
         }
         $this->{$varName} = array_merge($this->{$varName}, $list);
