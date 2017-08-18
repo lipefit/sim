@@ -44,8 +44,8 @@
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'personas'; ?>"><i class="fa fa-group"></i> Persona da Marca</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'concorrentes'; ?>"><i class="fa fa-eye"></i> Concorrentes</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'referencias'; ?>"><i class="fa fa-copy"></i> Referências</a></li>
-                
-                
+
+
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Planejamento<i class="fa fa-angle-down "></i></a>
@@ -59,7 +59,7 @@
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Estratégia<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
-                
+
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Execução<i class="fa fa-angle-down "></i></a>
@@ -72,18 +72,10 @@
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Gestão<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
-                    
+
             </ul>
         </li>
-        <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Solicitações<i class="fa fa-angle-down "></i></a>
-            <ul class="nav flex-column nav-second-level ">
-                
-            </ul>
-        </li>
-        <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Anexos<i class="fa fa-angle-down "></i></a>
-            <ul class="nav flex-column nav-second-level ">
-                
-            </ul>
-        </li>
+        <li class="nav-item"> <a href="<?= $this->request->webroot . 'solicitacoes'; ?>" class="nav-link"><i class="fa fa-plus"></i>Solicitações</a></li>
+        <li class="nav-item"> <a href="<?= $this->request->webroot . 'anexos'; ?>" class="nav-link"><i class="fa fa-paperclip "></i>Anexos</a></li>
     </ul>
 </div>
