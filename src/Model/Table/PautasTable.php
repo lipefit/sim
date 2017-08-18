@@ -16,7 +16,7 @@ class PautasTable extends Table {
         parent::initialize($config);
 
         $this->setTable('pauta');
-        $this->setDisplayField('id');
+        $this->setDisplayField('titulo');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
