@@ -1,3 +1,7 @@
+#AddHandler php71-script .php
+#suPHP_ConfigPath /home/storage/a/8b/92/simarketing2/
+#php_value session.save_path "/home/storage/a/8b/92/simarketing2/session"
+#php_value allow_url_fopen On
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
