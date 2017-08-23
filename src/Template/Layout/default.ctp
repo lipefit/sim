@@ -44,6 +44,7 @@ $cakeDescription = 'Simarketing';
 
         <!-- Adminux CSS -->
         <?= $this->Html->css('dark_blue_adminux.css') ?>
+        <?= $this->Html->css('/js/morrisjs/morris.css') ?>
 
         <?= $this->fetch('meta') ?>
         <?= $this->fetch('css') ?>
@@ -91,6 +92,19 @@ $cakeDescription = 'Simarketing';
         <?= $this->Html->script('dashboard1.js') ?>
 
         <?= $this->Html->script('tinymce/tinymce.min.js'); ?>
+
+        <!-- Morris Charts JavaScript --> 
+        <?= $this->Html->script('/js/cicular_progress/circle-progress.min.js') ?>
+        <?= $this->Html->script('/js/raphael/raphael.min.js') ?>
+        <?= $this->Html->script('/js/morrisjs/morris.min.js') ?>
+
+        <!-- Flot Charts JavaScript --> 
+        <?= $this->Html->script('/js/flot/excanvas.min.js') ?>
+        <?= $this->Html->script('/js/flot/jquery.flot.js') ?>
+        <?= $this->Html->script('/js/flot/jquery.flot.pie.js') ?>
+        <?= $this->Html->script('/js/flot/jquery.flot.resize.js') ?>
+        <?= $this->Html->script('/js/flot/jquery.flot.time.js') ?>
+        <?= $this->Html->script('/js/flot-tooltip/jquery.flot.tooltip.min.js') ?>
 
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
