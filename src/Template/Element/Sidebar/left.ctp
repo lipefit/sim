@@ -23,7 +23,7 @@
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-money"></i> Financeiro</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-check"></i> Aprovações</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-unlock"></i> Permissões de Acesso</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-chain"></i> Conectar Midias</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'sincronizacao'; ?>"><i class="fa fa-chain"></i> Conectar Midias</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'wordpress'; ?>"><i class="fa fa-wordpress"></i> Sincronizar Wordpress</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-google-plus"></i> Google Analytics</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-bell"></i> Lembretes</a></li>
@@ -72,7 +72,8 @@
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Gestão<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
-
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendario'; ?>"><i class="fa fa-calendar"></i> Calendário editorial</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendariototal'; ?>"><i class="fa fa-calendar"></i> Calendário total</a></li>
             </ul>
         </li>
         <li class="nav-item"> <a href="<?= $this->request->webroot . 'solicitacoes'; ?>" class="nav-link"><i class="fa fa-plus"></i>Solicitações</a></li>
