@@ -8,6 +8,8 @@
 #    RequestHeader unset Proxy
 #</IfModule>
 
+php_value allow_url_fopen On
+
 <IfModule mod_rewrite.c>
     RewriteEngine on
     RewriteRule    ^$    webroot/    [L]
