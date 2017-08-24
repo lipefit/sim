@@ -609,6 +609,9 @@
         $(".addPost").click(function () {
             var tipo = $(this).attr("rel");
             $("#tipoPost").val(tipo);
+            $(".body").html("");
+            $("#note-body").val("");
+            $('#previewNote').removeClass('yellow green blue red pink').addClass('yellow');
         });
 
         $(".editPost").fancybox({
