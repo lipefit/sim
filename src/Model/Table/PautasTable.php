@@ -67,5 +67,11 @@ class PautasTable extends Table {
             'Landing pages' => 'Landing pages'
         );
     }
+    
+    public function getTiposEdit() {
+        return array(
+            'Blog' => 'Blog'
+        );
+    }
 
 }
