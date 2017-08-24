@@ -91,8 +91,8 @@
                             <p><strong>Título</strong></p>
                             <h4><?= $pauta->titulo; ?></h4>
                             <hr />
-                            <p><strong>Persona: </strong> <?= $pauta->persona->nome; ?></p> 
-                            <p><strong>Desafio: </strong> <?= $pauta->desafio->desafio; ?></p> 
+                            <p><strong>Persona: </strong> <?= @$pauta->persona->nome; ?></p> 
+                            <p><strong>Desafio: </strong> <?= @$pauta->desafio->desafio; ?></p> 
                             <p><strong>Tipo de conteúdo: </strong> <?= $pauta->tipo; ?></p> 
                             <p><strong>Palavras-chave: </strong> <?= $pauta->palavras; ?></p> 
                             <p><strong>Data de publicação: </strong> <?= $pauta->dataPublicacao; ?></p> 
