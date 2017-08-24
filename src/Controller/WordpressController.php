@@ -59,8 +59,13 @@ class WordpressController extends AppController {
                 $wpClient = new \HieuLe\WordpressXmlrpcClient\WordpressClient();
 
                 $wpClient->setCredentials($endpoint, $remoteuser, $remotepass);
-
-                $result = $wpClient->getUsers();
+                
+//                try {
+//                    $result = $wpClient->getUsers();
+//                } catch (\HieuLe\WordpressXmlrpcClient\Exception\XmlrpcException $ex) {
+//                    $this->Flash->error(__($ex->getMessage()));
+//                    return $this->redirect(['action' => 'index']);
+//                }                
 
                 $this->request->data['Wordpress']['cliente_id'] = $this->Cookie->read('cliente_id');
 
@@ -84,6 +89,20 @@ class WordpressController extends AppController {
 
         $this->set(compact('wp'));
         $this->set('_serialize', ['wp']);
+    }
+    
+    public function delete($id = null) {
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        $wp = $this->Wordpress->get($id);
+        if ($this->Wordpress->delete($wp)) {
+            $this->Flash->success('Desconectado com sucesso');
+            $this->redirect(array('action' => 'index'));
+        }else{
+            $this->Flash->error('Wordpress não pode ser desconectado', 'error_flash');
+            $this->redirect(array('action' => 'index'));
+        }
     }
 
 }
