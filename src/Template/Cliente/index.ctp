@@ -49,7 +49,7 @@
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $cliente->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cliente->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o cliente # {0}?', $cliente->nomeFantasia)]) ?>  	 	
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cliente->id], ['confirm' => __('Você tem certeza que deseja apagar o cliente # {0}? Todos os dados relacionados também serão apagados!', $cliente->nomeFantasia), 'class' => 'dropdown-item']) ?>  	 	
                                             </div>
                                         </div>
                                     </td>
