@@ -48,9 +48,17 @@
                                 <?= $this->Form->control('senha', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Senha', 'type' => 'password']); ?>
                             </div>
                         </div>
-                    </div>                   
-                    <center><?= $this->Form->button(__('Conectar'), ['class' => 'btn btn-primary']) ?></center>
-                    <?= $this->Form->end() ?>
+                    </div>
+                    <?php
+                    if (@$wp->endereco == "") {
+                        echo "<center>".$this->Form->button(__('Conectar'), ['class' => 'btn btn-primary'])."</center>";
+                        echo $this->Form->end();
+                    } else {
+                        echo $this->Form->end();
+                        echo "<center>".$this->Form->postLink('Desconectar', array('action' => 'delete', $wp->id), array('class' => 'btn btn-danger', 'inline' => false, 'confirm' => 'Tem certeza que deseja desconectar?'))."</center>";;
+                    }
+                    ?>
+                                        
                 </div>
             </div>
         </div>
