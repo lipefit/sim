@@ -86,10 +86,13 @@ class ObjetivosController extends AppController {
                 for ($x = 0; $x < $contPo; $x++) {
                     if ($this->request->data['principalObjetivo'][$x] != "") {
                         $po = $this->Principaisobjetivos->newEntity();
-                        $this->request->data['Principaisobjetivos']['conteudo'] = $this->request->data['principalObjetivo'][$x];
-                        $this->request->data['Principaisobjetivos']['objetivo_id'] = $idObjetivo;
-                        $po = $this->Principaisobjetivos->patchEntity($po, $this->request->getData());
-                        $this->Principaisobjetivos->save($po);
+                        $po->conteudo = $this->request->data['principalObjetivo'][$x];
+                        $po->objetivo_id = $idObjetivo;
+                        if(!$this->Principaisobjetivos->save($po)){
+                            $this->Flash->error(__('O objetivo não foi atualizado. Por favor, tente novamente'));
+                            return $this->redirect(['action' => 'index']);
+                        }
+                        
                     }
                 }
                 
@@ -107,10 +110,12 @@ class ObjetivosController extends AppController {
                 for ($y = 0; $y < $contOc; $y++) {
                     if ($this->request->data['objetivo'][$y] != "") {
                         $oc = $this->Objetivoscontratos->newEntity();
-                        $this->request->data['Objetivoscontratos']['conteudo'] = $this->request->data['objetivo'][$y];
-                        $this->request->data['Objetivoscontratos']['objetivo_id'] = $idObjetivo;
-                        $oc = $this->Objetivoscontratos->patchEntity($oc, $this->request->getData());
-                        $this->Objetivoscontratos->save($oc);
+                        $oc->conteudo = $this->request->data['objetivo'][$y];
+                        $oc->objetivo_id = $idObjetivo;
+                        if(!$this->Objetivoscontratos->save($oc)){
+                            $this->Flash->error(__('O objetivo não foi atualizado. Por favor, tente novamente'));
+                            return $this->redirect(['action' => 'index']);
+                        }
                     }
                 }
                 
@@ -121,17 +126,19 @@ class ObjetivosController extends AppController {
                 ]);
                 
                 foreach ($maioresbjetivosParaDeletar as $mopd){
-                    $this->Maioresobjetivos->delete($ocpd);
+                    $this->Maioresobjetivos->delete($mopd);
                 }
                 
                 $contMo = count($this->request->data['maiorObjetivo']);
                 for ($w = 0; $w < $contMo; $w++) {
                     if ($this->request->data['maiorObjetivo'][$w] != "") {
                         $mo = $this->Maioresobjetivos->newEntity();
-                        $this->request->data['Maioresobjetivos']['conteudo'] = $this->request->data['maiorObjetivo'][$w];
-                        $this->request->data['Maioresobjetivos']['objetivo_id'] = $idObjetivo;
-                        $mo = $this->Maioresobjetivos->patchEntity($mo, $this->request->getData());
-                        $this->Maioresobjetivos->save($mo);
+                        $mo->conteudo = $this->request->data['maiorObjetivo'][$w];
+                        $mo->objetivo_id = $idObjetivo;
+                        if(!$this->Maioresobjetivos->save($mo)){
+                            $this->Flash->error(__('O objetivo não foi atualizado. Por favor, tente novamente'));
+                            return $this->redirect(['action' => 'index']);
+                        }                        
                     }
                 }
                 
@@ -142,17 +149,19 @@ class ObjetivosController extends AppController {
                 ]);
                 
                 foreach ($consideracoesParaDeletar as $cpd){
-                    $this->Consideracoes->delete($ocpd);
+                    $this->Consideracoes->delete($cpd);
                 }
                 
                 $contC = count($this->request->data['consideracoes']);
                 for ($z = 0; $z < $contC; $z++) {
                     if ($this->request->data['consideracoes'][$z] != "") {
                         $c = $this->Consideracoes->newEntity();
-                        $this->request->data['Consideracoes']['conteudo'] = $this->request->data['consideracoes'][$z];
-                        $this->request->data['Consideracoes']['objetivo_id'] = $idObjetivo;
-                        $c = $this->Consideracoes->patchEntity($c, $this->request->getData());
-                        $this->Consideracoes->save($c);
+                        $c->conteudo = $this->request->data['consideracoes'][$z];
+                        $c->objetivo_id = $idObjetivo;
+                        if(!$this->Consideracoes->save($c)){
+                            $this->Flash->error(__('O objetivo não foi atualizado. Por favor, tente novamente'));
+                            return $this->redirect(['action' => 'index']);
+                        }                        
                     }
                 }
                 
@@ -161,6 +170,7 @@ class ObjetivosController extends AppController {
                 return $this->redirect(['action' => 'index']);
             }else{
                 $this->Flash->error(__('O objetivo não foi atualizado. Por favor, tente novamente'));
+                return $this->redirect(['action' => 'index']);
             }
             
         }
