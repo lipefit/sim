@@ -173,7 +173,7 @@ class PautasController extends AppController {
         ));
 
         $jornadas = $this->Pautas->getJornadas();
-        $tipos = $this->Pautas->getTipos();
+        $tipos = $this->Pautas->getTiposEdit();
 
         $this->set(compact('palavraschave'));
         $this->set(compact('personas'));
