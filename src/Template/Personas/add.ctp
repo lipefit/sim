@@ -1,4 +1,8 @@
 <?php
+$clientList;
+foreach ($_clientes as $cliente) {
+    $clientList[$cliente['id']] = $cliente['nomeFantasia'];
+}
 
 /**
  * @var \App\View\AppView $this
@@ -42,8 +46,8 @@ use Cake\Routing\Router
                         </div>
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
-                                <label for="nome">Nome da persona</label>
-                                <?= $this->Form->control('nome', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nome da persona']); ?>
+                                <label for="nome">Persona da Marca</label>
+                                <?= $this->Form->control('nome', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nome da persona','value'=>$clientList[$cliente_id_cookie]]); ?>
                             </div>
                         </div>
                         <div class="col-sm-4 col-md-4">
@@ -129,7 +133,7 @@ use Cake\Routing\Router
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+<!--                    <div class="row">
                         <div class="col-sm-8 col-md-8">
                             <div class="form-group">
                                 <label for="objetivos">Objetivos</label>
@@ -182,7 +186,7 @@ use Cake\Routing\Router
                         <div class="col-lg-16 col-md-16">
                             <a href="javascript:void(0);" class="btn btn-info" id="copiarDesafio"><i class="fa fa-plus"></i> Adicionar desafio</a>
                         </div>
-                    </div>
+                    </div>-->
                     <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
