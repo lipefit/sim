@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <?= $this->Form->control('principalObjetivo[]', ['label' => false, 'class' => 'form-control']); ?>
                                 </div>
-                            </div>                        
+                            </div>
                         </div>
                         <?php
                         if (count($pos) > 0) {
