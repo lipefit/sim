@@ -45,21 +45,21 @@ class PersonasController extends AppController {
         if ($this->request->is('post')) {
             $this->request->data['Personas']['cliente_id'] = $this->Cookie->read('cliente_id');
             $persona = $this->Personas->patchEntity($persona, $this->request->getData());
-            $palavras = $this->request->data['palavras'];
+//            $palavras = $this->request->data['palavras'];
             if ($query = $this->Personas->save($persona)) {
                 $idPersona = $query->id;
-                $this->atualizarPalavras($palavras);
+//                $this->atualizarPalavras($palavras);
 
-                $cont = count($this->request->data['desafios']);
-                for ($x = 0; $x < $cont; $x++) {
-                    if ($this->request->data['desafios'][$x] != "") {
-                        $df = $this->Desafios->newEntity();
-                        $this->request->data['Desafios']['desafio'] = $this->request->data['desafios'][$x];
-                        $this->request->data['Desafios']['persona_id'] = $idPersona;
-                        $df = $this->Desafios->patchEntity($df, $this->request->getData());
-                        $this->Desafios->save($df);
-                    }
-                }
+//                $cont = count($this->request->data['desafios']);
+//                for ($x = 0; $x < $cont; $x++) {
+//                    if ($this->request->data['desafios'][$x] != "") {
+//                        $df = $this->Desafios->newEntity();
+//                        $this->request->data['Desafios']['desafio'] = $this->request->data['desafios'][$x];
+//                        $this->request->data['Desafios']['persona_id'] = $idPersona;
+//                        $df = $this->Desafios->patchEntity($df, $this->request->getData());
+//                        $this->Desafios->save($df);
+//                    }
+//                }
 
                 $this->Flash->success(__('A persona da marca foi salva com sucesso.'));
 
@@ -90,38 +90,38 @@ class PersonasController extends AppController {
             'contain' => []
         ]);
         
-        $desafios = $this->Desafios->find('all', [
-            'conditions' => [
-                'Desafios.persona_id' => $id
-            ]
-        ]);
+//        $desafios = $this->Desafios->find('all', [
+//            'conditions' => [
+//                'Desafios.persona_id' => $id
+//            ]
+//        ]);
         
         if ($this->request->is(['patch', 'post', 'put'])) {
             $persona = $this->Personas->patchEntity($persona, $this->request->getData());
-            $palavras = $this->request->data['palavras'];
+//            $palavras = $this->request->data['palavras'];
             if ($this->Personas->save($persona)) {
-                $this->atualizarPalavras($palavras);
+//                $this->atualizarPalavras($palavras);
 
-                $desafiosParaDeletar = $this->Desafios->find('all', [
-                    'conditions' => [
-                        'Desafios.persona_id' => $id
-                    ]
-                ]);
+//                $desafiosParaDeletar = $this->Desafios->find('all', [
+//                    'conditions' => [
+//                        'Desafios.persona_id' => $id
+//                    ]
+//                ]);
                 
-                foreach ($desafiosParaDeletar as $dpd){
-                    $this->Desafios->delete($dpd);
-                }
+//                foreach ($desafiosParaDeletar as $dpd){
+//                    $this->Desafios->delete($dpd);
+//                }
 
-                $cont = count($this->request->data['desafios']);
-                for ($x = 0; $x < $cont; $x++) {
-                    if ($this->request->data['desafios'][$x] != "") {
-                        $df = $this->Desafios->newEntity();
-                        $this->request->data['Desafios']['desafio'] = $this->request->data['desafios'][$x];
-                        $this->request->data['Desafios']['persona_id'] = $id;
-                        $df = $this->Desafios->patchEntity($df, $this->request->getData());
-                        $this->Desafios->save($df);
-                    }
-                }
+//                $cont = count($this->request->data['desafios']);
+//                for ($x = 0; $x < $cont; $x++) {
+//                    if ($this->request->data['desafios'][$x] != "") {
+//                        $df = $this->Desafios->newEntity();
+//                        $this->request->data['Desafios']['desafio'] = $this->request->data['desafios'][$x];
+//                        $this->request->data['Desafios']['persona_id'] = $id;
+//                        $df = $this->Desafios->patchEntity($df, $this->request->getData());
+//                        $this->Desafios->save($df);
+//                    }
+//                }
 
                 $this->Flash->success(__('A persona da marca foi salva com sucesso.'));
 
@@ -135,7 +135,7 @@ class PersonasController extends AppController {
         $this->set(compact('sexos'));
         $this->set(compact('graduacoes'));
         $this->set(compact('arqueotipos'));
-        $this->set(compact('desafios'));
+//        $this->set(compact('desafios'));
         $this->set(compact('persona'));
         $this->set('_serialize', ['persona']);
     }
