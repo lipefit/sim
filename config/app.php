@@ -180,7 +180,7 @@ return [
         'default' => [
             'className' => 'Smtp',
             // The following keys are used in SMTP transports
-            'host' => 'smtp.simarketing.com.br',
+            'host' => 'mail.simarketing.com.br',
             'port' => 25,
             'timeout' => 150,
             'username' => 'noreply@simarketing.com.br',
