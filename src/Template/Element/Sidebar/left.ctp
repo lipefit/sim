@@ -18,7 +18,11 @@
             <ul class="nav flex-column nav-second-level ">
                 <li class="nav-item"><a href="<?= $this->request->webroot . 'groups'; ?>" class="nav-link"><i class="fa fa-users"></i> Grupos</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'users'; ?>"><i class="fa fa-user"></i> Usuários</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'cliente'; ?>"><i class="fa fa-building"></i> Clientes</a></li>
+                <?php
+                if ($cliente_id_cookie == $masterClient) {
+                    ?>
+                    <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'cliente'; ?>"><i class="fa fa-building"></i> Clientes</a></li>
+                <?php } ?>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-list"></i> Planos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-money"></i> Financeiro</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-check"></i> Aprovações</a></li>
