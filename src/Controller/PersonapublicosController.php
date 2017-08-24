@@ -54,9 +54,8 @@ class PersonapublicosController extends AppController {
                 for ($x = 0; $x < $cont; $x++) {
                     if ($this->request->data['desafios'][$x] != "") {
                         $df = $this->Desafiospublicos->newEntity();
-                        $this->request->data['Desafiospublicos']['desafio'] = $this->request->data['desafios'][$x];
-                        $this->request->data['Desafiospublicos']['persona_id'] = $idPersona;
-                        $df = $this->Desafiospublicos->patchEntity($df, $this->request->getData());
+                        $df->desafio = $this->request->data['desafios'][$x];
+                        $df->personapublico_id = $idPersona;
                         $this->Desafiospublicos->save($df);
                     }
                 }
@@ -89,26 +88,27 @@ class PersonapublicosController extends AppController {
         $persona = $this->Personapublicos->get($id, [
             'contain' => []
         ]);
-        
+
         $desafios = $this->Desafiospublicos->find('all', [
             'conditions' => [
-                'Desafiospublicos.persona_id' => $id
+                'Desafiospublicos.personapublico_id' => $id
             ]
         ]);
-        
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $persona = $this->Personapublicos->patchEntity($persona, $this->request->getData());
             $palavras = $this->request->data['palavras'];
-            if ($this->Personapublicos->save($persona)) {
+            if ($query = $this->Personapublicos->save($persona)) {
+                $idPersona = $query->id;
                 $this->atualizarPalavras($palavras);
 
                 $desafiosParaDeletar = $this->Desafiospublicos->find('all', [
                     'conditions' => [
-                        'Desafiospublicos.persona_id' => $id
+                        'Desafiospublicos.personapublico_id' => $id
                     ]
                 ]);
-                
-                foreach ($desafiosParaDeletar as $dpd){
+
+                foreach ($desafiosParaDeletar as $dpd) {
                     $this->Desafiospublicos->delete($dpd);
                 }
 
@@ -116,9 +116,8 @@ class PersonapublicosController extends AppController {
                 for ($x = 0; $x < $cont; $x++) {
                     if ($this->request->data['desafios'][$x] != "") {
                         $df = $this->Desafiospublicos->newEntity();
-                        $this->request->data['Desafiospublicos']['desafio'] = $this->request->data['desafios'][$x];
-                        $this->request->data['Desafiospublicos']['persona_id'] = $id;
-                        $df = $this->Desafiospublicos->patchEntity($df, $this->request->getData());
+                        $df->desafio = $this->request->data['desafios'][$x];
+                        $df->personapublico_id = $idPersona;
                         $this->Desafiospublicos->save($df);
                     }
                 }
