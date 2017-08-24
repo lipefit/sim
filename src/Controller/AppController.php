@@ -133,6 +133,8 @@ class AppController extends Controller {
             ]);
 
             $this->set(compact('_clientes'));
+            
+            $this->set("masterClient",$user['cliente_id']);
 
             $profiles = $this->Profiles->find('all', [
                 'conditions' => [
