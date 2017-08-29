@@ -56,6 +56,10 @@
                         <label for="grupo">Grupo</label>
                         <?= $this->Form->control('group_id', ['options' => $groups, 'empty' => true, 'label' => false, 'class' => 'form-control', 'placeholder' => 'Group']); ?>
                     </div>
+                    <div class="form-group">
+                        <label for="hierarquia">Hierarquia</label>
+                        <?= $this->Form->control('hierarquias._ids', ['options' => $hierarquias, 'label' => false, 'class' => 'form-control', 'multiple' => 'multiple']); ?>
+                    </div>
                     <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>

@@ -24,7 +24,7 @@ class IdentidadesController extends AppController {
      */
     public function index() {
         $idCliente = $this->Cookie->read('cliente_id');
-        
+
         $identidades = $this->Identidades->find('all', [
             'conditions' => [
                 'Identidades.cliente_id' => $idCliente
@@ -32,18 +32,18 @@ class IdentidadesController extends AppController {
         ]);
         $identidade = $identidades->first();
 
-        if($identidade == null){
+        if ($identidade == null) {
             $identidade = $this->Identidades->newEntity();
         }
         if ($this->request->is('post')) {
             $this->request->data['Identidades']['cliente_id'] = $this->Cookie->read('cliente_id');
-            
+
             $file = $this->request->data['file'];
-            $arquivo =  str_replace(' ', '_', $file['name']);
+            $arquivo = str_replace(' ', '_', $file['name']);
             if (move_uploaded_file($file['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
                 $this->request->data['Identidades']['arquivo'] = $arquivo;
-            }  
-            
+            }
+
             $identidade = $this->Identidades->patchEntity($identidade, $this->request->getData());
             if ($this->Identidades->save($identidade)) {
                 $this->Flash->success(__('Identidade visual atualizada com sucesso.'));
@@ -52,7 +52,7 @@ class IdentidadesController extends AppController {
             }
             $this->Flash->error(__('A identidade visual não foi atualizada. Por favor, tente novamente'));
         }
-        
+
         $this->set(compact('identidade'));
         $this->set('_serialize', ['identidade']);
     }

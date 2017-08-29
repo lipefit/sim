@@ -26,7 +26,6 @@
                     <table class="table " id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Título </th>
                                 <th>Data de criação</th>
                                 <th></th>
@@ -35,7 +34,6 @@
                         <tbody>
                             <?php foreach ($canvas as $cv): ?>
                                 <tr>
-                                    <td><?= $this->Number->format($cv->id) ?></td>	
                                     <td><?= $cv->titulo ?></td>
                                     <td><?= $cv->data ?></td>
                                     <td class="center">
@@ -44,7 +42,7 @@
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $cv->id], ['class' => 'dropdown-item']) ?>
                                                 <?= $this->Html->link(__('Ver'), ['action' => 'ver', $cv->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cv->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o canvas # {0}?', $cv->titulo)]) ?>  	
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $cv->id], ['confirm' => __('Você tem certeza que deseja apagar o canvas # {0}?', $cv->titulo),'class' => 'dropdown-item']) ?>  	
                                             </div>
                                         </div>
                                     </td>

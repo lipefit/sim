@@ -26,7 +26,6 @@
                     <table class="table" id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Voz</th>
                                 <th>Storytelling</th>
                                 <th>Arquétipo</th> 
@@ -37,7 +36,6 @@
                         <tbody>
                             <?php foreach ($taticas as $tatica): ?>
                                 <tr>
-                                    <td><?= $this->Number->format($tatica->id) ?></td>
                                     <td><?= h($tatica->voz) ?></td>
                                     <td><?= h($tatica->storytelling) ?></td>
                                     <td><?= h($tatica->arquetipo) ?></td>
@@ -47,7 +45,7 @@
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $tatica->id], ['class' => 'dropdown-item']) ?>
-                                        <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $tatica->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a tática de conteúdo # {0}?', $tatica->voz)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $tatica->id], ['confirm' => __('Você tem certeza que deseja apagar a tática de conteúdo # {0}?', $tatica->voz),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

@@ -134,6 +134,7 @@
         </div>
     </div>
 </div>
+<?= $this->element('Modal/conteudo'); ?>
 <script>
     var slug = function (str) {
         var $slug = '';

@@ -95,6 +95,7 @@
         </div>
     </div>
 </div>
+<?= $this->element('Modal/pauta'); ?>
 <?php
 $p = "";
 foreach (@$palavraschave as $palavra) {

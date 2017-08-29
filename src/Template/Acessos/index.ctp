@@ -26,7 +26,6 @@
                     <table class="table" id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Nome / Tipo</th>
                                 <th>URL / HOST</th>
                                 <th>Usuário</th> 
@@ -38,7 +37,6 @@
                         <tbody>
                             <?php foreach ($acessos as $acesso): ?>
                                 <tr>
-                                    <td><?= $this->Number->format($acesso->id) ?></td>
                                     <td><?= h($acesso->nome) ?></td>
                                     <td><?= h($acesso->url) ?></td>
                                     <td><?= h($acesso->usuario) ?></td>
@@ -51,7 +49,7 @@
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $acesso->id],['class' => 'dropdown-item']) ?>
                                                 <?= $this->Html->link(__('Ver senha'), ['action' => 'enviar-senha', $acesso->id],['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $acesso->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o acesso # {0}?', $acesso->nome)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $acesso->id], ['confirm' => __('Você tem certeza que deseja apagar o acesso # {0}?', $acesso->nome),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

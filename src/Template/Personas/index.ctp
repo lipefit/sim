@@ -26,7 +26,6 @@
                     <table class="table " id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Nome</th>
                                 <th>Idade</th>
                                 <th>Sexo</th>
@@ -37,7 +36,6 @@
                         <tbody>
                             <?php foreach ($personas as $persona): ?>
                                 <tr class="odd">
-                                    <td><?= $this->Number->format($persona->id) ?></td>	
                                     <td><?= h($persona->nome) ?></td>
                                     <td><?= h($persona->idade) ?></td>
                                     <td><?= h($persona->sexo) ?></td>
@@ -47,7 +45,7 @@
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $persona->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $persona->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a persona # {0}?', $persona->nome)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $persona->id], ['confirm' => __('Você tem certeza que deseja apagar a persona # {0}?', $persona->nome),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

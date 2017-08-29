@@ -26,7 +26,6 @@
                     <table class="table " id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Nome</th>
                                 <th>Criado</th>
                                 <th>Modificado</th>
@@ -36,7 +35,6 @@
                         <tbody>
                             <?php foreach ($groups as $group): ?>
                                 <tr class="odd">
-                                    <td><?= $this->Number->format($group->id) ?></td>	
                                     <td><?= h($group->name) ?></td>
                                     <td><?= h($group->created) ?></td>
                                     <td><?= h($group->modified) ?></td>
@@ -45,7 +43,7 @@
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $group->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $group->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o grupo deusuário # {0}?', $group->name)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $group->id], ['confirm' => __('Você tem certeza que deseja apagar o grupo deusuário # {0}?', $group->name),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

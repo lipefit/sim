@@ -16,7 +16,7 @@ class ProfilesTable extends Table {
         parent::initialize($config);
 
         $this->setTable('profile');
-        $this->setDisplayField('id');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -25,4 +25,5 @@ class ProfilesTable extends Table {
             'foreignKey' => 'user_id'
         ]);
     }
+
 }

@@ -59,13 +59,18 @@ class WordpressController extends AppController {
                 $wpClient = new \HieuLe\WordpressXmlrpcClient\WordpressClient();
 
                 $wpClient->setCredentials($endpoint, $remoteuser, $remotepass);
-                
-//                try {
-//                    $result = $wpClient->getUsers();
-//                } catch (\HieuLe\WordpressXmlrpcClient\Exception\XmlrpcException $ex) {
-//                    $this->Flash->error(__($ex->getMessage()));
-//                    return $this->redirect(['action' => 'index']);
-//                }                
+
+                try {
+                    try {
+                        $result = $wpClient->getUsers();
+                    } catch (\HieuLe\WordpressXmlrpcClient\Exception\NetworkException $ne) {
+                        $this->Flash->error(__("Por favor, tente novamente sem o 'www' no endereço!"));
+                        return $this->redirect(['action' => 'index']);
+                    }
+                } catch (\HieuLe\WordpressXmlrpcClient\Exception\XmlrpcException $ex) {
+                    $this->Flash->error(__($ex->getMessage()));
+                    return $this->redirect(['action' => 'index']);
+                }
 
                 $this->request->data['Wordpress']['cliente_id'] = $this->Cookie->read('cliente_id');
 
@@ -76,7 +81,6 @@ class WordpressController extends AppController {
                     return $this->redirect(['action' => 'index']);
                 }
                 $this->Flash->error(__('Erro na conexão. Por favor, tente novamente'));
-                
             } catch (Exception $e) {
                 if (strpos($e->getMessage(), '404') !== false) {
                     $mensagemErro = 'ERRO: Não foi possivel conectar-se à URL do WordPress remoto!';
@@ -90,7 +94,7 @@ class WordpressController extends AppController {
         $this->set(compact('wp'));
         $this->set('_serialize', ['wp']);
     }
-    
+
     public function delete($id = null) {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
@@ -99,7 +103,7 @@ class WordpressController extends AppController {
         if ($this->Wordpress->delete($wp)) {
             $this->Flash->success('Desconectado com sucesso');
             $this->redirect(array('action' => 'index'));
-        }else{
+        } else {
             $this->Flash->error('Wordpress não pode ser desconectado', 'error_flash');
             $this->redirect(array('action' => 'index'));
         }

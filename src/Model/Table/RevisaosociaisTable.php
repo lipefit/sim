@@ -25,6 +25,18 @@ class RevisaosociaisTable extends Table {
             'foreignKey' => 'social_id'
         ]);
         
+        $this->belongsTo('Personas', [
+            'foreignKey' => 'persona_id'
+        ]);
+
+        $this->belongsTo('Desafios', [
+            'foreignKey' => 'desafio_id'
+        ]);
+        
+        $this->belongsTo('Pautas', [
+            'foreignKey' => 'titulo_id'
+        ]);        
+
         $this->belongsTo('aliasAutor', [
             'foreignKey' => 'autor',
             'className' => 'Profiles'

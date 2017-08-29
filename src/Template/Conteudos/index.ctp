@@ -26,7 +26,6 @@
                     <table class="table " id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Título</th>
                                 <th>Tipo</th>
                                 <th>Status</th>
@@ -36,7 +35,6 @@
                         <tbody>
                             <?php foreach ($conteudos as $conteudo): ?>
                                 <tr class="odd">
-                                    <td><?= $this->Number->format($conteudo->id) ?></td>	
                                     <td><?= h($conteudo->pauta->titulo) ?></td>
                                     <td><?= h($conteudo->pauta->tipo) ?></td>
                                     <td><?= h($conteudo->status) ?></td>
@@ -45,7 +43,7 @@
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Detalhes'), ['action' => 'detalhes', $conteudo->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $conteudo->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o conteudo # {0}?', $conteudo->pauta->titulo)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $conteudo->id], ['confirm' => __('Você tem certeza que deseja apagar o conteudo # {0}?', $conteudo->pauta->titulo),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

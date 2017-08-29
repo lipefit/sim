@@ -134,6 +134,7 @@
         </div>
     </div>
 </div>
+<?= $this->element('Modal/conteudo'); ?>
 <script>
     $('#persona').change(function () {
         $('#desafio').attr("disabled", "disable");

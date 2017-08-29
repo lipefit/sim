@@ -55,11 +55,16 @@ class UsersController extends AppController {
      */
     public function add() {
         $this->loadModel('Profiles');
+        $this->loadModel('Hierarquias');
+        
+        $hierarquias = $this->Hierarquias->find('list');
+        $this->set(compact('hierarquias'));
+        
         $user = $this->Users->newEntity();
         $profile = $this->Profiles->newEntity();
         if ($this->request->is('post')) {
             $this->request->data['Users']['cliente_id'] = $this->Cookie->read('cliente_id');
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $user = $this->Users->patchEntity($user, $this->request->getData(),['associated' => ['Hierarquias']]);
             if ($query = $this->Users->save($user)) {
                 $this->request->data['Profiles']['user_id'] = $query->id;
                 $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
@@ -88,10 +93,14 @@ class UsersController extends AppController {
     public function edit($id = null) {
         $this->loadModel('Profiles');
         $user = $this->Users->get($id, [
-            'contain' => ['Profiles']
+            'contain' => ['Profiles','Hierarquias']
         ]);
+        $this->loadModel('Hierarquias');
+        
+        $hierarquias = $this->Hierarquias->find('list');
+        $this->set(compact('hierarquias'));
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $user = $this->Users->patchEntity($user, $this->request->getData(),['associated' => ['Hierarquias']]);
             if ($query = $this->Users->save($user)) {
 
                 $profile = $this->Profiles->get($this->request->data['Profiles']['id'], [

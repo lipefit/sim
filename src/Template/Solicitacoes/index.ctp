@@ -26,7 +26,6 @@
                     <table class="table" id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Título</th>
                                 <th>Solicitação</th>
                                 <th>Criado em</th> 
@@ -37,7 +36,6 @@
                         <tbody>
                             <?php foreach ($solicitacoes as $solicitacao): ?>
                                 <tr>
-                                    <td><?= $this->Number->format($solicitacao->id) ?></td>
                                     <td><?= h($solicitacao->titulo) ?></td>
                                     <td><?= h($solicitacao->solicitacao) ?></td>
                                     <td><?= h($solicitacao->created) ?></td>
@@ -46,7 +44,7 @@
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $solicitacao->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a solicitação # {0}?', $solicitacao->titulo)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $solicitacao->id], ['confirm' => __('Você tem certeza que deseja apagar a solicitação # {0}?', $solicitacao->titulo),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

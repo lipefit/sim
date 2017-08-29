@@ -36,7 +36,7 @@ class UsersTable extends Table {
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('id');
+        $this->setDisplayField('username');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -50,6 +50,10 @@ class UsersTable extends Table {
         ]);
 
         $this->hasOne("Profiles");
+        
+        $this->belongsToMany('Hierarquias', [
+            'joinTable' => 'user_has_hierarquias',
+        ]);
     }
 
     /**

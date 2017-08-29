@@ -26,7 +26,6 @@
                     <table class="table" id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Título</th>
                                 <th>Anexo</th>
                                 <th>Criado em</th> 
@@ -37,16 +36,15 @@
                         <tbody>
                             <?php foreach ($anexos as $anexo): ?>
                                 <tr>
-                                    <td><?= $this->Number->format($anexo->id) ?></td>
                                     <td><?= h($anexo->titulo) ?></td>
-                                    <td><?php echo "<a href='".WWW_ROOT."files". DS .$anexo->anexo."' target='_blank'>".$anexo->anexo."</a>"; ?></td>
+                                    <td><?php echo "<a href='/files". DS .$anexo->anexo."' target='_blank'>".$anexo->anexo."</a>"; ?></td>
                                     <td><?= h($anexo->created) ?></td>
                                     <td><?= h($anexo->profile->name) ?></td>
                                     <td class="center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $anexo->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o anexo # {0}?', $anexo->titulo)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $anexo->id], ['confirm' => __('Você tem certeza que deseja apagar o anexo # {0}?', $anexo->titulo),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

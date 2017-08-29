@@ -37,7 +37,6 @@
                         <tbody>
                             <?php foreach ($referencias as $referencia): ?>
                                 <tr class="odd">
-                                    <td><?= $this->Number->format($referencia->id) ?></td>	
                                     <td><?= h($referencia->name) ?></td>
                                     <td><?= h($referencia->url) ?></td>
                                     <td><?= h($referencia->created) ?></td>
@@ -47,7 +46,7 @@
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $referencia->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $referencia->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a referência # {0}?', $referencia->name)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $referencia->id], ['confirm' => __('Você tem certeza que deseja apagar a referência # {0}?', $referencia->name),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

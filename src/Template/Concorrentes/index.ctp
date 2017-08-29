@@ -26,7 +26,6 @@
                     <table class="table " id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Concorrente</th>
                                 <th>URL</th>
                                 <th>Produto/Serviço</th>
@@ -39,7 +38,6 @@
                         <tbody>
                             <?php foreach ($concorrentes as $concorrente): ?>
                                 <tr class="odd">
-                                    <td><?= $this->Number->format($concorrente->id) ?></td>	
                                     <td><?= h($concorrente->name) ?></td>
                                     <td><?= h($concorrente->url) ?></td>
                                     <td><?= h($concorrente->produto) ?></td>
@@ -51,7 +49,7 @@
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Editar'), ['action' => 'edit', $concorrente->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $concorrente->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o concorrente # {0}?', $concorrente->name)]) ?>  	
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $concorrente->id], ['confirm' => __('Você tem certeza que deseja apagar o concorrente # {0}?', $concorrente->name),'class' => 'dropdown-item']) ?>  	
                                             </div>
                                         </div>
                                     </td>

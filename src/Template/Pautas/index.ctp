@@ -26,7 +26,6 @@
                     <table class="table " id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Título</th>
                                 <th>Tipo</th>
                                 <th>Recebido em</th>
@@ -38,7 +37,6 @@
                         <tbody>
                             <?php foreach ($pautas as $pauta): ?>
                                 <tr class="odd">
-                                    <td><?= $this->Number->format($pauta->id) ?></td>	
                                     <td><?= h($pauta->titulo) ?></td>
                                     <td><?= h($pauta->tipo) ?></td>
                                     <td><?= h($pauta->recebido) ?></td>
@@ -50,7 +48,7 @@
                                             <div class="dropdown-menu"> 
                                                 <?= $this->Html->link(__('Detalhes'), ['action' => 'detalhes', $pauta->id], ['class' => 'dropdown-item']) ?>
                                                 <?= $this->Html->link(__('Duplicar'), ['action' => 'duplicar', $pauta->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $pauta->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar a pauta # {0}?', $pauta->titulo)]) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $pauta->id], ['confirm' => __('Você tem certeza que deseja apagar a pauta # {0}?', $pauta->titulo),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>

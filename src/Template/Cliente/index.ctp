@@ -26,7 +26,6 @@
                     <table class="table" id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Nome Fantasia</th>
                                 <th>Site</th>
                                 <th>CPF / CNPJ</th> 
@@ -38,7 +37,6 @@
                         <tbody>
                             <?php foreach ($clientes as $cliente): ?>
                                 <tr>
-                                    <td><?= $this->Number->format($cliente->id) ?></td>	
                                     <td><?= h($cliente->nomeFantasia) ?></td>
                                     <td><?= h($cliente->site) ?></td>
                                     <td><?= h($cliente->cpfCnpj) ?></td>

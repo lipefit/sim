@@ -307,3 +307,66 @@ Stack Trace:
 #1 {main}
 
 
+2017-08-24 19:33:29 Error: [PDOException] SQLSTATE[HY000] [2002] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+ in C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php on line 47
+Stack Trace:
+#0 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php(47): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(104): Cake\Database\Driver\Mysql->_connect('mysql:host=loca...', Array)
+#2 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Dialect\MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Connection.php(365): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\ORM\Table.php(530): Cake\Database\Connection->getSchemaCollection()
+#8 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\ORM\Table.php(588): Cake\ORM\Table->getSchema()
+#9 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Shell\AclExtrasShell.php(65): Cake\ORM\Table->schema()
+#10 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\Shell.php(456): Acl\Shell\AclExtrasShell->startup()
+#11 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 C:\Users\Felipe\Documents\Projetos\sim\bin\cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2017-08-24 19:33:44 Error: [PDOException] SQLSTATE[HY000] [2002] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+ in C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php on line 47
+Stack Trace:
+#0 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php(47): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(104): Cake\Database\Driver\Mysql->_connect('mysql:host=loca...', Array)
+#2 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Dialect\MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Connection.php(365): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\ORM\Table.php(530): Cake\Database\Connection->getSchemaCollection()
+#8 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\ORM\Table.php(588): Cake\ORM\Table->getSchema()
+#9 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Shell\AclExtrasShell.php(65): Cake\ORM\Table->schema()
+#10 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\Shell.php(456): Acl\Shell\AclExtrasShell->startup()
+#11 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 C:\Users\Felipe\Documents\Projetos\sim\bin\cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2017-08-28 12:36:47 Error: [PDOException] SQLSTATE[HY000] [2002] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+ in C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php on line 47
+Stack Trace:
+#0 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php(47): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(104): Cake\Database\Driver\Mysql->_connect('mysql:host=loca...', Array)
+#2 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Dialect\MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Database\Connection.php(365): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\ORM\Table.php(530): Cake\Database\Connection->getSchemaCollection()
+#8 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\ORM\Table.php(588): Cake\ORM\Table->getSchema()
+#9 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Shell\AclExtrasShell.php(65): Cake\ORM\Table->schema()
+#10 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\Shell.php(456): Acl\Shell\AclExtrasShell->startup()
+#11 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 C:\Users\Felipe\Documents\Projetos\sim\bin\cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+

@@ -16,7 +16,7 @@ class PersonapublicosTable extends Table {
         parent::initialize($config);
 
         $this->setTable('personapublico');
-        $this->setDisplayField('id');
+        $this->setDisplayField('nome');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

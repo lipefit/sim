@@ -29,6 +29,9 @@ $cakeDescription = 'Simarketing';
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+        <!-- Full calendar css -->
+        <?= $this->Html->css('/js/fullcalendar/fullcalendar.css') ?>
+
         <!-- Fontawesome icon CSS -->
         <?= $this->Html->css('/js/font-awesome-4.7.0/css/font-awesome.min.css') ?>
 
@@ -40,10 +43,11 @@ $cakeDescription = 'Simarketing';
         <?= $this->Html->css('/js/datatables/css/responsive.dataTables.min.css') ?>
 
         <!-- jvectormap CSS -->
-        <?= $this->Html->css('/js/jquery-jvectormap/jquery-jvectormap-2.0.3.css') ?>
+        <?= $this->Html->css('/js/jquery-jvectormap/jquery-jvectormap-2.0.3.css') ?> 
 
         <!-- Adminux CSS -->
         <?= $this->Html->css('dark_blue_adminux.css') ?>
+        <?= $this->Html->css('chosen.css') ?>
         <?= $this->Html->css('/js/morrisjs/morris.css') ?>
 
         <?= $this->fetch('meta') ?>
@@ -86,6 +90,14 @@ $cakeDescription = 'Simarketing';
 
         <!-- Masked Input -->
         <?= $this->Html->script('masked.js') ?>
+        
+        <!-- Chosen -->
+        <?= $this->Html->script('/js/chosen.js'); ?>
+
+        <!-- Full calander js --> 
+        <?= $this->Html->script('/js/fullcalendar/lib/moment.min.js') ?>
+        <?= $this->Html->script('/js/fullcalendar/fullcalendar.min.js') ?>
+        <?= $this->Html->script('/js/fullcalendar/locale-all.js'); ?>
 
         <!-- custome template js -->
         <?= $this->Html->script('adminux.js') ?>
@@ -97,14 +109,6 @@ $cakeDescription = 'Simarketing';
         <?= $this->Html->script('/js/cicular_progress/circle-progress.min.js') ?>
         <?= $this->Html->script('/js/raphael/raphael.min.js') ?>
         <?= $this->Html->script('/js/morrisjs/morris.min.js') ?>
-
-        <!-- Flot Charts JavaScript --> 
-        <?= $this->Html->script('/js/flot/excanvas.min.js') ?>
-        <?= $this->Html->script('/js/flot/jquery.flot.js') ?>
-        <?= $this->Html->script('/js/flot/jquery.flot.pie.js') ?>
-        <?= $this->Html->script('/js/flot/jquery.flot.resize.js') ?>
-        <?= $this->Html->script('/js/flot/jquery.flot.time.js') ?>
-        <?= $this->Html->script('/js/flot-tooltip/jquery.flot.tooltip.min.js') ?>
 
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
@@ -122,9 +126,6 @@ $cakeDescription = 'Simarketing';
             <?= $this->fetch('content'); ?> 
             <?= $this->element('Footer/footer'); ?>
         </div>
-
-        <?= $this->element('Modal/pauta'); ?>
-        <?= $this->element('Modal/conteudo'); ?>
     </body>
     <script>
         "use strict";
@@ -145,6 +146,7 @@ $cakeDescription = 'Simarketing';
 
             $(".datepicker").datepicker();
             $(".hora").mask("99:99");
+            $(".chosen-select").chosen({disable_search_threshold: 10});
 
             tinymce.init({
                 selector: '.tinymce',

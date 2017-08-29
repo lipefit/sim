@@ -166,11 +166,35 @@ class ChecklistsController extends AppController {
         $perguntas = $this->Perguntas->find('all', [
             'conditions' => [
                 'Perguntas.checklist_id' => $id
-            ]
+            ],
+            'group' => ['categoria'],
         ]);
 
         $this->set(compact('perguntas'));
         $this->set('_serialize', ['perguntas']);
+    }
+
+    public function salvarRespostas() {
+        $this->loadModel('Respostas');
+        
+        
+        
+        if ($this->request->is('post')) {
+            $cont = count($this->request->data['pergunta']);
+            for ($x = 0; $x < $cont; $x++) {
+                $resposta = $this->Respostas->newEntity();
+                $resposta->resposta = $this->request->data['pergunta'][$x];
+                $resposta->pergunta_id = $this->request->data['idPergunta'][$x];
+//                $resposta = $this->Respostas->patchEntity($resposta, $this->request->getData());
+                if(!$this->Respostas->save($resposta)){
+                    $this->Flash->error(__('Erro ao responder checklist, favor tentar novamente.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+            }
+            $this->Flash->success(__('O checklist foi respondido com sucesso.'));
+
+            return $this->redirect(['action' => 'index']);
+        }
     }
 
 }

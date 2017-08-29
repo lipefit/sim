@@ -26,7 +26,6 @@
                     <table class="table" id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Data de Criação</th> 
@@ -36,7 +35,6 @@
                         <tbody>
                             <?php foreach ($checklists as $checklist): ?>
                                 <tr>
-                                    <td><?= $this->Number->format($checklist->id) ?></td>
                                     <td><?= h($checklist->nome) ?></td>
                                     <td><?= h($checklist->descricao) ?></td>
                                     <td><?= h($checklist->created) ?></td>
@@ -47,7 +45,7 @@
                                                 <?= $this->Html->link(__('Responder'), ['action' => 'responder', $checklist->id], ['class' => 'dropdown-item']) ?>
                                                 <?php if ($checklist->id != 8) { ?>                                        
                                                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $checklist->id], ['class' => 'dropdown-item']) ?>
-                                                    <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $checklist->id], ['class' => 'dropdown-item'], ['confirm' => __('Você tem certeza que deseja apagar o check list # {0}?', $checklist->nome)]) ?>
+                                                    <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $checklist->id], ['confirm' => __('Você tem certeza que deseja apagar o check list # {0}?', $checklist->nome),'class' => 'dropdown-item']) ?>
                                                 <?php } ?>  	
                                             </div>
                                         </div>

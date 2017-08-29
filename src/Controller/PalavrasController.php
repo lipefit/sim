@@ -41,7 +41,7 @@ class PalavrasController extends AppController {
      */
     public function add() {
         $this->loadModel('Pautas');
-        $this->loadModel('Personas');
+        $this->loadModel('Personapublicos');
         $palavra = $this->Palavras->newEntity();
         if ($this->request->is('post')) {
             $this->request->data['Palavras']['cliente_id'] = $this->Cookie->read('cliente_id');
@@ -53,9 +53,9 @@ class PalavrasController extends AppController {
             }
             $this->Flash->error(__('A palavra não pode ser salva. Por favor, tente novamente'));
         }
-        $personas = $this->Personas->find('list', [
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
         
@@ -75,7 +75,7 @@ class PalavrasController extends AppController {
      */
     public function edit($id = null) {
         $this->loadModel('Pautas');
-        $this->loadModel('Personas');
+        $this->loadModel('Personapublicos');
         $palavra = $this->Palavras->get($id, [
             'contain' => []
         ]);
@@ -89,9 +89,9 @@ class PalavrasController extends AppController {
             $this->Flash->error(__('A palavra não foi salva. Por favor, tente novamente.'));
         }
         
-        $personas = $this->Personas->find('list', [
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
         $jornadas = $this->Pautas->getJornadas();
