@@ -2,7 +2,7 @@
     <div class="user-menu-items">
         <div class="list-unstyled btn-group">
             <button class="media btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                <span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="<?= $profile['name'] . " " . $profile['surname']; ?>"></span> 
+                <!--<span class="message_userpic"><img class="d-flex" src="../img/user-header.png" alt="<?= $profile['name'] . " " . $profile['surname']; ?>"></span>--> 
                 <span class="media-body"> <span class="mt-0 mb-1"><?= $profile['name'] . " " . $profile['surname']; ?></span> <small><?= $authUser['username']; ?> </small> </span> 
             </button>
             <div class="dropdown-menu"> 
@@ -23,14 +23,14 @@
                     ?>
                     <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'cliente'; ?>"><i class="fa fa-building"></i> Clientes</a></li>
                 <?php } ?>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-list"></i> Planos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-money"></i> Financeiro</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-check"></i> Aprovações</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-unlock"></i> Permissões de Acesso</a></li>
+<!--                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-list"></i> Planos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-money"></i> Financeiro</a></li>-->
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'aprovacoes'; ?>"><i class="fa fa-check"></i> Aprovações</a></li>
+                <!--<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-unlock"></i> Permissões de Acesso</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'sincronizacao'; ?>"><i class="fa fa-chain"></i> Conectar Midias</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'wordpress'; ?>"><i class="fa fa-wordpress"></i> Sincronizar Wordpress</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-google-plus"></i> Google Analytics</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-bell"></i> Lembretes</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'google'; ?>"><i class="fa fa-google"></i> Google Analytics</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope"></i> Notificações</a></li>
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Contrato<i class="fa fa-angle-down "></i></a>
@@ -63,7 +63,7 @@
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Estratégia<i class="fa fa-angle-down "></i></a>
             <ul class="nav flex-column nav-second-level ">
-
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'projetos'; ?>"><i class="fa fa-tasks"></i> Projetos</a></li>
             </ul>
         </li>
         <li class="nav-item "> <a href="javascript:void(0)" class="menudropdown nav-link">Execução<i class="fa fa-angle-down "></i></a>
@@ -78,6 +78,7 @@
             <ul class="nav flex-column nav-second-level ">
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendario'; ?>"><i class="fa fa-calendar"></i> Calendário editorial</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendariototal'; ?>"><i class="fa fa-calendar"></i> Calendário total</a></li>
+                <!--<li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendarioprojetos'; ?>"><i class="fa fa-calendar"></i> Calendário de projetos</a></li>-->
             </ul>
         </li>
         <li class="nav-item"> <a href="<?= $this->request->webroot . 'solicitacoes'; ?>" class="nav-link"><i class="fa fa-plus"></i>Solicitações</a></li>
