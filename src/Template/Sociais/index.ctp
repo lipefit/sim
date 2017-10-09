@@ -36,7 +36,7 @@
                         <tbody>
                             <?php foreach ($sociais as $social): ?>
                                 <tr class="odd">
-                                    <td><?= h($social->pauta->titulo) ?></td>
+                                    <td><?= h(@$social->pauta->titulo) ?></td>
                                     <td><?= h($social->recebido) ?></td>
                                     <td><?= h($social->aprovado) ?></td>
                                     <td><?= h($social->sociai->status) ?></td>

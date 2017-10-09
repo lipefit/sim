@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row  align-items-center justify-content-between">
         <div class="col-11 col-sm-12 page-title">
-            <h3><i class="fa fa-photo"></i> <?= __('Identidade visual') ?></h3>
+            <h3><i class="fa fa-tasks"></i> <?= __('Funil de vendas') ?></h3>
         </div>
         <div class="col text-right ">
             <div class="btn-group pull-right">
@@ -20,87 +20,68 @@
         <div class="col-sm-16 col-md-16">
             <div class="card">
                 <div class="card-header">
-                    <h6 class="card-title"><?= __('Editar identidade') ?></h6>
+                    <h6 class="card-title"><?= __('Funil de vendas') ?></h6>
                 </div>
                 <div class="card-block">
-                    <?= $this->Form->create($identidade, ['type' => 'file']) ?>
+                    <?= $this->Form->create("", ['url' => ['action' => 'index', 'controller' => 'funil']]) ?>
                     <div class="row">
-                        <div class="col-lg-8 col-md-8">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label for="nome">Nome do arquivo </label>
-                                <?= $this->Form->control('nome', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nome do Arquivo']); ?>
+                                <label for="persona">Persona </label>
+                                <?= $this->Form->control('persona', ['label' => false, 'class' => 'form-control', 'options' => $personas]); ?>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-8">
+                        <div class="col-lg-5 col-md-5">
                             <div class="form-group">
-                                <label for="tipografia">Tipografia</label>
-                                <?= $this->Form->control('tipografia', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Tipografia', 'type' => 'text']); ?>
+                                <label for="desafio">Desafio </label>
+                                <?= $this->Form->control('desafio', ['label' => false, 'class' => 'form-control', 'disabled' => true, 'type' => 'select', 'style' => 'background-color:transparent;']); ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label for="jornada">Jornada </label>
+                                <?= $this->Form->control('jornada', ['label' => false, 'class' => 'form-control', 'options' => $jornadas]); ?>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <div class="form-group">
-                                <label for="estilo">Estilo </label>
-                                <?= $this->Form->control('estilo', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Estilo', 'type' => 'text']); ?>
+                                <label for="dataPublicacao">Data de publicação inicial </label>
+                                <?= $this->Form->control('dataInicial', ['label' => false, 'class' => 'datepicker form-control', 'data-date-format' => "dd/mm/yyyy"]); ?>
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8">
                             <div class="form-group">
-                                <label for="formas">Formas</label>
-                                <?= $this->Form->control('formas', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Formas', 'type' => 'text']); ?>
+                                <label for="dataPublicacao">Data de publicação final </label>
+                                <?= $this->Form->control('dataFinal', ['label' => false, 'class' => 'datepicker form-control', 'data-date-format' => "dd/mm/yyyy"]); ?>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="restricoes">Restrições </label>
-                                <?= $this->Form->control('restricoes', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Restrições', 'type' => 'text']); ?>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="arquivo">Arquivo </label>
-                                <?= $this->Form->control('file', ['label' => false, 'class' => 'form-control', 'type' => 'file']); ?>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-8"></div>
-                        <div class="col-lg-8 col-md-8" style="text-align: right;">
-                            <?php
-                            if ($identidade['arquivo'] != "") {
-                                echo $this->Html->link(__('Baixar Arquivo!'), DS . 'files' . DS . $identidade['arquivo'], ['class' => 'btn btn-info', 'target' => '_blank']);
-                            }
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="fontes">Fontes </label>
-                                <?= $this->Form->control('fontes', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Fontes', 'type' => 'text']); ?>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="cor">Cor </label>
-                                <?= $this->Form->control('cor', ['label' => false, 'class' => 'form-control', 'type' => 'color']); ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <div class="form-group">
-                                <label for="descricao">Descrição </label>
-                                <?= $this->Form->control('descricao', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Descrições']); ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
+                    <center><?= $this->Form->button(__('Gerar funil'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(function () {
+        $('#persona').change(function () {
+            $('#desafio').attr("disabled", "disable");
+
+            $('#desafio').find('option').remove().end().append('<option>Carregando...</option>');
+
+            var PersonaId = $("#persona option:selected").val();
+
+            $.get('funil/selecionaDesafio?id=' + PersonaId, function (data) {
+                $('#desafio').removeAttr('disabled');
+                $('#desafio').find('option').remove().end().append('<option value="">---</option>');
+
+                for (var i = 0; i < data.length; i++) {
+                    $('#desafio').append('<option value="' + data[i].id + '">' + data[i].desafio + '</option>')
+                }
+            });
+        });
+    });
+</script>

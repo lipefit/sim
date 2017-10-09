@@ -4,7 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class AccessTable extends Table {
+class AnalyticssourceTable extends Table {
 
     /**
      * Initialize method
@@ -15,14 +15,14 @@ class AccessTable extends Table {
     public function initialize(array $config) {
         parent::initialize($config);
 
-        $this->setTable('access_token');
+        $this->setTable('analyticssource');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'users_id'
+        $this->belongsTo('Clientes', [
+            'foreignKey' => 'cliente_id'
         ]);
 
     }

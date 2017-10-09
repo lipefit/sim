@@ -7,7 +7,7 @@
 <div class="container mb-4">
     <div class="row  align-items-center justify-content-between">
         <div class="col-11 col-sm-12 page-title">
-            <h3><i class="fa fa-calendar"></i> <?= __('Calendário total') ?></h3>
+            <h3><i class="fa fa-calendar"></i> <?= __('Calendário global') ?></h3>
         </div>
         <div class="col text-right ">
             <div class="btn-group pull-right">
@@ -20,7 +20,7 @@
         <div class="col-sm-16">
             <div class="card">
                 <div class="card-header">
-                    <h6 class="card-title"><?= __('Calendário total') ?></h6>
+                    <h6 class="card-title"><?= __('Calendário global') ?></h6>
                 </div>
                 <div class="card-block">
                     <div class="row">
@@ -73,17 +73,44 @@
                                     $class = "label-info";
                                 endif; ?>
                                 {
-                                    title: '<?=$title;?>',
+                                    title: 'Blog / <?=$title;?>',
                                     start: '<?=$data;?>',
                                     className: '<?=$class;?>',
                                     url: 'conteudos/detalhes/<?=$conteudo->id;?>',
-                                    icon: 'pencil',
+//                                    icon: 'pencil',
                                     description: '<?=$conteudo->pauta->titulo;?>',
                                 },
                             <?php endif;
                         endforeach;
                     endif; ?>
                     
+                <?php if(@$sociais):
+                        foreach ($sociais as $social):
+                            if($social->dataPublicacao != ""):
+                                $title = $social->sociai->status;
+                                $data = $social->dataPublicacao->format('Y-m-d');
+                                if($social->sociai->status == "Rascunho"):
+                                    $class = "label-default";
+                                elseif($social->sociai->status == "Revisão"):
+                                    $class = "label-warning"; 
+                                elseif($social->sociai->status == "Aprovação"):
+                                    $class = "label-primary";
+                                elseif($social->sociai->status == "Publicação agendada"):
+                                    $class = "label-success";
+                                elseif($social->sociai->status == "Publicado"):
+                                    $class = "label-info";
+                                endif; ?>
+                                {
+                                    title: 'Social / <?=$title;?>',
+                                    start: '<?=$data;?>',
+                                    className: '<?=$class;?>',
+                                    url: 'sociais/detalhes/<?=$social->sociai->id;?>',
+//                                    icon: 'pencil',
+                                    description: '<?=@$social->pauta->titulo;?>',
+                                },
+                            <?php endif;
+                        endforeach;
+                    endif; ?>    
 
             ],
             eventRender: function(event, element) {

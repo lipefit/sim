@@ -99,7 +99,7 @@ class AppController extends Controller {
             ]
         ]);
 
-        $this->Auth->allow("ativar", "salvarSenha", "salvar-senha");
+        $this->Auth->allow("ativar", "salvarSenha", "salvar-senha", "sincronizar-analytics", "sincronizarAnalytics", "getBounce", "get-bounce");
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Cookie');

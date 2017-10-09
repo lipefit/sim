@@ -40,7 +40,7 @@ class CalendariototalController extends AppController {
         $arrConditionClientes2 = array();
         foreach ($clientes as $k => $cliente) {
             $arrConditionClientes[]['Conteudos.cliente_id'] = $k;
-            $arrConditionClientes2[]['Revisaosociais.cliente_id'] = $k;
+            $arrConditionClientes2[]['Sociais.cliente_id'] = $k;
         }
 
         $conteudos = $this->Conteudos->find('all', [
@@ -55,7 +55,7 @@ class CalendariototalController extends AppController {
                 'OR' => $arrConditionClientes2
             ],
             'group' => ['social_id'],
-            'contain' => ['Sociais']
+            'contain' => ['Pautas','Sociais']
         ]);
         $this->set(compact("sociais"));
         $this->set(compact("conteudos"));

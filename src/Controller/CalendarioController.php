@@ -36,10 +36,10 @@ class CalendarioController extends AppController {
         
         $sociais = $this->Revisaosociais->find('all', [
             'conditions' => [
-                'Revisaosociais.cliente_id' => $idCliente
+                'Sociais.cliente_id' => $idCliente
             ],
             'group' => ['social_id'],
-            'contain' => ['Sociais']
+            'contain' => ['Pautas','Sociais']
         ]);
         $this->set(compact("sociais"));       
         $this->set(compact("conteudos"));       

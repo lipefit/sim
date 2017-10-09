@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-class Access extends Entity {
+class Analyticsdaily extends Entity {
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

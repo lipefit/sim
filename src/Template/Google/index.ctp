@@ -35,8 +35,8 @@
                     $client->setAccessType("offline"); //habilita o modo Offline da API
                     $client->setApprovalPrompt("force"); //forçar o prompt de aprovação
                     // Se o usuario ja autorizou entao pegue o access token
-                    if (@$google['Google']['token'] != null) {
-                        $client->setAccessToken($google['Google']['token']);
+                    if (@$google->token != null) {
+                        $client->setAccessToken($google->token);
 
                         $analytics = new Google_Service_Analytics($client);
 
@@ -45,13 +45,14 @@
                         echo "<div class='row'>";
                         echo "<div class='col-lg-16 col-md-16'>";
                         echo "<label for = 'SincronizacaoPagina'>Escolha um Site entre os sites encontrados na sua conta do Google</label>";
-                        echo showSitesList($analytics, @$google['Google']['site']);
-                        echo "<input type='hidden' value='" . $_COOKIE['access_token'] . "' name='token'>";
+                        echo showSitesList($analytics, @$google->site);
+                        echo "<input type='hidden' value='" . @$google->token . "' name='token'>";
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
-                    } elseif ($_COOKIE['access_token'] != null) {
+                        echo "<br/><center>".$this->Form->button(__('Salvar'), ['class' => 'btn btn-primary'])." ".$this->Form->postLink('Desconectar', array('action' => 'delete', $google->id), array('class' => 'btn btn-danger btn-large', 'inline' => false, 'confirm' => 'Tem certeza que deseja desconectar?'))."</center>";
+                    } elseif (@$_COOKIE['access_token'] != null) {
                         // Configura o access token no cliente, dando preferencia para informaçao salva no banco de dados
                         // Caso nao exista, utiliza a sessao
 
@@ -72,29 +73,27 @@
 
                         $analytics = new Google_Service_Analytics($client);
 
-                        //$json = json_decode($cookieHelper->read('access_token'));
-
                         echo "<div class='row'>";
                         echo "<div class='col-lg-16 col-md-16'>";
                         echo "<div class='row'>";
                         echo "<div class='col-lg-16 col-md-16'>";
                         echo "<label for = 'SincronizacaoPagina'>Escolha um Site entre os sites encontrados na sua conta do Google</label>";
-                        echo showSitesList($analytics, @$google['Google']['site']);
+                        echo showSitesList($analytics, @$google->site);
                         echo "<input type='hidden' value='" . $_COOKIE['access_token'] . "' name='token'>";
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
-                        //                    echo "<br>";
-                        //                    getPages($analytics, @$google['Google']['site']);
+                        echo "<center>".$this->Form->button(__('Salvar'), ['class' => 'btn btn-primary'])."</center>";
                     } else {
                         $redirect_uri = 'http://simarketing.provisorio.ws/google/oauth2callback'; //Presente também em oauth2callback.php
-                        echo '<script>window.location = "' . $redirect_uri . '";</script>';
+                        echo "<p>Nenhum site conectado, deseja conectar agora?</p>";
+                        echo "<p><a href='" . $redirect_uri . "' class='btn btn-success'>Conectar</a></p>";
                     }
                     ?>
                 </div>
 
-                <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
+                
                 <?= $this->Form->end() ?>
             </div>
         </div>

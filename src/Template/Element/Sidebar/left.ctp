@@ -76,6 +76,9 @@
             <ul class="nav flex-column nav-second-level ">
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendario'; ?>"><i class="fa fa-calendar"></i> Calendário editorial</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendariototal'; ?>"><i class="fa fa-calendar"></i> Calendário global</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'midias/relatorio'; ?>"><i class="fa fa-tasks"></i> Relatório de mídias</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'conteudos/relatorio'; ?>"><i class="fa fa-tasks"></i> Relatório de conteúdos</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'funil'; ?>"><i class="fa fa-tasks"></i> Funil de vendas</a></li>
                 <!--<li class="nav-item"><a class="nav-link" href="<?= $this->request->webroot . 'calendarioprojetos'; ?>"><i class="fa fa-calendar"></i> Calendário de projetos</a></li>-->
             </ul>
         </li>

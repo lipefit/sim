@@ -95,6 +95,8 @@ class TaticasController extends AppController {
      */
     public function edit($id = null) {
         $this->loadModel('Personas');
+        $this->loadModel('Curadorias');
+        $this->loadModel('Toms');
         $tatica = $this->Taticas->get($id, [
             'contain' => []
         ]);
