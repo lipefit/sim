@@ -25,11 +25,11 @@ class PautasTable extends Table {
             'foreignKey' => 'cliente_id'
         ]);
 
-        $this->belongsTo('Personas', [
+        $this->belongsTo('Personapublicos', [
             'foreignKey' => 'persona_id'
         ]);
 
-        $this->belongsTo('Desafios', [
+        $this->belongsTo('Desafiospublicos', [
             'foreignKey' => 'desafio_id'
         ]);
 

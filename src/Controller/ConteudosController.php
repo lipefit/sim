@@ -44,8 +44,8 @@ class ConteudosController extends AppController {
     public function add($idPauta) {
         $this->loadModel('Pautas');
         $this->loadModel('Wordpress');
-        $this->loadModel('Personas');
-        $this->loadModel('Desafios');
+        $this->loadModel('Personapublicos');
+        $this->loadModel('Desafiospublicos');
         $this->loadModel('Palavras');
         $this->loadModel('Profiles');
         $this->loadModel('Diagnosticos');
@@ -109,9 +109,9 @@ class ConteudosController extends AppController {
             }
         }
 
-        $personas = $this->Personas->find('list', [
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
 
@@ -121,9 +121,9 @@ class ConteudosController extends AppController {
             ]
         ]);
 
-        $desafios = $this->Desafios->find('list', array(
+        $desafios = $this->Desafiospublicos->find('list', array(
             'conditions' => array(
-                'Desafios.persona_id' => $pauta['persona_id']
+                'Desafiospublicos.personapublico_id' => $pauta['persona_id']
             )
         ));
 
@@ -184,8 +184,8 @@ class ConteudosController extends AppController {
     public function detalhes($id = null, $cliente_id = null) {
         $this->loadModel('Pautas');
         $this->loadModel('Wordpress');
-        $this->loadModel('Personas');
-        $this->loadModel('Desafios');
+        $this->loadModel('Personapublicos');
+        $this->loadModel('Desafiospublicos');
         $this->loadModel('Palavras');
         $this->loadModel('Profiles');
         $this->loadModel('Diagnosticos');
@@ -207,7 +207,7 @@ class ConteudosController extends AppController {
             'conditions' => [
                 'Pautas.id' => $conteudo['pauta_id']
             ],
-            'contain' => ['Desafios', 'Personas']
+            'contain' => ['Desafiospublicos', 'Personapublicos']
         ]);
         $pauta = $pautas->first();
 
@@ -242,8 +242,8 @@ class ConteudosController extends AppController {
     public function edit($id = null) {
         $this->loadModel('Pautas');
         $this->loadModel('Wordpress');
-        $this->loadModel('Personas');
-        $this->loadModel('Desafios');
+        $this->loadModel('Personapublicos');
+        $this->loadModel('Desafiospublicos');
         $this->loadModel('Palavras');
         $this->loadModel('Profiles');
         $this->loadModel('Diagnosticos');
@@ -265,7 +265,7 @@ class ConteudosController extends AppController {
             'conditions' => [
                 'Pautas.id' => $conteudo['pauta_id']
             ],
-            'contain' => ['Desafios', 'Personas']
+            'contain' => ['Desafiospublicos', 'Personapublicos']
         ]);
         $pauta = $pautas->first();
 
@@ -277,9 +277,9 @@ class ConteudosController extends AppController {
         ]);
         $revisao = $revisaos->last();
         
-        $personas = $this->Personas->find('list', [
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
 
@@ -289,9 +289,9 @@ class ConteudosController extends AppController {
             ]
         ]);
 
-        $desafios = $this->Desafios->find('list', array(
+        $desafios = $this->Desafiospublicos->find('list', array(
             'conditions' => array(
-                'Desafios.persona_id' => $pauta['persona_id']
+                'Desafiospublicos.personapublico_id' => $pauta['persona_id']
             )
         ));
 
@@ -333,15 +333,17 @@ class ConteudosController extends AppController {
             $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
             if ($this->Pautas->save($pauta)) {
                 
-                $idConteudo = $query->id;
+                $this->request->data['Conteudos']['status'] = 'Rascunho';
+                $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
+                $this->Conteudos->save($conteudo);
 
-                $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
-                $this->Pautas->save($pauta);
+//                $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
+//                $this->Pautas->save($pauta);
 
                 $rs = $this->Revisaos->newEntity();
                 $this->request->data['Revisaos']['autor'] = $profile['id'];
                 $this->request->data['Revisaos']['revisao'] = $revisao['revisao'] + 1;
-                $this->request->data['Revisaos']['conteudo_id'] = $idConteudo;
+                $this->request->data['Revisaos']['conteudo_id'] = $id;
                 $rs = $this->Revisaos->patchEntity($rs, $this->request->getData());
                 $this->Revisaos->save($rs);
                 
@@ -387,7 +389,7 @@ class ConteudosController extends AppController {
             'contain' => []
         ]);
         
-        $this->request->data['Revisaos']['recebido'] = date("Y-m-d H:i:s");
+        $this->request->data['Revisaos']['recebido'] = date("d/m/Y");
         $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
         if ($this->Revisaos->save($revisao)) {
             $this->request->data['Conteudos']['status'] = 'Revisão';
@@ -425,7 +427,7 @@ class ConteudosController extends AppController {
         
         $this->request->data['Conteudos']['status'] = 'Aprovação';
         $this->request->data['Revisaos']['revisor'] = $profile['id'];
-        $this->request->data['Revisaos']['revisado'] = date("Y-m-d H:i:s");
+        $this->request->data['Revisaos']['revisado'] = date("d/m/Y");
         $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
         if ($this->Revisaos->save($revisao)) {
             $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
@@ -462,7 +464,7 @@ class ConteudosController extends AppController {
         
         $this->request->data['Conteudos']['status'] = 'Rascunho';
         $this->request->data['Revisaos']['revisor'] = $profile['id'];
-        $this->request->data['Revisaos']['revisado'] = date("Y-m-d H:i:s");
+        $this->request->data['Revisaos']['revisado'] = date("d/m/Y");
         $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
         if ($this->Revisaos->save($revisao)) {
             $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
@@ -499,7 +501,7 @@ class ConteudosController extends AppController {
             
         $this->request->data['Conteudos']['status'] = 'Publicação agendada';
         $this->request->data['Revisaos']['aprovador'] = $profile['id'];
-        $this->request->data['Revisaos']['aprovado'] = date("Y-m-d H:i:s");
+        $this->request->data['Revisaos']['aprovado'] = date("d/m/Y");
         $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
         if ($this->Revisaos->save($revisao)) {
             $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
@@ -536,7 +538,7 @@ class ConteudosController extends AppController {
             
         $this->request->data['Conteudos']['status'] = 'Rascunho';
         $this->request->data['Revisaos']['aprovador'] = $profile['id'];
-        $this->request->data['Revisaos']['aprovado'] = date("Y-m-d H:i:s");
+        $this->request->data['Revisaos']['aprovado'] = date("d/m/Y");
         $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
         if ($this->Revisaos->save($revisao)) {
             $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
@@ -578,9 +580,9 @@ class ConteudosController extends AppController {
         $this->loadModel('Desafios');
         $this->autoRender = false;
         if ($this->request->is('ajax')) {
-            $desafios = $this->Desafios->find('all', array(
+            $desafios = $this->Desafiospublicos->find('all', array(
                 'conditions' => array(
-                    'Desafios.persona_id' => $this->request->query['id']
+                    'Desafiospublicos.personapublico_id' => $this->request->query['id']
                 )
             ));
         }

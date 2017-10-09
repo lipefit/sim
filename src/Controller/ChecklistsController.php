@@ -51,7 +51,7 @@ class ChecklistsController extends AppController {
                 ]
             ]);
             $cliente = $clientes->first();
-            $this->request->data['Checklists']['cliente_id'] = $cliente['cliente_id'];
+            $this->request->data['Checklists']['cliente_id'] = $this->Cookie->read('cliente_id');
             $this->request->data['Premissas']['created'] = date("Y-m-d");
             $checklist = $this->Checklists->patchEntity($checklist, $this->request->getData());
             if ($query = $this->Checklists->save($checklist)) {

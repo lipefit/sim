@@ -35,7 +35,7 @@ class IdentidadesController extends AppController {
         if ($identidade == null) {
             $identidade = $this->Identidades->newEntity();
         }
-        if ($this->request->is('post')) {
+        if ($this->request->is(['patch', 'post', 'put'])) {
             $this->request->data['Identidades']['cliente_id'] = $this->Cookie->read('cliente_id');
 
             $file = $this->request->data['file'];
@@ -49,8 +49,10 @@ class IdentidadesController extends AppController {
                 $this->Flash->success(__('Identidade visual atualizada com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
+            }else{
+                $this->Flash->error(__('A identidade visual não foi atualizada. Por favor, tente novamente'));
+                return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('A identidade visual não foi atualizada. Por favor, tente novamente'));
         }
 
         $this->set(compact('identidade'));

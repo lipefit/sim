@@ -39,7 +39,7 @@ class AprovacoesController extends AppController {
             $aprovacao = $this->Aprovacoes->newEntity();
         }
         
-        if ($this->request->is('post')) {
+        if ($this->request->is(['patch', 'post', 'put'])) {
             $this->request->data['Aprovacoes']['cliente_id'] = $idCliente;
             $aprovacao = $this->Aprovacoes->patchEntity($aprovacao, $this->request->getData());
             if ($query = $this->Aprovacoes->save($aprovacao)) {
@@ -282,7 +282,7 @@ class AprovacoesController extends AppController {
             }
         }
         
-        $clientes = $this->Cliente->find('list', array(
+        $clientes = $this->Cliente->find('all', array(
             'conditions' => array(
                 'Cliente.id' => $idCliente,
             )
@@ -662,7 +662,7 @@ class AprovacoesController extends AppController {
     
     public function delete($cliente) {
         $this->loadModel("Aprovacaousers");
-        $aprovacoes = $this->Aprovacaousers->find('list', array(
+        $aprovacoes = $this->Aprovacaousers->find('all', array(
             'contain' => ['Aprovacoes'],
             'conditions' => array(
                 'Aprovacoes.cliente_id' => $cliente

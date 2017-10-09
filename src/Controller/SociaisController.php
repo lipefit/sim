@@ -24,11 +24,16 @@ class SociaisController extends AppController {
      * @return \Cake\Http\Response|null
      */
     public function index() {
+        $this->loadModel('Revisaosociais');
         $id = $this->Cookie->read('cliente_id');
-        $sociais = $this->Sociais->find('all', [
+        $sociais = $this->Revisaosociais->find('all', [
             'conditions' => [
                 'Sociais.cliente_id' => $id
-            ]
+            ],
+            'contain' => ['Sociais', 'Pautas'],
+            'order' => ['Revisaosociais.id DESC'],
+            'group' => ['Revisaosociais.social_id']
+             
         ]);
 
         $this->set(compact('sociais'));
@@ -41,21 +46,21 @@ class SociaisController extends AppController {
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add() {
-        $this->loadModel('Personas');
-        $this->loadModel('Desafios');
+        $this->loadModel('Personapublicos');
+        $this->loadModel('Desafiospublicos');
         $this->loadModel('Profiles');
         $this->loadModel('Revisaosociais');
         $this->loadModel('Pautas');
         $social = $this->Sociais->newEntity();
 
         $cliente_id = $this->Cookie->read('cliente_id');
-        
-        $personas = $this->Personas->find('list', [
+
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
-        
+
         $titulos = $this->Pautas->find('list', [
             'conditions' => [
                 'Pautas.cliente_id' => $this->Cookie->read('cliente_id')
@@ -92,6 +97,52 @@ class SociaisController extends AppController {
                 $this->request->data['Revisaosociais']['autor'] = $profile['id'];
                 $this->request->data['Revisaosociais']['revisao'] = 0;
                 $this->request->data['Revisaosociais']['social_id'] = $idSocial;
+                $this->request->data['Revisaosociais']['status_facebook'] = "Aguardando publicação";
+                $this->request->data['Revisaosociais']['status_linkedin'] = "Aguardando publicação";
+                $this->request->data['Revisaosociais']['status_twitter'] = "Aguardando publicação";
+                $this->request->data['Revisaosociais']['status_google'] = "Não agendado";
+                $this->request->data['Revisaosociais']['status_instagram'] = "Não agendado";
+
+                if ($this->request->data['imagem_facebook_upload']['name'] != null) {
+                    $imagemFacebook = $this->request->data['imagem_facebook_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemFacebook['name']);
+                    if (move_uploaded_file($imagemFacebook['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        $this->request->data['Revisaosociais']['imagem_facebook'] = $arquivo;
+                    }
+                }
+
+                if ($this->request->data['imagem_linkedin_upload']['name'] != null) {
+                    $imagemLinkedin = $this->request->data['imagem_linkedin_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemLinkedin['name']);
+                    if (move_uploaded_file($imagemLinkedin['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        $this->request->data['Revisaosociais']['imagem_linkedin'] = $arquivo;
+                    }
+                }
+
+                if ($this->request->data['imagem_twitter_upload']['name'] != null) {
+                    $imagemTwitter = $this->request->data['imagem_twitter_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemTwitter['name']);
+                    if (move_uploaded_file($imagemTwitter['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        $this->request->data['Revisaosociais']['imagem_twitter'] = $arquivo;
+                    }
+                }
+
+                if ($this->request->data['imagem_google_upload']['name'] != null) {
+                    $imagemGoogle = $this->request->data['imagem_google_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemGoogle['name']);
+                    if (move_uploaded_file($imagemGoogle['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        $this->request->data['Revisaosociais']['imagem_google'] = $arquivo;
+                    }
+                }
+
+                if ($this->request->data['imagem_instagram_upload']['name'] != null) {
+                    $imagemInstagram = $this->request->data['imagem_instagram_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemInstagram['name']);
+                    if (move_uploaded_file($imagemInstagram['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        $this->request->data['Revisaosociais']['imagem_instagram'] = $arquivo;
+                    }
+                }
+
                 $revisao = $this->Revisaosociais->patchEntity($revisao, $this->request->getData());
                 $this->Revisaosociais->save($revisao);
 
@@ -105,8 +156,8 @@ class SociaisController extends AppController {
 
     public function detalhes($id = null, $cliente_id = null) {
         $this->loadModel('Pautas');
-        $this->loadModel('Personas');
-        $this->loadModel('Desafios');
+        $this->loadModel('Personapublicos');
+        $this->loadModel('Desafiospublicos');
         $this->loadModel('Palavras');
         $this->loadModel('Profiles');
         $this->loadModel('Revisaosociais');
@@ -127,7 +178,7 @@ class SociaisController extends AppController {
             'conditions' => [
                 'Revisaosociais.social_id' => $id
             ],
-            'contain' => ['aliasAutor', 'aliasRevisor', 'aliasAprovador']
+            'contain' => ['aliasAutor', 'aliasRevisor', 'aliasAprovador', 'Pautas' => ['Personapublicos', 'Desafiospublicos']]
         ]);
         $revisao = $revisaos->last();
 
@@ -152,81 +203,62 @@ class SociaisController extends AppController {
      */
     public function edit($id = null) {
         $this->loadModel('Pautas');
-        $this->loadModel('Wordpress');
-        $this->loadModel('Personas');
-        $this->loadModel('Desafios');
-        $this->loadModel('Palavras');
+        $this->loadModel('Personapublicos');
+        $this->loadModel('Desafiospublicos');
         $this->loadModel('Profiles');
         $this->loadModel('Diagnosticos');
-        $this->loadModel('Revisaos');
-        $this->loadModel('Mensagems');
+        $this->loadModel('Revisaosociais');
+        $this->loadModel('Mensagemsociais');
 
-        $conteudo = $this->Conteudos->get($id, [
-            'contain' => ['Pautas']
+        $social = $this->Sociais->get($id, [
+            'contain' => []
         ]);
 
-        $mensagens = $this->Mensagems->find('all', [
+        $mensagens = $this->Mensagemsociais->find('all', [
             'conditions' => [
-                'Mensagems.conteudo_id' => $id
+                'Mensagemsociais.social_id' => $id
             ],
             'contain' => ['Profiles']
         ]);
 
-        $pautas = $this->Pautas->find('all', [
+        $titulos = $this->Pautas->find('list', [
             'conditions' => [
-                'Pautas.id' => $conteudo['pauta_id']
-            ],
-            'contain' => ['Desafios', 'Personas']
+                'Pautas.cliente_id' => $this->Cookie->read('cliente_id')
+            ]
         ]);
-        $pauta = $pautas->first();
 
-        $revisaos = $this->Revisaos->find('all', [
+        $revisaos = $this->Revisaosociais->find('all', [
             'conditions' => [
-                'Revisaos.conteudo_id' => $id
+                'Revisaosociais.social_id' => $id
             ],
-            'contain' => ['aliasAutor', 'aliasRevisor', 'aliasAprovador']
+            'contain' => ['aliasAutor', 'aliasRevisor', 'aliasAprovador', 'Pautas']
         ]);
         $revisao = $revisaos->last();
-        
-        $personas = $this->Personas->find('list', [
+
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
 
-        $palavraschave = $this->Palavras->find('all', [
+        $desafiospublicos = $this->Desafiospublicos->find('list', [
             'conditions' => [
-                'Palavras.cliente_id' => $this->Cookie->read('cliente_id')
+                'Desafiospublicos.personapublico_id' => $revisao['persona_id']
             ]
         ]);
-
-        $desafios = $this->Desafios->find('list', array(
-            'conditions' => array(
-                'Desafios.persona_id' => $pauta['persona_id']
-            )
-        ));
-
-        $diagnosticos = $this->Diagnosticos->find('all', [
-            'conditions' => [
-                'Diagnosticos.cliente_id' => $this->Cookie->read('cliente_id')
-            ]
-        ]);
-        $diagnostico = $diagnosticos->first();
 
         $jornadas = $this->Pautas->getJornadas();
-        $tipos = $this->Pautas->getTipos();
+        $temas = $this->Sociais->getTemas();
 
-        $this->set(compact('conteudo'));
+        $this->set(compact('social'));
+        $this->set(compact('titulos'));
         $this->set(compact('mensagens'));
-        $this->set(compact('tipos'));
-        $this->set(compact('diagnostico'));
-        $this->set(compact('desafios'));
-        $this->set(compact('palavraschave'));
+        $this->set(compact('temas'));
+        $this->set(compact('desafiospublicos'));
         $this->set(compact('personas'));
         $this->set(compact('jornadas'));
         $this->set(compact('revisao'));
-        $this->set(compact('pauta'));
-        $this->set('_serialize', ['conteudo']);
+        $this->set('_serialize', ['social']);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
 
@@ -236,31 +268,90 @@ class SociaisController extends AppController {
                 ]
             ]);
             $profile = $profiles->first();
+            $this->request->data['Sociais']['status'] = 'Rascunho';
 
-            $this->request->data['Pautas']['cliente_id'] = $this->Cookie->read('cliente_id');
-            $this->request->data['Pautas']['autor'] = $profile['id'];
-            $this->request->data['Pautas']['status'] = 'Rascunho';
-            $this->request->data['Pautas']['ativo'] = 1;
-            $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
-            if ($this->Pautas->save($pauta)) {
+            $social = $this->Sociais->patchEntity($social, $this->request->getData());
+            if ($query = $this->Sociais->save($social)) {
+                $idSocial = $query->id;
                 
-                $idConteudo = $query->id;
+                $rs = $this->Revisaosociais->newEntity();
+                $this->request->data['Revisaosociais']['autor'] = $profile['id'];
+                $this->request->data['Revisaosociais']['revisao'] = $revisao['revisao'] + 1;
+                $this->request->data['Revisaosociais']['social_id'] = $idSocial;
+                $this->request->data['Revisaosociais']['status_facebook'] = "Aguardando publicação";
+                $this->request->data['Revisaosociais']['status_linkedin'] = "Aguardando publicação";
+                $this->request->data['Revisaosociais']['status_twitter'] = "Aguardando publicação";
+                $this->request->data['Revisaosociais']['status_google'] = "Não agendado";
+                $this->request->data['Revisaosociais']['status_instagram'] = "Não agendado";
 
-                $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
-                $this->Pautas->save($pauta);
+                if ($this->request->data['imagem_facebook_upload']['name'] != null) {
+                    $imagemFacebook = $this->request->data['imagem_facebook_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemFacebook['name']);
+                    if (move_uploaded_file($imagemFacebook['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        if($arquivo != ""){
+                            $this->request->data['Revisaosociais']['imagem_facebook'] = $arquivo;
+                        }else{
+                            $this->request->data['Revisaosociais']['imagem_facebook'] = $revisao['imagem_facebook'];
+                        }
+                    }
+                }
 
-                $rs = $this->Revisaos->newEntity();
-                $this->request->data['Revisaos']['autor'] = $profile['id'];
-                $this->request->data['Revisaos']['revisao'] = $revisao['revisao'] + 1;
-                $this->request->data['Revisaos']['conteudo_id'] = $idConteudo;
-                $rs = $this->Revisaos->patchEntity($rs, $this->request->getData());
-                $this->Revisaos->save($rs);
-                
-                $this->Flash->success(__('O conteúdo foi salvo com sucesso.'));
+                if ($this->request->data['imagem_linkedin_upload']['name'] != null) {
+                    $imagemLinkedin = $this->request->data['imagem_linkedin_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemLinkedin['name']);
+                    if (move_uploaded_file($imagemLinkedin['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        if($arquivo != ""){
+                            $this->request->data['Revisaosociais']['imagem_linkedin'] = $arquivo;
+                        }else{
+                            $this->request->data['Revisaosociais']['imagem_linkedin'] = $revisao['imagem_linkedin'];
+                        }
+                    }
+                }
+
+                if ($this->request->data['imagem_twitter_upload']['name'] != null) {
+                    $imagemTwitter = $this->request->data['imagem_twitter_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemTwitter['name']);
+                    if (move_uploaded_file($imagemTwitter['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        if($arquivo != ""){
+                            $this->request->data['Revisaosociais']['imagem_twitter'] = $arquivo;
+                        }else{
+                            $this->request->data['Revisaosociais']['imagem_twitter'] = $revisao['imagem_twitter'];
+                        }
+                    }
+                }
+
+                if ($this->request->data['imagem_google_upload']['name'] != null) {
+                    $imagemGoogle = $this->request->data['imagem_google_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemGoogle['name']);
+                    if (move_uploaded_file($imagemGoogle['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        if($arquivo != ""){
+                            $this->request->data['Revisaosociais']['imagem_google'] = $arquivo;
+                        }else{
+                            $this->request->data['Revisaosociais']['imagem_google'] = $revisao['imagem_google'];
+                        }
+                    }
+                }
+
+                if ($this->request->data['imagem_instagram_upload']['name'] != null) {
+                    $imagemInstagram = $this->request->data['imagem_instagram_upload'];
+                    $arquivo = str_replace(' ', '_', $imagemInstagram['name']);
+                    if (move_uploaded_file($imagemInstagram['tmp_name'], WWW_ROOT . 'files/' . $arquivo)) {
+                        if($arquivo != ""){
+                            $this->request->data['Revisaosociais']['imagem_instagram'] = $arquivo;
+                        }else{
+                            $this->request->data['Revisaosociais']['imagem_instagram'] = $revisao['imagem_instagram'];
+                        }
+                    }
+                }
+
+                $rs = $this->Revisaosociais->patchEntity($rs, $this->request->getData());
+                $this->Revisaosociais->save($rs);
+
+                $this->Flash->success(__('A mídia social foi alterada com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('O conteúdo não foi salvo. Por favor, tente novamente.'));
+            $this->Flash->error(__('A mídia social não pode ser alterada. Por favor, tente novamente'));
         }
     }
 
@@ -273,168 +364,167 @@ class SociaisController extends AppController {
      */
     public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
-        $conteudo = $this->Conteudos->get($id);
-        if ($this->Conteudos->delete($conteudo)) {
-            $this->Flash->success(__('O conteúdo foi deletado.'));
+        $conteudo = $this->Sociais->get($id);
+        if ($this->Sociais->delete($conteudo)) {
+            $this->Flash->success(__('A mídia social foi deletada.'));
         } else {
-            $this->Flash->error(__('O conteúdo não foi deletado. Por favor, tente novamente.'));
+            $this->Flash->error(__(' não foi deletado. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
     }
 
     public function revisao($id = null) {
-        $this->loadModel("Revisaos");
-        
-        $revisaos = $this->Revisaos->find("all", [
+        $this->loadModel("Revisaosociais");
+
+        $revisaos = $this->Revisaosociais->find("all", [
             'conditions' => [
-                'Revisaos.conteudo_id' => $id
+                'Revisaosociais.social_id' => $id
             ]
         ]);
-        
+
         $revisao = $revisaos->last();
-        
-        $conteudo = $this->Conteudos->get($id, [
+
+        $social = $this->Sociais->get($id, [
             'contain' => []
         ]);
-        
-        $this->request->data['Revisaos']['recebido'] = date("Y-m-d H:i:s");
-        $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
-        if ($this->Revisaos->save($revisao)) {
-            $this->request->data['Conteudos']['status'] = 'Revisão';
-            $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
-            $this->Conteudos->save($conteudo);
+
+        $this->request->data['Revisaosociais']['recebido'] = date("d/m/Y");
+        $revisao = $this->Revisaosociais->patchEntity($revisao, $this->request->getData());
+        if ($this->Revisaosociais->save($revisao)) {
+            $this->request->data['Sociais']['status'] = 'Revisão';
+            $social = $this->Sociais->patchEntity($social, $this->request->getData());
+            $this->Sociais->save($social);
             $this->Flash->success(__('Enviado para revisão com sucesso.'));
 
             return $this->redirect(['action' => 'index']);
         }
-        $this->Flash->error(__('O conteúdo não foi enviado para revisão. Por favor, tente novamente.'));
+        $this->Flash->error(__('A mídia não foi enviado para revisão. Por favor, tente novamente.'));
     }
-    
+
     public function aprovarRevisao($id = null) {
         $this->loadModel('Profiles');
-        $this->loadModel("Revisaos");
-        
-        $revisaos = $this->Revisaos->find("all", [
+        $this->loadModel("Revisaosociais");
+
+        $revisaos = $this->Revisaosociais->find("all", [
             'conditions' => [
-                'Revisaos.conteudo_id' => $id
+                'Revisaosociais.social_id' => $id
             ]
         ]);
-        
+
         $revisao = $revisaos->last();
-        
-        $conteudo = $this->Conteudos->get($id, [
+
+        $social = $this->Sociais->get($id, [
             'contain' => []
         ]);
-        
+
         $profiles = $this->Profiles->find('all', [
             'conditions' => [
                 'Profiles.user_id' => $this->Auth->user('id')
             ]
         ]);
         $profile = $profiles->first();
-        
-        $this->request->data['Conteudos']['status'] = 'Aprovação';
-        $this->request->data['Revisaos']['revisor'] = $profile['id'];
-        $this->request->data['Revisaos']['revisado'] = date("Y-m-d H:i:s");
-        $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
-        if ($this->Revisaos->save($revisao)) {
-            $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
-            $this->Conteudos->save($conteudo);
+
+        $this->request->data['Sociais']['status'] = 'Aprovação';
+        $this->request->data['Revisaosociais']['revisor'] = $profile['id'];
+        $this->request->data['Revisaosociais']['revisado'] = date("d/m/Y");
+        $revisao = $this->Revisaosociais->patchEntity($revisao, $this->request->getData());
+        if ($this->Revisaosociais->save($revisao)) {
+            $social = $this->Sociais->patchEntity($social, $this->request->getData());
+            $this->Sociais->save($social);
             $this->Flash->success(__('Revisão aprovada com sucesso.'));
 
             return $this->redirect(['action' => 'index']);
         }
         $this->Flash->error(__('A revisão não pode ser aprovada. Por favor, tente novamente.'));
     }
-    
+
     public function reprovarRevisao($id = null) {
         $this->loadModel('Profiles');
-        $this->loadModel("Revisaos");
-        
-        $revisaos = $this->Revisaos->find("all", [
+        $this->loadModel("Revisaosociais");
+
+        $revisaos = $this->Revisaosociais->find("all", [
             'conditions' => [
-                'Revisaos.conteudo_id' => $id
+                'Revisaosociais.social_id' => $id
             ]
         ]);
-        
+
         $revisao = $revisaos->last();
-        
-        $conteudo = $this->Conteudos->get($id, [
+
+        $social = $this->Sociais->get($id, [
             'contain' => []
         ]);
-        
+
         $profiles = $this->Profiles->find('all', [
             'conditions' => [
                 'Profiles.user_id' => $this->Auth->user('id')
             ]
         ]);
         $profile = $profiles->first();
-        
-        $this->request->data['Conteudos']['status'] = 'Rascunho';
-        $this->request->data['Revisaos']['revisor'] = $profile['id'];
-        $this->request->data['Revisaos']['revisado'] = date("Y-m-d H:i:s");
-        $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
-        if ($this->Revisaos->save($revisao)) {
-            $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
-            $this->Conteudos->save($conteudo);
+
+        $this->request->data['Sociais']['status'] = 'Rascunho';
+        $this->request->data['Revisaosociais']['revisor'] = $profile['id'];
+        $revisao = $this->Revisaosociais->patchEntity($revisao, $this->request->getData());
+        if ($this->Revisaosociais->save($revisao)) {
+            $social = $this->Sociais->patchEntity($social, $this->request->getData());
+            $this->Sociais->save($social);
             $this->Flash->success(__('Revisão reprovada com sucesso.'));
 
             return $this->redirect(['action' => 'index']);
         }
         $this->Flash->error(__('A revisão não pode ser reprovada. Por favor, tente novamente.'));
     }
-    
+
     public function aprovar($id = null) {
         $this->loadModel('Profiles');
-        $this->loadModel("Revisaos");
-        
-        $revisaos = $this->Revisaos->find("all", [
+        $this->loadModel("Revisaosociais");
+
+        $revisaos = $this->Revisaosociais->find("all", [
             'conditions' => [
-                'Revisaos.conteudo_id' => $id
+                'Revisaosociais.social_id' => $id
             ]
         ]);
-        
+
         $revisao = $revisaos->last();
 
-        $conteudo = $this->Conteudos->get($id, [
+        $social = $this->Sociais->get($id, [
             'contain' => []
         ]);
-        
+
         $profiles = $this->Profiles->find('all', [
             'conditions' => [
                 'Profiles.user_id' => $this->Auth->user('id')
             ]
         ]);
         $profile = $profiles->first();
-            
-        $this->request->data['Conteudos']['status'] = 'Publicação agendada';
-        $this->request->data['Revisaos']['aprovador'] = $profile['id'];
-        $this->request->data['Revisaos']['aprovado'] = date("Y-m-d H:i:s");
-        $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
-        if ($this->Revisaos->save($revisao)) {
-            $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
-            $this->Conteudos->save($conteudo);
-            $this->Flash->success(__('Conteúdo aprovado com sucesso.'));
+
+        $this->request->data['Sociais']['status'] = 'Publicação agendada';
+        $this->request->data['Revisaosociais']['aprovador'] = $profile['id'];
+        $this->request->data['Revisaosociais']['aprovado'] = date("d/m/Y");
+        $revisao = $this->Revisaosociais->patchEntity($revisao, $this->request->getData());
+        if ($this->Revisaosociais->save($revisao)) {
+            $social = $this->Sociais->patchEntity($social, $this->request->getData());
+            $this->Sociais->save($social);
+            $this->Flash->success(__('Mídia aprovada com sucesso.'));
 
             return $this->redirect(['action' => 'index']);
         }
-        $this->Flash->error(__('O conteúdo não pode ser aprovado. Por favor, tente novamente.'));
+        $this->Flash->error(__('A mídia não pode ser aprovada. Por favor, tente novamente.'));
     }
-    
+
     public function reprovar($id = null) {
         $this->loadModel('Profiles');
-        $this->loadModel("Revisaos");
-        
-        $revisaos = $this->Revisaos->find("all", [
+        $this->loadModel("Revisaosociais");
+
+        $revisaos = $this->Revisaosociais->find("all", [
             'conditions' => [
-                'Revisaos.conteudo_id' => $id
+                'Revisaosociais.social_id' => $id
             ]
         ]);
-        
+
         $revisao = $revisaos->last();
-        
-        $conteudo = $this->Conteudos->get($id, [
+
+        $social = $this->Sociais->get($id, [
             'contain' => []
         ]);
 
@@ -444,14 +534,13 @@ class SociaisController extends AppController {
             ]
         ]);
         $profile = $profiles->first();
-            
-        $this->request->data['Conteudos']['status'] = 'Rascunho';
-        $this->request->data['Revisaos']['aprovador'] = $profile['id'];
-        $this->request->data['Revisaos']['aprovado'] = date("Y-m-d H:i:s");
-        $revisao = $this->Revisaos->patchEntity($revisao, $this->request->getData());
-        if ($this->Revisaos->save($revisao)) {
-            $conteudo = $this->Conteudos->patchEntity($conteudo, $this->request->getData());
-            $this->Conteudos->save($conteudo);
+
+        $this->request->data['Sociais']['status'] = 'Rascunho';
+        $this->request->data['Revisaosociais']['aprovador'] = $profile['id'];
+        $social = $this->Revisaosociais->patchEntity($revisao, $this->request->getData());
+        if ($this->Revisaosociais->save($revisao)) {
+            $social = $this->Sociais->patchEntity($social, $this->request->getData());
+            $this->Sociais->save($social);
             $this->Flash->success(__('Conteúdo reprovado com sucesso.'));
 
             return $this->redirect(['action' => 'index']);
@@ -459,43 +548,17 @@ class SociaisController extends AppController {
         $this->Flash->error(__('O conteúdo não pode ser reprovado. Por favor, tente novamente.'));
     }
 
-    public function atualizarPalavras($palavras = null) {
-        $this->loadModel('Palavras');
-        if ($palavras != null) {
-            $palavra = explode(",", $palavras);
-            $count = count($palavra);
-            for ($x = 0; $x < $count; $x++) {
-                if ($palavra[$x] != "") {
-                    $consulta = $this->Palavras->find('all', [
-                        'conditions' => [
-                            'Palavras.palavra' => trim($palavra[$x])
-                        ]
-                    ]);
-                    $totalConsulta = $consulta->count();
-                    if ($totalConsulta == 0) {
-                        $novaPalavra = $this->Palavras->newEntity();
-                        $this->request->data['Palavras']['palavra'] = trim($palavra[$x]);
-                        $this->request->data['Palavras']['cliente_id'] = $this->Cookie->read('cliente_id');
-                        $novaPalavra = $this->Palavras->patchEntity($novaPalavra, $this->request->getData());
-                        $this->Palavras->save($novaPalavra);
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
     public function selecionaDesafio() {
-        $this->loadModel('Desafios');
+        $this->loadModel('Desafiospublicos');
         $this->autoRender = false;
         if ($this->request->is('ajax')) {
-            $desafios = $this->Desafios->find('all', array(
+            $desafios = $this->Desafiospublicos->find('all', array(
                 'conditions' => array(
-                    'Desafios.persona_id' => $this->request->query['id']
+                    'Desafiospublicos.personapublico_id' => $this->request->query['id']
                 )
             ));
         }
-        
+
         $i = 0;
         foreach ($desafios as $k => $desafio) {
             $array[$i]['id'] = $k;
@@ -510,16 +573,16 @@ class SociaisController extends AppController {
     }
 
     public function saveMessage() {
-        $this->loadModel('Mensagems');
+        $this->loadModel('Mensagemsociais');
         $this->autoRender = false;
-        $mensagem = $this->Mensagems->newEntity();
+        $mensagem = $this->Mensagemsociais->newEntity();
         if ($this->request->is('ajax')) {
-            $mensagem = $this->Mensagems->patchEntity($mensagem, $this->request->getQuery());
+            $mensagem = $this->Mensagemsociais->patchEntity($mensagem, $this->request->getQuery());
 
-            $this->Mensagems->save($mensagem);
+            $this->Mensagemsociais->save($mensagem);
         }
 
         return null;
     }
-    
+
 }

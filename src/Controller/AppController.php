@@ -89,8 +89,8 @@ class AppController extends Controller {
                 'action' => 'login'
             ],
             'unauthorizedRedirect' => [
-                'controller' => 'Users',
-                'action' => 'login',
+                'controller' => 'Dashboard',
+                'action' => 'index',
                 'prefix' => false
             ],
             'authError' => 'Você não está autorizado a acessar esse local.',
@@ -99,6 +99,7 @@ class AppController extends Controller {
             ]
         ]);
 
+        $this->Auth->allow("ativar", "salvarSenha", "salvar-senha");
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Cookie');
@@ -128,13 +129,16 @@ class AppController extends Controller {
             $_clientes = $this->Cliente->find('all', [
                 'conditions' => [
                     'Cliente.status' => 1,
-                    'Cliente.cliente_id' => $user['cliente_id']
+                    'OR' => array(
+                        array('Cliente.cliente_id' => $user['cliente_id']),
+                        array('Cliente.id' => $user['cliente_id'])
+                    )
                 ]
             ]);
 
             $this->set(compact('_clientes'));
-            
-            $this->set("masterClient",$user['cliente_id']);
+
+            $this->set("masterClient", $user['cliente_id']);
 
             $profiles = $this->Profiles->find('all', [
                 'conditions' => [

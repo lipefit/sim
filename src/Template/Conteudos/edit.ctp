@@ -63,7 +63,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label for="dataPublicacao">Data da publicação </label>
-                                <?= $this->Form->control('dataPublicacao', ['label' => false, 'class' => 'form-control datepicker', 'type' => 'text', 'value' => $pauta->dataPublicacao]); ?>
+                                <?= $this->Form->control('dataPublicacao', ['label' => false, 'class' => 'form-control datepicker', 'type' => 'text', 'value' => $pauta->dataPublicacao->format('d/m/Y')]); ?>
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-5">

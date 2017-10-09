@@ -27,7 +27,8 @@ class PalavrasController extends AppController {
         $palavras = $this->Palavras->find('all', [
             'conditions' => [
                 'Palavras.cliente_id' => $id
-            ]
+            ],
+            'contain' => 'Personapublicos'
         ]);
 
         $this->set(compact('palavras'));

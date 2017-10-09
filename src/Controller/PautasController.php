@@ -41,7 +41,7 @@ class PautasController extends AppController {
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add() {
-        $this->loadModel('Personas');
+        $this->loadModel('Personapublicos');
         $this->loadModel('Palavras');
         $this->loadModel('Profiles');
         $pauta = $this->Pautas->newEntity();
@@ -67,9 +67,9 @@ class PautasController extends AppController {
             $this->Flash->error(__('A pauta de conteúdo não pode ser salva. Por favor, tente novamente'));
         }
 
-        $personas = $this->Personas->find('list', [
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
 
@@ -91,12 +91,12 @@ class PautasController extends AppController {
     }
 
     public function detalhes($id = null, $cliente_id = null) {
-        $this->loadModel('Personas');
+        $this->loadModel('Personapublicos');
         $this->loadModel('Palavras');
         $this->loadModel('Mensagempautas');
 
         $pauta = $this->Pautas->get($id, [
-            'contain' => ['Personas', 'Desafios', 'aliasAutor', 'aliasRevisor', 'aliasAprovador']
+            'contain' => ['Personapublicos', 'Desafiospublicos', 'aliasAutor', 'aliasRevisor', 'aliasAprovador']
         ]);
 
         $mensagens = $this->Mensagempautas->find('all', [
@@ -125,9 +125,9 @@ class PautasController extends AppController {
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null) {
-        $this->loadModel('Personas');
+        $this->loadModel('Personapublicos');
         $this->loadModel('Palavras');
-        $this->loadModel('Desafios');
+        $this->loadModel('Desafiospublicos');
         $this->loadModel('Profiles');
         $pauta = $this->Pautas->get($id, [
             'contain' => []
@@ -154,9 +154,9 @@ class PautasController extends AppController {
             $this->Flash->error(__('A pauta de conteúdo não foi salva. Por favor, tente novamente.'));
         }
 
-        $personas = $this->Personas->find('list', [
+        $personas = $this->Personapublicos->find('list', [
             'conditions' => [
-                'Personas.cliente_id' => $this->Cookie->read('cliente_id')
+                'Personapublicos.cliente_id' => $this->Cookie->read('cliente_id')
             ]
         ]);
 
@@ -166,9 +166,9 @@ class PautasController extends AppController {
             ]
         ]);
 
-        $desafios = $this->Desafios->find('list', array(
+        $desafios = $this->Desafiospublicos->find('list', array(
             'conditions' => array(
-                'Desafios.persona_id' => $pauta['persona_id']
+                'Desafiospublicos.personapublico_id' => $pauta['persona_id']
             )
         ));
 
@@ -209,7 +209,7 @@ class PautasController extends AppController {
         ]);
 
         $this->request->data['Pautas']['status'] = 'Revisão';
-        $this->request->data['Pautas']['recebido'] = date("Y-m-d H:i:s");
+        $this->request->data['Pautas']['recebido'] = date("d/m/Y");
         $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
         if ($this->Pautas->save($pauta)) {
             $this->Flash->success(__('Enviado para revisão com sucesso.'));
@@ -234,7 +234,7 @@ class PautasController extends AppController {
         
         $this->request->data['Pautas']['status'] = 'Aprovação';
         $this->request->data['Pautas']['revisor'] = $profile['id'];
-        $this->request->data['Pautas']['revisado'] = date("Y-m-d H:i:s");
+        $this->request->data['Pautas']['revisado'] = date("d/m/Y");
         $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
         if ($this->Pautas->save($pauta)) {
             $this->Flash->success(__('Revisão aprovada com sucesso.'));
@@ -259,7 +259,7 @@ class PautasController extends AppController {
         
         $this->request->data['Pautas']['status'] = 'Rascunho';
         $this->request->data['Pautas']['revisor'] = $profile['id'];
-        $this->request->data['Pautas']['revisado'] = date("Y-m-d H:i:s");
+        $this->request->data['Pautas']['revisado'] = date("d/m/Y");
         $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
         if ($this->Pautas->save($pauta)) {
             $this->Flash->success(__('Revisão reprovada com sucesso.'));
@@ -284,7 +284,7 @@ class PautasController extends AppController {
             
         $this->request->data['Pautas']['status'] = 'Aprovado';
         $this->request->data['Pautas']['aprovador'] = $profile['id'];
-        $this->request->data['Pautas']['aprovado'] = date("Y-m-d H:i:s");
+        $this->request->data['Pautas']['aprovado'] = date("d/m/Y");
         $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
         if ($this->Pautas->save($pauta)) {
             $this->Flash->success(__('Pauta aprovada com sucesso.'));
@@ -309,7 +309,7 @@ class PautasController extends AppController {
             
         $this->request->data['Pautas']['status'] = 'Rascunho';
         $this->request->data['Pautas']['aprovador'] = $profile['id'];
-        $this->request->data['Pautas']['aprovado'] = date("Y-m-d H:i:s");
+        $this->request->data['Pautas']['aprovado'] = date("d/m/Y");
         $pauta = $this->Pautas->patchEntity($pauta, $this->request->getData());
         if ($this->Pautas->save($pauta)) {
             $this->Flash->success(__('Pauta reprovada com sucesso.'));
@@ -346,12 +346,12 @@ class PautasController extends AppController {
     }
 
     public function selecionaDesafio() {
-        $this->loadModel('Desafios');
+        $this->loadModel('Desafiospublicos');
         $this->autoRender = false;
         if ($this->request->is('ajax')) {
-            $desafios = $this->Desafios->find('all', array(
+            $desafios = $this->Desafiospublicos->find('all', array(
                 'conditions' => array(
-                    'Desafios.persona_id' => $this->request->query['id']
+                    'Desafiospublicos.personapublico_id' => $this->request->query['id']
                 )
             ));
         }

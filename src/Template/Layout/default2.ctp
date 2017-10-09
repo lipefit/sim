@@ -120,9 +120,7 @@ $cakeDescription = 'Simarketing';
 
         <?= $this->element('Sidebar/left'); ?>
         
-        <?= $this->element('Modal/conteudo'); ?>
-        <?= $this->element('Modal/pauta'); ?>
-        <?= $this->element('Modal/social'); ?>
+        
 
         <div class="wrapper-content">
             <?= $this->Flash->render() ?>
@@ -184,4 +182,5 @@ $cakeDescription = 'Simarketing';
             width: auto !important;
         }
     </style>
+    
 </html>

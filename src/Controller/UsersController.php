@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\MailerAwareTrait;
 
 /**
  * Users Controller
@@ -15,6 +16,8 @@ class UsersController extends AppController {
 
     public function initialize() {
         parent::initialize();
+        
+        $this->Auth->allow('salvarSenha','ativar','login');
     }
 
     /**
@@ -48,28 +51,44 @@ class UsersController extends AppController {
         $this->set('_serialize', ['user']);
     }
 
-    /**
+/**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
+    Use MailerAwareTrait;
+
     public function add() {
         $this->loadModel('Profiles');
         $this->loadModel('Hierarquias');
-        
+        $this->loadModel('Access');
+
         $hierarquias = $this->Hierarquias->find('list');
         $this->set(compact('hierarquias'));
-        
+
         $user = $this->Users->newEntity();
         $profile = $this->Profiles->newEntity();
         if ($this->request->is('post')) {
             $this->request->data['Users']['cliente_id'] = $this->Cookie->read('cliente_id');
-            $user = $this->Users->patchEntity($user, $this->request->getData(),['associated' => ['Hierarquias']]);
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated' => ['Hierarquias']]);
             if ($query = $this->Users->save($user)) {
-                $this->request->data['Profiles']['user_id'] = $query->id;
+                $idUser = $query->id;
+                $this->request->data['Profiles']['user_id'] = $idUser;
                 $profile = $this->Profiles->patchEntity($profile, $this->request->getData());
                 $this->Profiles->save($profile);
-                $this->Flash->success(__('O usuário foi salvo com sucesso.'));
+
+                $token = md5($idUser . date("Y-m-d"));
+                $access = $this->Access->newEntity();
+                $access->token = $token;
+                $access->users_id = $idUser;
+                $this->Access->save($access);
+
+                $dados['nome'] = $this->request->data['Profiles']['name'];
+                $dados['email'] = $this->request->data['username'];
+                $dados['token'] = $token;
+                $this->getMailer("Usuario")->send("enviarToken", [$dados]);
+
+                $this->Flash->success(__('O usuário foi salvo com sucesso e o convite foi enviado.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -93,14 +112,14 @@ class UsersController extends AppController {
     public function edit($id = null) {
         $this->loadModel('Profiles');
         $user = $this->Users->get($id, [
-            'contain' => ['Profiles','Hierarquias']
+            'contain' => ['Profiles', 'Hierarquias']
         ]);
         $this->loadModel('Hierarquias');
-        
+
         $hierarquias = $this->Hierarquias->find('list');
         $this->set(compact('hierarquias'));
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData(),['associated' => ['Hierarquias']]);
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated' => ['Hierarquias']]);
             if ($query = $this->Users->save($user)) {
 
                 $profile = $this->Profiles->get($this->request->data['Profiles']['id'], [
@@ -148,6 +167,45 @@ class UsersController extends AppController {
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Seu e-mail e/ou senha estão incorretos.'));
+        }
+    }
+
+    public function ativar($token) {
+        $this->loadModel("Access");
+        $this->viewBuilder()->setLayout('login');
+
+        $access = $this->Access->find('all', [
+            'conditions' => [
+                'Access.token' => $token
+            ]
+        ]);
+        $ac = $access->first();
+
+        if ($ac != null) {
+            $user = $this->Users->get($ac['users_id'], [
+                'contain' => []
+            ]);
+            $this->set(compact("user"));
+            $this->set('_serialize', ['user']);
+        } else {
+            return $this->redirect(['action' => 'login']);
+        }
+    }
+
+    public function salvarSenha($id = null) {
+        $user = $this->Users->get($id, [
+            'contain' => []
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $this->request->data['Users']['active'] = 1;
+            $this->request->data['Users']['status'] = 1;
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($query = $this->Users->save($user)) {
+                return $this->redirect(['action' => 'login']);
+            } else {
+                $this->Flash->error(__('A senha não pode ser cadastrada. Por favor, tente novamente.'));
+            }
         }
     }
 

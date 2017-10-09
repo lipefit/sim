@@ -39,7 +39,7 @@
                             <?php foreach ($palavras as $palavra): ?>
                                 <tr>
                                     <td><?= h($palavra->palavra) ?></td>
-                                    <td><?= h($palavra->persona) ?></td>
+                                    <td><?= h(@$palavra->personapublico->nome) ?></td>
                                     <td><?= h($palavra->etapa) ?></td>
                                     <td><?= h($palavra->produto) ?></td>
                                     <td><?= h($palavra->cpc) ?></td>

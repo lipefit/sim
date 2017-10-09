@@ -101,7 +101,7 @@
                                             <ul class="ulCanvas recursos-chave">
                                                 <?php foreach ($recursosChave as $rc): ?>
                                                     <li class="<?= $rc['cor']; ?> showActions" rel="<?= $rc['id']; ?>">
-                                                        <?= $rc['Postit']['texto']; ?>
+                                                        <?= $rc['texto']; ?>
                                                         <div class="pull-right actions" style="display: none;">
                                                             <a href="#data" rel="recursos-chave_<?= $rc['id']; ?>" class="editPost"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                             <?= $this->Form->postLink('<i class="fa fa-times" aria-hidden="true"></i>', array('action' => 'excluirPost', $rc['id']), array('escape' => false), 'Tem certeza que deseja excluir esse postit?');
@@ -133,7 +133,7 @@
                                             <ul class="ulCanvas proposta-de-valor">
                                                 <?php foreach ($propostaDeValor as $pv): ?>
                                                     <li class="<?= $pv['cor']; ?> showActions" rel="<?= $pv['id']; ?>">
-                                                        <?= $pv['Postit']['texto']; ?>
+                                                        <?= $pv['texto']; ?>
                                                         <div class="pull-right actions" style="display: none;">
                                                             <a href="#data" rel="proposta-de-valor_<?= $pv['id']; ?>" class="editPost"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                             <?= $this->Form->postLink('<i class="fa fa-times" aria-hidden="true"></i>', array('action' => 'excluirPost', $pv['id']), array('escape' => false), 'Tem certeza que deseja excluir esse postit?');
@@ -195,7 +195,7 @@
                                             <ul class="ulCanvas canais">
                                                 <?php foreach ($canais as $c): ?>
                                                     <li class="<?= $c['cor']; ?> showActions" rel="<?= $c['id']; ?>">
-                                                        <?= $c['Postit']['texto']; ?>
+                                                        <?= $c['texto']; ?>
                                                         <div class="pull-right actions" style="display: none;">
                                                             <a href="#data" rel="canais_<?= $c['id']; ?>" class="editPost"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                             <?= $this->Form->postLink('<i class="fa fa-times" aria-hidden="true"></i>', array('action' => 'excluirPost', $c['id']), array('escape' => false), 'Tem certeza que deseja excluir esse postit?');

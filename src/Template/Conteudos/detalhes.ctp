@@ -1,9 +1,3 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @author Felipe Almeida
- */
-?>
 <div class="container">
     <div class="row  align-items-center justify-content-between">
         <div class="col-11 col-sm-12 page-title">
@@ -97,8 +91,8 @@
                             <p><strong>Título</strong></p>
                             <h4><?= $pauta->titulo; ?></h4>
                             <hr />
-                            <p><strong>Persona: </strong> <?= $pauta->persona->nome; ?></p> 
-                            <p><strong>Desafio: </strong> <?= $pauta->desafio->desafio; ?></p> 
+                            <p><strong>Persona: </strong> <?= $pauta->personapublico->nome; ?></p> 
+                            <p><strong>Desafio: </strong> <?= $pauta->desafiospublico->desafio; ?></p> 
                             <p><strong>Tipo de conteúdo: </strong> <?= $pauta->tipo; ?></p> 
                             <p><strong>Palavras-chave: </strong> <?= $pauta->palavras; ?></p> 
                             <p><strong>Data de publicação: </strong> <?= $pauta->dataPublicacao; ?></p> 

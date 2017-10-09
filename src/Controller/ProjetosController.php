@@ -86,9 +86,14 @@ class ProjetosController extends AppController {
         ));
         $cliente = $clientes->first();
 
+        $user = $this->Auth->User();
+
         $users = $this->Users->find('list', array(
             'conditions' => array(
-                'Users.cliente_id' => $cliente_id
+                'OR' => array(
+                    'Users.cliente_id' => $cliente_id,
+                    'Users.cliente_id' => $user['cliente_id'],
+                )
             ),
             'contain' => ['Profiles']
         ));
@@ -207,26 +212,22 @@ class ProjetosController extends AppController {
         $this->autoRender = false;
         $id = @$_GET['tarefa'];
 
-
-        $tarefas = $this->Projetotarefas->find('list', array(
+        $tarefas = $this->Projetotarefas->find('all', array(
             'conditions' => array(
                 'Projetotarefas.id' => $id
             )
         ));
 
         $tarefa = $tarefas->first();
-
-        $lastPlay = explode(" ", $tarefa['lastPlay']);
+        $lastPlay = explode(" ", $tarefa['lastPlay']->format('Y-m-d H:i:s'));
         $lastPlayDate = explode("-", $lastPlay[0]);
         $lastPlayTime = explode(":", $lastPlay[1]);
-
-        $data = date("Y-m-d H:i:s");
 
         $timestampLastPlay = mktime($lastPlayTime[0], $lastPlayTime[1], $lastPlayTime[2], $lastPlayDate[1], $lastPlayDate[2], $lastPlayDate[0]);
         $timestampAtual = mktime(date("H"), date("i"), date("s"), date("d"), date("m"), date("Y"));
 
         $timestamp = $timestampAtual - $timestampLastPlay;
-
+        
         $tempoAtual = explode(":", $tarefa['tempo']);
         $segundos = $tempoAtual[2];
         $minutos = $tempoAtual[1];
@@ -238,7 +239,7 @@ class ProjetosController extends AppController {
 
         $tempo = date("H:i:s", $time);
 
-        return $tempo;
+        echo $tempo;
     }
 
     public function mudaStatus() {
@@ -248,12 +249,12 @@ class ProjetosController extends AppController {
         $status = @$_GET['status'];
         if ($status != "Trabalhando") {
             if ($status == "Pausada") {
-                $tarefas = $this->Projetotarefas->find('first', array(
+                $tarefas = $this->Projetotarefas->find('all', array(
                     'conditions' => array(
                         'Projetotarefas.id' => $id
                     )
                 ));
-                $tarefa = $tarefas->first();
+                $tf = $tarefas->first();
 
                 $lastPlay = explode(" ", $tarefa['lastPlay']);
                 $lastPlayDate = explode("-", $lastPlay[0]);
@@ -279,21 +280,27 @@ class ProjetosController extends AppController {
 
                 $this->request->data['Projetotarefas']['tempo'] = $tempo;
                 $this->request->data['Projetotarefas']['status'] = $status;
-                $tarefa = $this->Projetotarefas->patchEntity($tarefa, $this->request->getData());
-                $this->CampanhaTarefa->save($tarefa);
+                $tf = $this->Projetotarefas->patchEntity($tf, $this->request->getData());
+                $this->Projetotarefas->save($tf);
             } else {
                 $this->request->data['Projetotarefas']['status'] = $status;
-                $tarefa = $this->Projetotarefas->patchEntity($tarefa, $this->request->getData());
-                $this->CampanhaTarefa->save($tarefa);
+                $tf = $this->Projetotarefas->patchEntity($tf, $this->request->getData());
+                $this->Projetotarefas->save($tf);
             }
         } else {
-            $data = date("Y-m-d H:i:s");
+            $tarefas = $this->Projetotarefas->find('all', array(
+                'conditions' => array(
+                    'Projetotarefas.id' => $id
+                )
+            ));
+            $tf = $tarefas->first();
+            $data = date("d/m/Y H:i:s");
             $this->request->data['Projetotarefas']['lastPlay'] = $data;
             $this->request->data['Projetotarefas']['status'] = $status;
-            $tarefa = $this->Projetotarefas->patchEntity($tarefa, $this->request->getData());
-            $this->CampanhaTarefa->save($tarefa);
+            $tf = $this->Projetotarefas->patchEntity($tf, $this->request->getData());
+            $this->Projetotarefas->save($tf);
         }
-        return true;
+        echo $data;
     }
 
     public function delete($id = null) {

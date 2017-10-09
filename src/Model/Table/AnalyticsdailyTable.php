@@ -4,7 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class DesafiospublicosTable extends Table {
+class AccessTable extends Table {
 
     /**
      * Initialize method
@@ -15,15 +15,16 @@ class DesafiospublicosTable extends Table {
     public function initialize(array $config) {
         parent::initialize($config);
 
-        $this->setTable('desafiospublicos');
-        $this->setDisplayField('desafio');
+        $this->setTable('access_token');
+        $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-        
-        $this->belongsTo('Personapublicos', [
-            'foreignKey' => 'personapublico_id'
-        ]);
-    }
 
+        $this->belongsTo('Users', [
+            'foreignKey' => 'users_id'
+        ]);
+
+    }
+    
 }

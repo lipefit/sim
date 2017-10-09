@@ -26,7 +26,6 @@
                     <table class="table " id="dataTable">
                         <thead>
                             <tr>
-                                <th>Id </th>
                                 <th>Referência</th>
                                 <th>Url</th>
                                 <th>Criado</th>

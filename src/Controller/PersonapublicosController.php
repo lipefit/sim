@@ -48,7 +48,7 @@ class PersonapublicosController extends AppController {
             $palavras = $this->request->data['palavras'];
             if ($query = $this->Personapublicos->save($persona)) {
                 $idPersona = $query->id;
-                $this->atualizarPalavras($palavras);
+                $this->atualizarPalavras($palavras,$idPersona);
 
                 $cont = count($this->request->data['desafios']);
                 for ($x = 0; $x < $cont; $x++) {
@@ -100,7 +100,7 @@ class PersonapublicosController extends AppController {
             $palavras = $this->request->data['palavras'];
             if ($query = $this->Personapublicos->save($persona)) {
                 $idPersona = $query->id;
-                $this->atualizarPalavras($palavras);
+                $this->atualizarPalavras($palavras, $idPersona);
 
                 $desafiosParaDeletar = $this->Desafiospublicos->find('all', [
                     'conditions' => [
@@ -149,16 +149,22 @@ class PersonapublicosController extends AppController {
     public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $persona = $this->Personapublicos->get($id);
-        if ($this->Personapublicos->delete($persona)) {
-            $this->Flash->success(__('A persona do público alvo foi deletada.'));
-        } else {
-            $this->Flash->error(__('A persona do público alvo não foi deletada. Por favor, tente novamente.'));
+        try {
+            if ($this->Personapublicos->delete($persona)) {
+                $this->Flash->success(__('A persona do público alvo foi deletada.'));
+            } else {
+                $this->Flash->error(__('A persona do público alvo não foi deletada. Por favor, tente novamente.'));
+            }
+        } catch (\PDOException $exc) {
+            $this->Flash->error(__('A persona do público alvo não foi deletada, pois está relacionada a outros cadastros.'));
         }
+
+
 
         return $this->redirect(['action' => 'index']);
     }
 
-    public function atualizarPalavras($palavras = null) {
+    public function atualizarPalavras($palavras = null, $idPersona) {
         $this->loadModel('Palavras');
         if ($palavras != null) {
             $palavra = explode(",", $palavras);
@@ -174,6 +180,7 @@ class PersonapublicosController extends AppController {
                     $novaPalavra = $this->Palavras->newEntity();
                     $this->request->data['Palavras']['palavra'] = trim($palavra[$x]);
                     $this->request->data['Palavras']['cliente_id'] = $this->Cookie->read('cliente_id');
+                    $this->request->data['Palavras']['persona_id'] = $idPersona;
                     $novaPalavra = $this->Palavras->patchEntity($novaPalavra, $this->request->getData());
                     $this->Palavras->save($novaPalavra);
                 }

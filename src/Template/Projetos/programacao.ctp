@@ -35,8 +35,8 @@ $conn = ConnectionManager::get('default');
             if ($(this).find('i').hasClass("fa-play")) {
                 var tarefa = $(this).attr("rel");
                 $(this).find('i').removeClass("fa-play").addClass("fa-pause");
-                alteraTempo(tarefa);
                 mudaStatus(tarefa, "Trabalhando");
+                alteraTempo(tarefa);
                 $(".status_" + tarefa).html("Trabalhando");
             } else {
                 var tarefa = $(this).attr("rel");
@@ -201,9 +201,9 @@ $conn = ConnectionManager::get('default');
                                             . "<td class='tarefa'><a href='" . $url . "reabrirTarefa/" . $tarefa['id'] . "' class='btn btn-default btn-xs reabrir'>Reabrir</a></td>"
                                             . "<td class='tarefa status_" . $tarefa['id'] . "'>" . $tarefa['status'] . "</td>";
                                         } elseif ($tarefa['status'] == "Trabalhando") {
-                                            echo "<script>alteraTempo('" . $tarefa->id . "');</script>";
-                                            echo "<td class='tarefa'><a rel='" . $tarefa->id . "' href='javascript:void(0);' class='btn btn-info btn-xs tempo'><i class='fa fa-pause' aria-hidden='true'></i><span>" . $tarefa['tempo'] . "</span></a></td>"
-                                            . "<td class='tarefa'><a href='" . $url . "entregarTarefa/" . $tarefa->id . "' class='btn btn-default btn-xs entregar'>Entregar</a></td>"
+                                            echo "<script>alteraTempo('" . $tarefa['id'] . "');</script>";
+                                            echo "<td class='tarefa'><a rel='" . $tarefa['id'] . "' href='javascript:void(0);' class='btn btn-info btn-xs tempo'><i class='fa fa-pause' aria-hidden='true'></i><span>" . $tarefa['tempo'] . "</span></a></td>"
+                                            . "<td class='tarefa'><a href='" . $url . "entregarTarefa/" . $tarefa['id'] . "' class='btn btn-default btn-xs entregar'>Entregar</a></td>"
                                             . "<td class='tarefa status_" . $tarefa['id'] . "'>" . $tarefa['status'] . "</td>";
                                         } else {
                                             echo "<td class='tarefa'><a rel='" . $tarefa['id'] . "' href='javascript:void(0);' class='btn btn-info btn-xs tempo'><i class='fa fa-play' aria-hidden='true'></i><span>" . $tarefa['tempo'] . "</span></a></td>"

@@ -47,7 +47,7 @@ class TaticasController extends AppController {
         if ($this->request->is('post')) {
             $this->request->data['Taticas']['cliente_id'] = $this->Cookie->read('cliente_id');
             $tatica = $this->Taticas->patchEntity($tatica, $this->request->getData());
-            if ($this->Taticas->save($concorrente)) {
+            if ($this->Taticas->save($tatica)) {
                 $this->Flash->success(__('A tática de conteúdo foi salva com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);

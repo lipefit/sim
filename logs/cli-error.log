@@ -370,3 +370,23 @@ Stack Trace:
 #15 {main}
 
 
+2017-09-01 21:20:54 Error: [Cake\Core\Exception\Exception] AclNode::node() - Couldn't find Aros node identified by "Array
+(
+    [Aros0.model] => Groups
+    [Aros0.foreign_key] => 9
+)
+" in C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Model\Table\AclNodesTable.php on line 183
+Stack Trace:
+#0 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Model\Table\PermissionsTable.php(225): Acl\Model\Table\AclNodesTable->node(Array)
+#1 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Model\Table\PermissionsTable.php(167): Acl\Model\Table\PermissionsTable->getAclLink(Array, 'controllers/Use...')
+#2 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Adapter\DbAcl.php(95): Acl\Model\Table\PermissionsTable->allow(Array, 'controllers/Use...', '*', 1)
+#3 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Controller\Component\AclComponent.php(134): Acl\Adapter\DbAcl->allow(Array, 'controllers/Use...', '*')
+#4 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\acl\src\Shell\AclShell.php(276): Acl\Controller\Component\AclComponent->allow(Array, 'controllers/Use...', '*')
+#5 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\Shell.php(458): Acl\Shell\AclShell->grant('Groups.9', 'controllers/Use...')
+#6 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#7 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#8 C:\Users\Felipe\Documents\Projetos\sim\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#9 C:\Users\Felipe\Documents\Projetos\sim\bin\cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#10 {main}
+
+

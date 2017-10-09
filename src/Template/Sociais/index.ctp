@@ -36,17 +36,17 @@
                         <tbody>
                             <?php foreach ($sociais as $social): ?>
                                 <tr class="odd">
-                                    <td><?= h($social->titulo) ?></td>
+                                    <td><?= h($social->pauta->titulo) ?></td>
                                     <td><?= h($social->recebido) ?></td>
                                     <td><?= h($social->aprovado) ?></td>
-                                    <td><?= h($social->status) ?></td>
+                                    <td><?= h($social->sociai->status) ?></td>
                                     <td class="center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ações </button>
                                             <div class="dropdown-menu"> 
-                                                <?= $this->Html->link(__('Detalhes'), ['action' => 'detalhes', $social->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Html->link(__('Duplicar'), ['action' => 'duplicar', $social->id], ['class' => 'dropdown-item']) ?>
-                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $social->id], ['confirm' => __('Você tem certeza que deseja apagar a mídia social # {0}?', $social->titulo),'class' => 'dropdown-item']) ?>
+                                                <?= $this->Html->link(__('Detalhes'), ['action' => 'detalhes', $social->sociai->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Html->link(__('Duplicar'), ['action' => 'duplicar', $social->sociai->id], ['class' => 'dropdown-item']) ?>
+                                                <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $social->sociai->id], ['confirm' => __('Você tem certeza que deseja apagar a mídia social # {0}?', $social->pauta->titulo),'class' => 'dropdown-item']) ?>
                                             </div>
                                         </div>
                                     </td>
