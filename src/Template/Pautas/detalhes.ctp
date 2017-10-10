@@ -17,16 +17,16 @@
                     <div class="col-lg-4 col-sm-4">
                         <strong>Rascunho</strong>
                         <br>
-                        <strong>Criado por <?= $pauta->alias_autor->name . " " . $pauta->alias_autor->surname; ?></strong>
+                        <strong>Criado por <?= @$pauta->alias_autor->name . " " . $pauta->alias_autor->surname; ?></strong>
                         <br>
-                        <strong>Em <?= $pauta->created; ?></strong>
+                        <strong>Em <?= @$pauta->created; ?></strong>
                     </div>
                     <div class="col-lg-4 col-sm-4">
                         <strong>Em revisão</strong>
                         <?php
                         if ($pauta->status == "Aprovação" || $pauta->status == "Aprovado") {
                             echo "<br>";
-                            echo "<strong>Revisado por " . $pauta->alias_revisor->name . " " . $pauta->alias_revisor->surname . "</strong><br>";
+                            echo "<strong>Revisado por " . @$pauta->alias_revisor->name . " " . @$pauta->alias_revisor->surname . "</strong><br>";
                             echo "<strong>Em " . $pauta->revisado . "</strong>";
                         }
                         ?>
@@ -40,7 +40,7 @@
                         <?php
                         if ($pauta->status == "Aprovado") {
                             echo "<br>";
-                            echo "<strong>Aprovada por " . $pauta->alias_aprovador->name . " " . $pauta->alias_aprovador->surname . "</strong><br>";
+                            echo "<strong>Aprovada por " . @$pauta->alias_aprovador->name . " " . @$pauta->alias_aprovador->surname . "</strong><br>";
                             echo "<strong>Em " . $pauta->aprovado . "</strong>";
                         }
                         ?>
