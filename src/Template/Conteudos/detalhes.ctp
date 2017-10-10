@@ -17,7 +17,7 @@
                     <div class="col-lg-4 col-sm-4">
                         <strong>Rascunho</strong>
                         <br>
-                        <strong>Criado por <?= $revisao->alias_autor->name . " " . $revisao->alias_autor->surname; ?></strong>
+                        <strong>Criado por <?= @$revisao->alias_autor->name . " " . @$revisao->alias_autor->surname; ?></strong>
                         <br>
                         <strong>Em <?= $conteudo->created; ?></strong>
                     </div>
@@ -26,7 +26,7 @@
                         <?php
                         if ($conteudo->status == "Aprovação" || $conteudo->status == "Publicação agendada" || $conteudo->status == "Publicado") {
                             echo "<br>";
-                            echo "<strong>Revisado por " . $revisao->alias_revisor->name . " " . $revisao->alias_revisor->surname . "</strong><br>";
+                            echo "<strong>Revisado por " . @$revisao->alias_revisor->name . " " . @$revisao->alias_revisor->surname . "</strong><br>";
                             echo "<strong>Em " . $revisao->revisado . "</strong>";
                         }
                         ?>
@@ -40,7 +40,7 @@
                         <?php
                         if ($conteudo->status == "Publicação agendada") {
                             echo "<br>";
-                            echo "<strong>Aprovado por " . $revisao->alias_aprovador->name . " " . $revisao->alias_aprovador->surname . "</strong><br>";
+                            echo "<strong>Aprovado por " . @$revisao->alias_aprovador->name . " " . @$revisao->alias_aprovador->surname . "</strong><br>";
                             echo "<strong>Em " . $revisao->aprovado . "</strong>";
                         }
                         ?>
