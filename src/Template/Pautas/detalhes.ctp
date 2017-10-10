@@ -17,7 +17,7 @@
                     <div class="col-lg-4 col-sm-4">
                         <strong>Rascunho</strong>
                         <br>
-                        <strong>Criado por <?= @$pauta->alias_autor->name . " " . $pauta->alias_autor->surname; ?></strong>
+                        <strong>Criado por <?= @$pauta->alias_autor->name . " " . @$pauta->alias_autor->surname; ?></strong>
                         <br>
                         <strong>Em <?= @$pauta->created; ?></strong>
                     </div>
