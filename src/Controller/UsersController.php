@@ -26,11 +26,12 @@ class UsersController extends AppController {
      * @return \Cake\Http\Response|null
      */
     public function index() {
-        $this->paginate = [
-            'contain' => ['Groups']
-        ];
-        $users = $this->paginate($this->Users);
-
+        $users = $this->Users->find('all', [
+            'conditions' => [
+                'Users.cliente_id' => $this->Cookie->read('cliente_id')
+            ]
+        ]);
+        
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
     }
