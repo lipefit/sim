@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -21,8 +22,7 @@ use Cake\ORM\Entity;
  * @property \Acl\Model\Entity\Aro[] $aro
  * @property \App\Model\Entity\Group $group
  */
-class User extends Entity
-{
+class User extends Entity {
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -46,22 +46,22 @@ class User extends Entity
     protected $_hidden = [
         'password'
     ];
-	
-	public function parentNode()
-{
-	if (!$this->id) {
-		return null;
-	}
-	if (isset($this->group_id)) {
-		$groupId = $this->group_id;
-	} else {
-		$Users = TableRegistry::get('Users');
-		$user = $Users->find('all', ['fields' => ['group_id']])->where(['id' => $this->id])->first();
-		$groupId = $user->group_id;
-	}
-	if (!$groupId) {
-		return null;
-	}
-	return ['Groups' => ['id' => $groupId]];
-}
+
+    public function parentNode() {
+        if (!$this->id) {
+            return null;
+        }
+        if (isset($this->group_id)) {
+            $groupId = $this->group_id;
+        } else {
+            $Users = TableRegistry::get('Users');
+            $user = $Users->find('all', ['fields' => ['group_id']])->where(['id' => $this->id])->first();
+            $groupId = $user->group_id;
+        }
+        if (!$groupId) {
+            return null;
+        }
+        return ['Groups' => ['id' => $groupId]];
+    }
+
 }
