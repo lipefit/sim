@@ -25,7 +25,7 @@ class RevisaosociaisTable extends Table {
             'foreignKey' => 'social_id'
         ]);
         
-        $this->belongsTo('Personas', [
+        $this->belongsTo('Personapublicos', [
             'foreignKey' => 'persona_id'
         ]);
 
