@@ -3,8 +3,11 @@
         <div class="col-11 col-sm-12 page-title">
             <h3>Dashboard</h3>
         </div>
-    </div>  
-    <div class="row">
+    </div>
+    <?php
+//        pr($porPersonas);
+    ?>
+<!--    <div class="row">
         <div class="col-md-16 col-lg-16 col-xl-16">
             <div class="card">
                 <div class="card-header">
@@ -15,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="row">
         <div class="col-md-16 col-lg-5 col-xl-5">
             <div class="card">
@@ -49,7 +52,7 @@
         </div>
     </div>
 
-    <div class="row">
+<!--    <div class="row">
         <div class="col-md-16 col-lg-16 col-xl-16">
             <div class="card">
                 <div class="card-header">
@@ -60,7 +63,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="row">
         <div class="col-md-16 col-lg-5 col-xl-5">
             <div class="card">
@@ -93,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+<!--    <div class="row">
         <div class="col-md-16 col-lg-16 col-xl-16">
             <div class="card">
                 <div class="card-header">
@@ -104,8 +107,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
+    </div>-->
+<!--    <div class="row">
         <div class="col-md-16 col-lg-8 col-xl-8">
             <div class="card">
                 <div class="card-header">
@@ -142,28 +145,28 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <script>
     "use strict"
     $(function () {
         // Conteúdo do Blog
-        Morris.Bar({
-            element: 'conteudo-blog',
-            data: [
-                {y: 'Como ser vendas e Marketing ao mesmo tempo', a: 100, b: 40},
-                {y: 'Como aumentar sua produtividade em marketing', a: 75, b: 35},
-                {y: 'Vendas como foco em marketing', a: 50, b: 10},
-                {y: 'Como ter resultados nas vendas se você está focado em marketing', a: 75, b: 35},
-            ],
-            resize: true,
-            hideHover: true,
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['Visualizações', 'Taxa de rejeição'],
-            barColors: ["#1E90FF", "#FFA500"]
-        });
+//        Morris.Bar({
+//            element: 'conteudo-blog',
+//            data: [
+//                {y: 'Como ser vendas e Marketing ao mesmo tempo', a: 100, b: 40},
+//                {y: 'Como aumentar sua produtividade em marketing', a: 75, b: 35},
+//                {y: 'Vendas como foco em marketing', a: 50, b: 10},
+//                {y: 'Como ter resultados nas vendas se você está focado em marketing', a: 75, b: 35},
+//            ],
+//            resize: true,
+//            hideHover: true,
+//            xkey: 'y',
+//            ykeys: ['a', 'b'],
+//            labels: ['Visualizações', 'Taxa de rejeição'],
+//            barColors: ["#1E90FF", "#FFA500"]
+//        });
 
         // Conteúdo por persona
         Morris.Donut({
@@ -226,21 +229,21 @@
         });
 
         // Conteúdo da mídia
-        Morris.Bar({
-            element: 'conteudo-midia',
-            data: [
-                {y: 'Como ser vendas e Marketing ao mesmo tempo', a: 70, b: 10},
-                {y: 'Como aumentar sua produtividade em marketing', a: 120, b: 35},
-                {y: 'Vendas como foco em marketing', a: 40, b: 25},
-                {y: 'Como ter resultados nas vendas se você está focado em marketing', a: 75, b: 15},
-            ],
-            resize: true,
-            hideHover: true,
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['Visualizações', 'Taxa de rejeição'],
-            barColors: ["#1E90FF", "#FFA500"]
-        });
+//        Morris.Bar({
+//            element: 'conteudo-midia',
+//            data: [
+//                {y: 'Como ser vendas e Marketing ao mesmo tempo', a: 70, b: 10},
+//                {y: 'Como aumentar sua produtividade em marketing', a: 120, b: 35},
+//                {y: 'Vendas como foco em marketing', a: 40, b: 25},
+//                {y: 'Como ter resultados nas vendas se você está focado em marketing', a: 75, b: 15},
+//            ],
+//            resize: true,
+//            hideHover: true,
+//            xkey: 'y',
+//            ykeys: ['a', 'b'],
+//            labels: ['Visualizações', 'Taxa de rejeição'],
+//            barColors: ["#1E90FF", "#FFA500"]
+//        });
 
         // Mídia por persona
         Morris.Donut({
@@ -303,19 +306,19 @@
         });
 
         // Google Analytics
-        Morris.Line({
-            element: 'google-analytics',
-            data: [
-                {y: '2017-05', a: 80, b: 90},
-                {y: '2017-06', a: 70, b: 110},
-                {y: '2017-07', a: 75, b: 89},
-                {y: '2017-08', a: 100, b: 130},
-            ],
-            resize: true,
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            lineColors: ["#1E90FF", "#FFA500"],
-            labels: ['Usuários', 'Sessões']
-        });
+//        Morris.Line({
+//            element: 'google-analytics',
+//            data: [
+//                {y: '2017-05', a: 80, b: 90},
+//                {y: '2017-06', a: 70, b: 110},
+//                {y: '2017-07', a: 75, b: 89},
+//                {y: '2017-08', a: 100, b: 130},
+//            ],
+//            resize: true,
+//            xkey: 'y',
+//            ykeys: ['a', 'b'],
+//            lineColors: ["#1E90FF", "#FFA500"],
+//            labels: ['Usuários', 'Sessões']
+//        });
     });
 </script>
