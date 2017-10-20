@@ -4,10 +4,8 @@
             <h3>Dashboard</h3>
         </div>
     </div>
-    <?php
-//        pr($porPersonas);
-    ?>
-<!--    <div class="row">
+
+    <div class="row">
         <div class="col-md-16 col-lg-16 col-xl-16">
             <div class="card">
                 <div class="card-header">
@@ -18,7 +16,7 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <div class="row">
         <div class="col-md-16 col-lg-5 col-xl-5">
             <div class="card">
@@ -52,18 +50,18 @@
         </div>
     </div>
 
-<!--    <div class="row">
-        <div class="col-md-16 col-lg-16 col-xl-16">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Conteúdos do Mídias sociais</h5>
-                </div>
-                <div class="card-block">
-                    <div id="conteudo-midia" style="height: 200px;"></div>
+    <!--    <div class="row">
+            <div class="col-md-16 col-lg-16 col-xl-16">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Conteúdos do Mídias sociais</h5>
+                    </div>
+                    <div class="card-block">
+                        <div id="conteudo-midia" style="height: 200px;"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>-->
+        </div>-->
     <div class="row">
         <div class="col-md-16 col-lg-5 col-xl-5">
             <div class="card">
@@ -96,57 +94,84 @@
             </div>
         </div>
     </div>
-<!--    <div class="row">
-        <div class="col-md-16 col-lg-16 col-xl-16">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Google Analytics</h5>
-                </div>
-                <div class="card-block">
-                    <div id="google-analytics" style="height: 200px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-<!--    <div class="row">
-        <div class="col-md-16 col-lg-8 col-xl-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Páginas mais acessadas</h5>
-                </div>
-                <div class="card-block">
-                    <div id="paginas-acessadas">
-                        <ul>
-                            <li>http://www.asbmarketing.com.br/contato <span class="pull-right">340</span></li>
-                            <li>http://www.asbmarketing.com.br/funil-vendas <span class="pull-right">367</span></li>
-                            <li>http://asbmarketing.com.br/quem-somos <span class="pull-right">402</span></li>
-                            <li>http://asbmarketing.com.br/materiais-educativos <span class="pull-right">670</span></li>
-                            <li>http://asbmarketing.com.br/automacao-de-marketing <span class="pull-right">1130</span></li>
-                        </ul>
+    <!--    <div class="row">
+            <div class="col-md-16 col-lg-16 col-xl-16">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Google Analytics</h5>
+                    </div>
+                    <div class="card-block">
+                        <div id="google-analytics" style="height: 200px;"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-16 col-lg-8 col-xl-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Principais palavras-chave</h5>
-                </div>
-                <div class="card-block">
-                    <div id="principais-palavras">
-                        <ul>
-                            <li>Inbound Marketing <span class="pull-right">120</span></li>
-                            <li>Marketing de conteúdo <span class="pull-right">290</span></li>
-                            <li>Marketing digital <span class="pull-right">345</span></li>
-                            <li>Métricas e Kpis <span class="pull-right">456</span></li>
-                            <li>Funil de vendas <span class="pull-right">898</span></li>
-                        </ul>
+        </div>-->
+    <!--    <div class="row">
+            <div class="col-md-16 col-lg-8 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Páginas mais acessadas</h5>
+                    </div>
+                    <div class="card-block">
+                        <div id="paginas-acessadas">
+                            <ul>
+                                <li>http://www.asbmarketing.com.br/contato <span class="pull-right">340</span></li>
+                                <li>http://www.asbmarketing.com.br/funil-vendas <span class="pull-right">367</span></li>
+                                <li>http://asbmarketing.com.br/quem-somos <span class="pull-right">402</span></li>
+                                <li>http://asbmarketing.com.br/materiais-educativos <span class="pull-right">670</span></li>
+                                <li>http://asbmarketing.com.br/automacao-de-marketing <span class="pull-right">1130</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>-->
+            <div class="col-md-16 col-lg-8 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Principais palavras-chave</h5>
+                    </div>
+                    <div class="card-block">
+                        <div id="principais-palavras">
+                            <ul>
+                                <li>Inbound Marketing <span class="pull-right">120</span></li>
+                                <li>Marketing de conteúdo <span class="pull-right">290</span></li>
+                                <li>Marketing digital <span class="pull-right">345</span></li>
+                                <li>Métricas e Kpis <span class="pull-right">456</span></li>
+                                <li>Funil de vendas <span class="pull-right">898</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
 </div>
+
+<?php
+$personas = "";
+foreach ($porPersonas as $porPersona) {
+    $personas .= '{label: "'.$porPersona['pauta']['personapublico']['nome'].'", value: '.$porPersona['count'].'},';
+}
+
+$desafios = "";
+foreach ($porDesafios as $porDesafio) {
+    $desafios .= '{label: "'.$porDesafio['pauta']['desafiospublico']['desafio'].'", value: '.$porDesafio['count'].'},';
+}
+
+$status = "";
+foreach ($porStatus as $porStatu) {
+    $status .= '{label: "'.$porStatu['status'].'", value: '.$porStatu['count'].'},';
+}
+
+$midiaPersonas = "";
+foreach ($midiaPorPersonas as $midiaPorPersona) {
+    $midiaPersonas .= '{label: "'.$midiaPorPersona['personapublico']['nome'].'", value: '.$midiaPorPersona['count'].'},';
+}
+
+$midiaStatus = "";
+foreach ($midiaPorStatus as $midiaPorStatu) {
+    $midiaStatus .= '{label: "'.$midiaPorStatu['status'].'", value: '.$midiaPorStatu['count'].'},';
+}
+?>
 
 <script>
     "use strict"
@@ -171,58 +196,25 @@
         // Conteúdo por persona
         Morris.Donut({
             element: 'conteudo-persona',
-            data: [{
-                    label: "João",
-                    value: 12
-                }, {
-                    label: "Antônio",
-                    value: 30
-                }, {
-                    label: "Marcos",
-                    value: 20
-                }],
+            data: [<?=$personas?>],
             resize: true,
             labelColor: '#fff',
-            colors: ["#1E90FF", "#FFA500", "#F44336"]
+            colors: ["#1E90FF", "#FFA500", "#F44336", "#B0C4DE", "#4682B4"]
         });
 
         // Conteúdo por desafio
         Morris.Donut({
             element: 'conteudo-desafio',
-            data: [{
-                    label: "Como ser vendas",
-                    value: 8
-                }, {
-                    label: "Gerar mais lead",
-                    value: 50
-                }, {
-                    label: "Vendas e Marketing",
-                    value: 15
-                }],
+            data: [<?=$desafios;?>],
             resize: true,
             labelColor: '#fff',
-            colors: ["#1E90FF", "#FFA500", "#F44336"]
+            colors: ["#1E90FF", "#FFA500", "#F44336", "#B0C4DE", "#4682B4"]
         });
 
         // Status do conteúdo
         Morris.Donut({
             element: 'status-conteudo',
-            data: [{
-                    label: "Racunho",
-                    value: 8
-                }, {
-                    label: "Revisando",
-                    value: 7
-                }, {
-                    label: "Em aprovação",
-                    value: 15
-                }, {
-                    label: "Aprovado",
-                    value: 12
-                }, {
-                    label: "Publicado",
-                    value: 30
-                }],
+            data: [<?=$status?>],
             resize: true,
             labelColor: '#fff',
             colors: ["#1E90FF", "#FFA500", "#F44336", "#B0C4DE", "#4682B4"]
@@ -248,58 +240,31 @@
         // Mídia por persona
         Morris.Donut({
             element: 'midia-persona',
-            data: [{
-                    label: "João",
-                    value: 15
-                }, {
-                    label: "Antônio",
-                    value: 5
-                }, {
-                    label: "Marcos",
-                    value: 40
-                }],
+            data: [<?=$midiaPersonas;?>],
             resize: true,
             labelColor: '#fff',
-            colors: ["#1E90FF", "#FFA500", "#F44336"]
+            colors: ["#1E90FF", "#FFA500", "#F44336", "#B0C4DE", "#4682B4"]
         });
 
         // Conteúdo por mídia
         Morris.Donut({
             element: 'conteudo-por-midia',
-            data: [{
-                    label: "Facebook",
-                    value: 30
-                }, {
-                    label: "Linkedin",
-                    value: 10
-                }, {
-                    label: "Twitter",
-                    value: 15
-                }],
+            data: [
+                {label: "Facebook", value: <?=$midiaPorFacebook;?>},
+                {label: "Instagram", value: <?=$midiaPorInstagram;?>},
+                {label: "Twitter", value: <?=$midiaPorTwitter;?>},
+                {label: "Linkedin", value: <?=$midiaPorLinkedin;?>},
+                {label: "Google+", value: <?=$midiaPorGoogle;?>},
+            ],
             resize: true,
             labelColor: '#fff',
-            colors: ["#1E90FF", "#FFA500", "#F44336"]
+            colors: ["#1E90FF", "#FFA500", "#F44336", "#B0C4DE", "#4682B4"]
         });
 
         // Status do conteúdo
         Morris.Donut({
             element: 'status-midia',
-            data: [{
-                    label: "Racunho",
-                    value: 10
-                }, {
-                    label: "Revisando",
-                    value: 3
-                }, {
-                    label: "Em aprovação",
-                    value: 2
-                }, {
-                    label: "Aprovado",
-                    value: 5
-                }, {
-                    label: "Publicado",
-                    value: 37
-                }],
+            data: [<?=$midiaStatus;?>],
             resize: true,
             labelColor: '#fff',
             colors: ["#1E90FF", "#FFA500", "#F44336", "#B0C4DE", "#4682B4"]
