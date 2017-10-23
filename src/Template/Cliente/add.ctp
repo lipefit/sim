@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <label for="blog">Blog</label>
-                        <?= $this->Form->control('blog',['label'=>false, 'class'=>'form-control','placeholder'=>'Blog']); ?>
+                        <?= $this->Form->control('blog',['label'=>false, 'class'=>'form-control','placeholder'=>'Blog', 'type'=>'text']); ?>
                     </div>
                     <center><?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-primary']) ?></center>
                     <?= $this->Form->end() ?>
