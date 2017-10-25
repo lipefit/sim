@@ -176,7 +176,7 @@ class GoogleController extends AppController {
                 $this->request->data['Analytics']['views'] = $row[2];
                 $this->request->data['Analytics']['cliente_id'] = $cliente;
                 $this->request->data['Analytics']['titulo'] = $row[0];
-                $this->request->data['Analytics']['conteudo_id'] = $revisao->conteudo_id;
+                $this->request->data['Analytics']['revisao_id'] = $revisao->id;
                 $newAnalytics = $this->Analytics->patchEntity($newAnalytics, $this->request->getData());
                 $this->Analytics->save($newAnalytics);
             }
