@@ -171,27 +171,29 @@ $midiaStatus = "";
 foreach ($midiaPorStatus as $midiaPorStatu) {
     $midiaStatus .= '{label: "'.$midiaPorStatu['status'].'", value: '.$midiaPorStatu['count'].'},';
 }
+
+$analy = "";
+foreach ($analytics as $anl){
+    $analy .= '{y: "'.$anl['titulo'].'", a: '.$anl['views'].', b: '.$anl['avg'].'},';
+}
 ?>
 
 <script>
     "use strict"
     $(function () {
         // Conteúdo do Blog
-//        Morris.Bar({
-//            element: 'conteudo-blog',
-//            data: [
-//                {y: 'Como ser vendas e Marketing ao mesmo tempo', a: 100, b: 40},
-//                {y: 'Como aumentar sua produtividade em marketing', a: 75, b: 35},
-//                {y: 'Vendas como foco em marketing', a: 50, b: 10},
-//                {y: 'Como ter resultados nas vendas se você está focado em marketing', a: 75, b: 35},
-//            ],
-//            resize: true,
-//            hideHover: true,
-//            xkey: 'y',
-//            ykeys: ['a', 'b'],
-//            labels: ['Visualizações', 'Taxa de rejeição'],
-//            barColors: ["#1E90FF", "#FFA500"]
-//        });
+        Morris.Bar({
+            element: 'conteudo-blog',
+            data: [
+                <?=$analy;?>
+            ],
+            resize: true,
+            hideHover: true,
+            xkey: 'y',
+            ykeys: ['a', 'b'],
+            labels: ['Visualizações', 'Taxa de rejeição'],
+            barColors: ["#1E90FF", "#FFA500"]
+        });
 
         // Conteúdo por persona
         Morris.Donut({
