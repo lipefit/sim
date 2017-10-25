@@ -21,8 +21,12 @@ class AnalyticsTable extends Table {
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Clientes', [
+        $this->belongsTo('Cliente', [
             'foreignKey' => 'cliente_id'
+        ]);
+        
+        $this->belongsTo('Conteudos', [
+            'foreignKey' => 'conteudo_id'
         ]);
 
     }
