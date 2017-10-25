@@ -11,6 +11,7 @@ class DashboardController extends AppController {
         $this->loadModel("Conteudos");
         $this->loadModel("Revisaosociais");
         $this->loadModel("Sociais");
+        $this->loadModel("Analytics");
         $idCliente = $this->Cookie->read('cliente_id');
 
         $porPersonas = $this->Conteudos->find('all', [
@@ -146,6 +147,22 @@ class DashboardController extends AppController {
                 ->group('Sociais.status');
 
         $this->set(compact("midiaPorStatus"));
+        
+        $analytics = $this->Analytics->find('all', [
+            'contain' => ['Revisaos']
+        ]);
+
+        $analytics->select([
+                    'Analytics.titulo',
+                    'Analytics.views',
+                    'Revisaos.url',
+                    'Analytics.rejeicao',
+                    'avg' => $analytics->func()->avg('Analytics.rejeicao')
+                ])
+                ->where(['Analytics.cliente_id' => $idCliente])
+                ->group('Analytics.revisao_id');
+
+        $this->set(compact("analytics"));   
         
     }
 
