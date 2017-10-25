@@ -25,8 +25,8 @@ class AnalyticsTable extends Table {
             'foreignKey' => 'cliente_id'
         ]);
         
-        $this->belongsTo('Conteudos', [
-            'foreignKey' => 'conteudo_id'
+        $this->belongsTo('Revisaos', [
+            'foreignKey' => 'revisao_id'
         ]);
 
     }
